@@ -1,0 +1,124 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Expired Subscriptions List
+    </h1>
+  </section>
+
+  <!-- Main content --> 
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <div class="box box-primary">
+          {%if student_subs_pac_list%}
+
+            <table class="table table-stripped">
+              <thead>
+                <tr>
+                    <th>S.N</<th>
+                    <th>Package Name</<th>
+                    <th>Student Name</<th>
+                    <th>Total Amt.</<th>
+                    <th>Discount Amt.</<th>
+                    <th>Total payable Amt.</<th>
+                    <th>Purchase Date</<th>
+                    <th>Receipt</<th>
+                    
+                    <th>Subs. Type</th>
+                    <th>Invoice</th>
+                </tr>
+              </thead>
+              <tbody>
+                {%for package in student_subs_pac_list %}
+                  <tr>
+                    <td>{{loop.index}}</td>
+                    <td> 
+                      <a href="{{url_for('subs_pac_details',id=package.id)}}" target="_blank">
+                        {{package.package_name}}
+                      </a>
+                    </td>
+                    <td>{{package.student_name}}</td>
+                    <td>{{package.total_amount}}</td>
+                    <td>{{package.discount_amount}}</td>
+                    <td>{{package.total_payable_amount}}</td>
+                    <td>{{package.payment_date}}</td>
+                    <td>
+                      {%if package.receipt %}
+                      <a href="{{package.receipt}}" target="_blank">
+                         Receipt
+                      </a>
+                      {%else%}
+                      Online
+                       
+
+                      {%endif%}
+                    </td>
+                     
+                    <td>
+                      {% if package.purpose==1%} New {%elif package.purpose==2 %}Renew{%endif%}
+                    </td>
+                    <td> {{package.invoice}}</td>
+                  </tr>
+                {%endfor%}
+              </tbody>
+            </table>
+          {%endif%}
+        </div>
+
+      </div>
+
+      <!--/.col (right) -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+{%endblock%}
+{%block script%}
+<script>
+ $(".course-pac").on('click',function(){
+        var status = $(this).is(':checked')?1:0;
+        var pid = $(this).data('pid');
+        var csrf_token = "{{csrf_token()}}";
+        $.ajax({
+            url:"{{url_for('update_stu_subs_pac_status')}}",
+            method:'POST',
+            data:{pid,status,csrf_token},
+            beforeSend:function(){
+
+            },
+            success:function(response){
+               alert(response.message);
+            }
+        })
+    })
+
+
+    $(".pac-payment-conf").on('click',function(){
+      var status = $(this).is(':checked')?1:0;
+      var pid = $(this).data('pid');
+      var csrf_token = "{{csrf_token()}}";
+
+      $.ajax({
+          url:"{{url_for('update_stu_payment_status')}}",
+          method:'POST',
+          data:{pid,status,csrf_token},
+          beforeSend:function(){
+
+          },
+          success:function(response){
+             alert(response.message);
+          }
+      })
+    })
+
+
+</script>
+{%endblock%}

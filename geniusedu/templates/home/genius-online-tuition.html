@@ -1,0 +1,292 @@
+{%extends 'layouts/master-layout.html'%}
+
+{%block meta%}
+<title>Genius Tuition Center in Malaysia - Genius EDU</title>
+<meta name="description" content="Find the best Genius Tuition Center in Malaysia, Genius EDU' experts teach in the easiest way to score the examination. We assure you the best results.">
+<meta name="keywords" content="Genius Tuition Center in Malaysia">
+<link rel="canonical" href="https://www.geniusedu.my/genius-online-tuition"/>
+{%endblock%}
+
+{%block content%}
+<style>
+        .our_course{
+            background: #fff;
+        }
+        .course_header{
+            padding: 15px;
+    		/*border-bottom: 1px solid #e6e6e6;*/
+    		background: #7813F5;
+    		color: #fff;
+
+        }
+        .course_body{
+            padding: 15px;
+            height: 204px;
+            background: #ffd600;
+        }
+        .course_footer{
+            padding: 15px;
+            background: #FF4F57;
+            color: #fff;
+        }
+        .bg-fff{
+            background: #fff;
+        }
+    </style>
+
+    <section>
+    <!-- <img class="img-fluid" src="/static/assets/images/banner1.jpg"> -->
+    <img class="img-fluid" src="/static/assets/images/genius-pakej.jpg">
+    </section>
+
+    <section class="mt-5 mb-5">
+        <h1 class="text-center title-color">Genius Online Tuition Center</h1>
+        <!-- <h3 class="text-center title-color"><b>OUR COURSES </b></h3> -->
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-md-4">
+                    <div class="our_course mb-3">
+                        <div class="course_header text-center ">
+                            <h5 class="m-0"><b>YEAR 5 & UPSR</b></h5>
+                        </div>
+                        <div class="course_body">
+                            <ul class="nav flex-column">
+                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> B.MELAYU</li>
+                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> ENGLISH</li>
+                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> MATHS</li>
+                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> SCIENCE </li>
+                            </ul>
+                        </div>
+                        <div class="course_footer text-center">
+                            PRIMARY SCHEDULE 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="our_course mb-3">
+                        <div class="course_header text-center">
+                            <h5 class="m-0"><b>FORM 1, 2 & PT3</b></h5>
+                        </div>
+                        <div class="course_body">
+                            <ul class="nav flex-column">
+                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> B.MELAYU</li>
+                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> ENGLISH</li>
+                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> MATHS</li>
+                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> SCIENCE </li>
+                            </ul>
+                        </div>
+                        <div class="course_footer text-center">
+                            LOWER SECONDARY SCHEDULE 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="our_course mb-3">
+                        <div class="course_header text-center">
+                            <h5 class="m-0"><b>FORM 4 & SPM</b></h5>
+                        </div>
+                        <div class="course_body">
+                            <div class="row">
+                            	<div class="col-6">
+                            		<ul class="nav flex-column">
+		                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> B.MELAYU</li>
+		                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> ENGLISH</li>
+		                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> MATHS</li>
+		                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> SEJARAH </li>
+		                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> P.AKAUN </li>
+		                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> EKONOMI </li>
+		                            </ul>
+                            	</div>
+                            	<div class="col-6">
+                            		<ul class="nav flex-column">
+                            		  <li class="nav-item pb-1"><i class="far fa-check-circle"></i> A.MATHS </li>
+		                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> PHYSICS </li>
+		                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> CHEMISTRY </li>
+		                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> BIOLOGY </li>
+		                              <li class="nav-item pb-1"><i class="far fa-check-circle"></i> SCIENCE </li>
+                            		</ul>
+                            	</div>
+                            </div>
+                        </div>
+                        <div class="course_footer text-center">
+                            UPPER SECONDARY SCHEDULE 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="container">
+			<section class="blog-area section-gap" id="blog">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-70 col-lg-8">
+							<div class="title text-center">
+								<h3 class="mb-10 title-color"><b> FEES & PACKAGES  </b></h3>
+							</div>
+						</div>
+					</div>					
+					<div class="row mt-3">
+						{% if course_package%}
+			            {%for package in course_package%}
+			                <div class="col-md-4">
+			                    <div class="our-box shadow-sm mb-3">
+			                        <img class="img-fluid" src="{{package.cover_banner}}">
+			                        <h5 class="pack_title text-center"><b>{{package.seo_title|title}}</b></h5>
+			                         <p>{{package.description|safe}}</p>
+			                        <div class="text-right">
+                                        {%if package.price>0%}
+                                            <a href="{{url_for('spec_purchase_package',cano_url=package.cano_url)}}"
+                                            class="btn btn-dark btn-block mt-2 btn-sm lg-watch-d">SUBSCRIBE</a>
+                                        {%else%}
+
+                                         <a href="{{url_for('purchase_packages',cano_url=package.cano_url)}}"
+                                            class="btn btn-dark btn-block mt-2 btn-sm lg-watch-d">SUBSCRIBE</a>
+                                        {%endif%}
+			                        </div>
+			                    </div>
+			                </div>
+			            {%endfor%}
+			            {%endif%}     		
+					</div>
+				</section>
+			</div>
+
+    <!-- Start blog Area -->
+        <div class="container">
+			<section class="blog-area section-gap" id="blog">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-70 col-lg-8">
+							<div class="title text-center">
+								<h3 class="mb-10 title-color"><b>TIME & TABLE  </b></h3>
+							</div>
+						</div>
+					</div>					
+					<div class="row mt-3">
+
+                        <!-- <div class="col-lg-4 col-md-4 col-6">
+	                        <div class="our-box shadow-sm mb-3">
+		                        <img class="img-fluid" src="static/assets/images/spm.jpeg">
+		                        <div class="text-right">
+		                        </div>
+		                    </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-6">
+	                        <div class="our-box shadow-sm mb-3">
+	                        	<img class="img-fluid" src="static/assets/images/form.jpeg">
+		                        <div class="text-right">
+		                        </div>
+		                    </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-6">
+	                        <div class="our-box shadow-sm mb-3">
+	                        	<img class="img-fluid" src="static/assets/images/upsr.jpeg">
+		                        <div class="text-right">
+		                        </div>
+		                    </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-6">
+	                        <div class="our-box shadow-sm mb-3">
+	                        	<img class="img-fluid" src="static/assets/images/pt3.jpeg">
+		                        <div class="text-right">
+		                        </div>
+		                    </div>
+                        </div> -->
+                        <div class="col-lg-4 col-md-4 col-6">
+                            <div class="our-box shadow-sm mb-3">
+                                <img class="img-fluid" src="static/assets/images/YEAR-5.jpg">
+                                <div class="text-right">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-6">
+                            <div class="our-box shadow-sm mb-3">
+                                <img class="img-fluid" src="static/assets/images/UPSR.jpg">
+                                <div class="text-right">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-6">
+                            <div class="our-box shadow-sm mb-3">
+                                <img class="img-fluid" src="static/assets/images/FORM-1.jpg">
+                                <div class="text-right">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-6">
+                            <div class="our-box shadow-sm mb-3">
+                                <img class="img-fluid" src="static/assets/images/FORM-2.jpg">
+                                <div class="text-right">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-6">
+                            <div class="our-box shadow-sm mb-3">
+                                <img class="img-fluid" src="static/assets/images/PT3.jpg">
+                                <div class="text-right">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-6">
+                            <div class="our-box shadow-sm mb-3">
+                                <img class="img-fluid" src="static/assets/images/FORM-4.jpg">
+                                <div class="text-right">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-6">
+                            <div class="our-box shadow-sm mb-3">
+                                <img class="img-fluid" src="static/assets/images/SPM.jpg">
+                                <div class="text-right">
+                                </div>
+                            </div>
+                        </div>
+            		</div>
+			</section>
+		</div>	
+
+        <section class="bg-fff pt-4 pb-4">
+            <div class="container">
+                <div class="row">
+              <div class="col-md-5">
+                <img class="img-fluid" src="static/assets/images/online-edu.png">
+              </div>
+              <div class="col-md-7">
+                <p>Genius tuition centre in Malaysia connects students to the best teachers of Malaysia and helps them to achieve top grades. Our teachers come from reputed institutions and are quite experienced. We aim to establish a healthy peer learning environment. You get to choose from a much deeper pool of tutors as the distance to the tutor is no longer a limiting factor. We send notes before the scheduled class to make sure that our students get an idea about the next topic. Students can ask doubts from our knowledgeable teachers via live chat and voice notes. Here, students get 100% attention and can ask doubts without any hesitation. The recording of the classes automatically gets to the student’s dashboard as we have added auto-record feature in our live classes. We make sure that none of the topics remains unattended and none of the doubts is left unexplained. Unlike other learning platforms, our platform does not have glaring problems of privacy and security.  As the name suggests, Geniusedu helps a student to become a real genius. Students who want to join our paid course can submit payment and all the astonishing benefits will be given to them.</p>
+            </div>
+            </div>
+        </section>
+
+<!-- 		<section class="mt-5 mb-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<div class="our_course p-3">
+							<div class="row">
+								<div class="col-md-6">
+									<img class="img-fluid p-3 mt-3" src="/static/assets/images/got.png">
+								</div>
+								<div class="col-md-6">
+									<center>
+										<h5>Login</h5>
+									</center>
+									<div class="form-group">
+										<label class="top-label">User Name</label>
+										<input type="text" class="form-control" name="">
+									</div>
+									<div class="form-group">
+										<label class="top-label">Password</label>
+										<input type="password" class="form-control" name="">
+									</div>
+									<button class=" btn btn-success btn-block">Login</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+			</div>
+		</section> -->
+{%endblock%}

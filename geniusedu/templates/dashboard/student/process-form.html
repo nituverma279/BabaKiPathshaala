@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paymnet online</title>
+</head>
+<body>
+    <p align="center">Please wait. You are redirecting to payment page</p>
+    <form action='https://www.qlicknpay.com/merchant/api/v1/receiver' method='POST' name="payment_form">
+    <!-- <form action='https://www.demo.qlicknpay.com/merchant/api/v1/receiver' method='POST' name="payment_form"> -->
+        <input type="hidden" name="merchant_id" id="merchant_id">
+        <input type="hidden" name="invoice" id="invoice">
+        <input type="hidden" name="amount" id="amount">
+        <input type="hidden" name="payment_desc" id="payment_desc">
+        <input type="hidden" name="hash" id="hash">
+        <input type="hidden" name="callback_url_be" id="call_url">
+        <input type="hidden" name="callback_url_fe_succ" id="suc_url">
+        <input type="hidden" name="callback_url_fe_fail" id="fal_url">
+        <input type="hidden" name="buyer_name" id="name"/>
+        <input type="hidden" name="buyer_email" id="email"/>
+        <input type="hidden" name="phone" id="phone"/>
+
+        <button type="submit" id="submit-btm" style="display: none;">submit</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
+    
+    <script>
+        
+        hashCode("{{hashed_string}}");
+        function hashCode(str){
+        var hash = 0;
+        if (str.length == 0) return hash;
+            hash = 	CryptoJS.MD5(str);
+            document.getElementById("hash").value = hash;
+        }
+
+        document.getElementById("merchant_id").value = "{{merchant_id}}";
+        document.getElementById("invoice").value ="{{invoice}}";
+        document.getElementById("amount").value = "{{'%0.2f' % amount|float}}";
+        document.getElementById("payment_desc").value = "{{payment_desc}}";
+        document.getElementById("call_url").value = "https://www.geniusedu.my{{url_for('renew_callbackv2')}}";
+        document.getElementById("suc_url").value = "https://www.geniusedu.my/{{url_for('renew_callbackv2')}}";
+        document.getElementById("fal_url").value = "https://www.geniusedu.my/payment-fail";
+        document.getElementById("name").value = "{{current_user.first_name}}";
+        document.getElementById("email").value =  "{{current_user.email}}";
+        document.getElementById("phone").value =  "{{current_user.mobile}}";
+
+
+         window.onload = function(){
+          document.forms['payment_form'].submit();
+        }
+
+    </script>
+
+
+</body>
+</html>

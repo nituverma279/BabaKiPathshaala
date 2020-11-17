@@ -1,0 +1,179 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {% if seminar%}
+            Add Topic to the seminar <span class="text-danger text-bold">{{seminar.title}}</span>
+            {%endif%}
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}}" role="alert">
+            {{ message|safe }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-4">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form method="post" novalidate>
+                        <input type="hidden" name="csrf_token" value="{{csrf_token()}}" />
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>Select Course</label>
+                                <select class="form-control" name="course_id" id="course_id">
+                                    {%if courses%}
+                                    {%for course in courses%}
+                                    <option value="{{course.id}}">{{course.course_name}}</option>
+                                    {%endfor%}
+                                    {%endif%}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Select Subject</label>
+                                <select class="form-control" name="subject_id" id="subject_id">
+                                    {%if subjects%}
+                                    {%for subject in subjects%}
+                                    <option value="{{subject.id}}">{{subject.subject_name}}</option>
+                                    {%endfor%}
+                                    {%endif%}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Select Teacher</label>
+                                <select class="form-control" name="teacher_id" id="teacher_id">
+                                    <option>Select Teacher</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Topic Title</label>
+                                <input type="text" class="form-control" name="topic_title" />
+                            </div>
+                            <div class="form-group">
+                                <label>Seminar Date: {{seminar.seminar_date}}</label>
+                            </div>
+                             
+                            <div class="bootstrap-timepicker">
+                                <div class="form-group">
+                                  <label>Start Time:</label>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control timepicker" name="start_time">
+                
+                                    <div class="input-group-addon">
+                                      <i class="fa fa-clock-o"></i>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="bootstrap-timepicker">
+                                <div class="form-group">
+                                  <label>End Time:</label>
+                                  <div class="input-group">
+                                    <input type="text" class="form-control timepicker" name="end_time">
+                                    <div class="input-group-addon">
+                                      <i class="fa fa-clock-o"></i>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-success">Add Topic</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box -->
+            </div>
+            <div class="col-md-8">
+                <div class="box box-primary">
+                    <table class="table table-stripped">
+                        <thead>
+                            <th>S.N</th>
+                            <th>Topic Title</th>
+                            <th>Course Name</th>
+                            <th>Subject Name</th>
+                            <th>Teacher Name</th>
+                            <th>Start-End Time</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            {% if seminar_details%}
+                                {%for sem in seminar_details%}
+                                    <tr>
+                                        <td>{{loop.index}}</td>
+                                        <td>{{sem.topic_titile}}</td>
+                                        <td>{{sem.course_name}}</td>
+                                        <td>{{sem.subject_name}}</td>
+                                        <td>{{sem.teacher_name}}</td>
+                                        <td>{{sem.start_time}}-{{sem.end_time}}</td>
+                                        <td><a href="{{url_for('delete_seminar_topic',sem_id=seminar.id, id=sem.id)}}" onclick="return confirm('Are you sure?')"><i class="fa fa-times"></i></a></td>
+                                    </tr>
+                                {%endfor%}
+                            {%endif%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+{%endblock%}
+{%block script%}
+<script>
+    fetch_teachers();
+    $(document).on('change', '#course_id', function () {
+        fetch_teachers();
+    })
+    $(document).on('change', '#subject_id', function () {
+        fetch_teachers();
+    })
+    function fetch_teachers() {
+        var course_id = $("#course_id").val();
+        var subject_id = $("#subject_id").val();
+        $.ajax({
+            url: "/admin/ajax_fetch_seminar_teacher/" + course_id + "/" + subject_id,
+            beforeSend: function () {
+            },
+            success: function (response) {
+                console.log(response);
+                if (response.error == '0') {
+                    var element = '';
+                    for (var i = 0; i < response.message.length; i++) {
+                        element += '<option value=' + response.message[i].teacher_id + '>' + response
+                            .message[i].teacher_name + '</option>';
+                    }
+                    $("#teacher_id").html(element);
+                }
+            }
+        })
+    }
+
+</script>
+<script>
+    //Timepicker
+    $(".timepicker").timepicker({
+    showInputs: false,
+    showMeridian:false,
+    });
+</script>
+
+
+{%endblock%}

@@ -1,0 +1,171 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            All Students who joined {%if seminar%} <span class="text-bold text-danger">{{seminar.title}}</span> {%endif%}
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    {%if joined_student_list%}
+                    <table class="table table-stripped" id="studentlist">
+
+                        {%if seminar.price %}
+                        <thead>
+                            <tr>
+                                <th>S.N</th>
+                                <th>Student Name</th>
+                                <th>Email</th>
+                                <th>Hand Phone</th>
+                                <th>Address</th>
+                                <th>Register Date</th>
+                                <th>Payment Method</th>
+                                <th>Receipt</th>
+                                <th>Invoice</th>
+                                <th>Trans Id</th>
+                                <th>Payment Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for joined_sem in joined_student_list %}
+                            <tr>
+                                <td>{{loop.index}}</td>  
+                                <td>{{joined_sem.first_name}} {{joined_sem.last_name}}</td>
+                                <td>{{joined_sem.email}}</td>
+                                <td>{{joined_sem.mobile}}</td>
+                                <td>{{joined_sem.address}}</td>
+                                <td>{{joined_sem.join_date}}</td>
+                                <td>{{joined_sem.payment_method}}</td>
+                                <td>
+                                    {% if  joined_sem.payment_method and joined_sem.payment_method=='offline'%}
+                                    <a href="{{joined_sem.receipt}}" target="_blank">Receipt</a>
+                                    {%endif%}
+                                </td>
+                                <td>{{joined_sem.invoice}}</td>
+                                <td>{{joined_sem.transcation_id}}</td>
+                                <td>
+                                    {%if joined_sem.payment_status%}
+                                        <label class="label label-success">Payment Done</label>
+                                    {%else%}
+                                        <label class="label label-danger">Not Approved</label>
+                                    {%endif%}
+                                </td>
+                                <td>
+                                    <div class="checkbox checbox-switch switch-success">
+                                        {%if joined_sem.is_approved %}
+                                        <label>
+                                            <input type="checkbox" class="seminartopic" data-id="{{joined_sem.id}}"
+                                                checked="checked" />
+                                            <span></span>
+                                        </label>
+                                        {%else%}
+                                        <label>
+                                            <input type="checkbox" class="seminartopic" data-id="{{joined_sem.id}}" />
+                                            <span></span>
+                                        </label>
+                                        {%endif%}
+                                    </div>
+                                </td> 
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                        {%else%}
+                         <thead>
+                            <tr>
+                                <th>S.N</th>
+                                <th>Student Name</th>
+                                <th>Email</th>
+                                <th>Hand Phone</th>
+                                <th>Address</th>
+                                <th>Register Date</th>
+
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for joined_sem in joined_student_list %}
+                            <tr>
+                                <td>{{loop.index}}</td>
+                                <td>{{joined_sem.first_name}} {{joined_sem.last_name}}</td>
+                                <td>{{joined_sem.email}}</td>
+                                <td>{{joined_sem.mobile}}</td>
+                                <td>{{joined_sem.address}}</td>
+                                <td>{{joined_sem.join_date}}</td>
+
+
+                                <td>
+                                    <div class="checkbox checbox-switch switch-success">
+                                        {%if joined_sem.is_approved %}
+                                        <label>
+                                            <input type="checkbox" class="seminartopic" data-id="{{joined_sem.id}}"
+                                                checked="checked" />
+                                            <span></span>
+                                        </label>
+                                        {%else%}
+                                        <label>
+                                            <input type="checkbox" class="seminartopic" data-id="{{joined_sem.id}}" />
+                                            <span></span>
+                                        </label>
+                                        {%endif%}
+                                    </div>
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                        {%endif%}
+
+
+
+
+
+                    </table>
+                    {%endif%}
+                </div>
+            </div>
+            <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+{%endblock%}
+{%block script%}
+<script>
+    $(".seminartopic").on('click', function () {
+        var status = $(this).is(':checked') ? 1 : 0;
+        var jo_sem_id = $(this).data('id');
+        var csrf_token = "{{csrf_token()}}";
+        $.ajax({
+            url: "{{url_for('approve_seminar_attend_student')}}",
+            method:'POST',
+            data: {
+                jo_sem_id,
+                status,
+                csrf_token
+            },
+            beforeSend: function () {},
+            success: function (response) {
+                alert(response.message);
+            }
+        })
+    })
+</script>
+ 
+<script>
+$('#studentlist').DataTable( {
+    dom: 'Bfrtip',
+    buttons: [
+       'csv', 'excel'
+    ]
+} );
+</script>
+{%endblock%}

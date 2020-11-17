@@ -1,0 +1,36 @@
+{%extends 'layouts/master-layout.html'%}
+
+{%block meta%}
+<title>Seminar in Malaysia | Free Online Live Tuition Classes - Genius EDU</title>
+<meta name="description" content="Genius EDU one of the best education website in Malaysia. We offer freeonline livetuition classes to achieve their goals by providing creative, innovative and evaluative programs.">
+<meta name="keywords" content="Online Tuition, Best Education Website in Malaysia, Online Live free Classes Malaysia">
+{%endblock%}
+
+
+{%block content%}
+<section class="four-story">
+    <div class="container">
+        <div class="form-promo">
+            <h3 class="heading-tag">Geniusedu seminars</h3>
+        </div>
+        <div class="row">
+            {% if seminars%}
+            {%for seminar in seminars%}
+                <div class="col-md-4">
+                    <div class="our-box shadow-sm mb-3">
+                        <img class="img-fluid mb-3" src="{{seminar.cover_banner}}">
+                        <h6>{{seminar.title|title}}</h6>
+                        <hr class="m-0">
+                        <p>{{seminar.description|safe}}</p>
+                        <div class="text-right">
+                            <a href="{{url_for('seminar_topics_list',cano_url=seminar.canonical_url)}}"  
+                            class="btn btn-dark btn-block mt-2 btn-sm lg-watch-d">Join Seminar</a>
+                        </div>
+                    </div>
+                </div>
+            {%endfor%}
+            {%endif%}     
+        </div>
+    </div>
+</section>
+{%endblock%}

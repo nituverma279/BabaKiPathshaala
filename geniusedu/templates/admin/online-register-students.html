@@ -1,0 +1,119 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        All Online Students
+      </h1>
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+		{% for category, message in messages %}
+		  <div class="alert alert-{{category}}" role="alert">
+			{{ message|safe }}
+		  </div>
+		{% endfor %}
+		{% endif %}
+		{% endwith %}
+      <div class="row">
+        <!-- left column -->
+
+
+		<div class="col-md-12">
+			<div class="box box-primary">
+				<br/>
+
+				<table class="table table-stripped">
+                    <thead>
+                        <tr>
+                            <th>S.N</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>Mobile</th>
+                            <th>Parent Mob</th>
+                            <th>Reg. Date</th>
+                            <th>Addreess</th>
+                            <th>Postal Code</th>
+                            <th>Action</th>
+                            <th>Disable/Enable</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-list">
+                        {%for student in online_students_list%}
+                            <tr>
+                                <td>{{loop.index}}</td>
+                                <td>{{student.first_name}} {{student.last_name}}</td>
+                                <td>{{student.email}}</td>
+                                <td>{{student.gender}}</td>
+                                <td>{{student.mobile}}</td>
+                                <td>{{student.parent_mobile}}</td>
+                                <td>{{student.register_date}}</td>
+                                <td>{{student.address}}</td>
+                                <td>{{student.zipcode}}</td>
+                                 <td>
+                                   
+                                    
+                                  <a href="{{url_for('update_student_password', id=student.id)}}">
+                                      <i class="fa fa-key"></i></a>
+                                </td>
+                                <td>
+                                  <div class="checkbox checbox-switch switch-success">
+                                      {%if student.is_active%}
+                                      <label>
+                                              <input type="checkbox" class="stuactive" data-pid="{{student.id}}" checked="checked"/>
+                                              <span></span>
+                                      </label>
+                                      {%else%}
+                                      <label>
+                                          <input type="checkbox" class="stuactive" data-pid="{{student.id}}" />
+                                          <span></span>
+                                      </label>
+
+                                      {%endif%}
+                                  </div>
+                                </td>
+                            </tr>
+                        {%endfor%}
+                    </tbody>
+				</table>
+			</div>
+
+		</div>
+
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{%endblock%}
+
+{%block script%}
+<script>
+ $(".stuactive").on('click',function(){
+        var status = $(this).is(':checked')?1:0;
+        var pid = $(this).data('pid');
+        var csrf_token = "{{csrf_token()}}";
+        $.ajax({
+            url:"{{url_for('update_online_stu_status')}}",
+            method:'POST',
+            data:{pid,status,csrf_token},
+            beforeSend:function(){
+
+            },
+            success:function(response){
+               alert(response.message);
+            }
+        })
+    })
+</script>
+{%endblock%}

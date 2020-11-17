@@ -1,0 +1,105 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      All Topics
+    </h1>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <div class="box box-primary">
+          <table class="table table-stripped">
+            <thead>
+              <tr>
+                <th>S.N</th>
+                <th>Course</th>
+                <th>Subject</th>
+                <th>Topic Name</th>
+                <th>Description</th>
+                <th>Watch Rec.</th>
+                <th>Join students</th>
+                <th>Date</th>
+                <th>Is Completed</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%for topic in topics_list%}
+              <tr>
+                <td>{{loop.index}}</td>
+                <td>{{topic.course_name|upper}}</td>
+                <td>{{topic.subject_name|upper}}</td>
+                <td>{{topic.class_title}}</td>
+                <td>{{topic.description|safe}}</td>
+                <td><a href="{{url_for('demo_class_recording_list',id=topic.id)}}" target="_blank">Watch</a></td>
+                <td>
+                    <a href="{{url_for('join_online_demo_class',id=topic.id)}}">view</a>
+                </td>
+                <td>{{topic.create_date}}</td>
+                
+                <td>
+                  {%if topic.is_complete %}
+                  <button class="btn btn-sucess">Completed</button>
+                  {%else%}
+                  <button class="btn btn-danger cp-btn" data-coid="{{topic.id}}">Mark as completed</button>
+                  {%endif%}
+                </td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+
+      <!--/.col (right) -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+{%endblock%}
+{%block script%}
+<script>
+
+        $(document).on('click','.cp-btn',function(){
+
+
+            var coid=$(this).data('coid');
+            var csrf_token = "{{csrf_token()}}";
+            var _th = $(this);
+            var tmp_bt='<button class="btn btn-default cp-btn">Please wait...</button>';
+            var actual_btn='<button class="btn btn-danger cp-btn" data-coid="'+coid+'">Mark as completed</button>';
+            var comp_btn='<button class="btn btn-sucess">Completed</button>';
+            if(confirm('Are you sure?')){
+                $.ajax({
+                    url:"{{url_for('mark_as_complete_demo_topic')}}",
+                    method:'POST',
+                    data:{coid,csrf_token},
+                    beforeSend:function(){
+                        _th.parent().html();
+                        //  _th.parent().html('<p>Please wait..</p>');
+                    },
+                    success:function(response){
+                        
+                        if(response.error==0){
+                            _th.parent().html(comp_btn); 
+                        }else{
+                            
+                            _th.parent().html(actual_btn) ; 
+                        }
+                        //console.log(response.message);
+                    }
+                });
+            }
+        });
+</script>
+{%endblock%}

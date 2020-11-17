@@ -1,0 +1,100 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      All Packages List
+    </h1>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <div class="box box-primary">
+          {%if course_package_list%}
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <th>S.N</th>
+                        <th>Seo Title</th>
+                        <th>Course/Pack Name</th>   
+                        <th>Expire Month&Year</th>
+                        <th>Create date</th>
+                        <th>Show/Hide</th>
+                        <th>Add Subjects</th>
+                        <th>Edit </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for course_pac in course_package_list %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{course_pac.seo_title}}</td>
+                        <td>{{course_pac.course_name}}</td>
+                       
+                        <td>{{course_pac.expire_month}}/{{course_pac.expire_year}}</td>
+                        <td>{{course_pac.create_date}}</td>
+                        <td>
+                            <div class="checkbox checbox-switch switch-success">
+                                {%if course_pac.is_active %}
+                                <label>
+                                        <input type="checkbox" class="course-pac" data-pid="{{course_pac.id}}" checked="checked"/>
+                                        <span></span>
+                                </label>
+                                {%else%} 
+                                <label>
+                                    <input type="checkbox" class="course-pac" data-pid="{{course_pac.id}}" />
+                                    <span></span>
+                                </label>
+
+                                {%endif%}
+                            </div>  
+                        </td>
+                        
+                        <td>
+                          <a href="{{url_for('package_details',pid=course_pac.id)}}">Add Subjects</a>
+                        </td>
+                        <td><a href="{{url_for('update_package',id=course_pac.id)}}">Edit</a></td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+                
+            </table>
+          {%endif%}
+        </div>
+        
+      </div>
+
+      <!--/.col (right) -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+{%endblock%}
+{%block script%}
+<script>
+ $(".course-pac").on('click',function(){
+        var status = $(this).is(':checked')?1:0;
+        var pid = $(this).data('pid');
+        var csrf_token = "{{csrf_token()}}";
+        $.ajax({
+            url:"{{url_for('update_course_pac_status')}}",
+            method:'POST',
+            data:{pid,status,csrf_token},
+            beforeSend:function(){
+
+            },
+            success:function(response){
+               alert(response.message);
+            }
+        })
+    })
+</script>
+{%endblock%}

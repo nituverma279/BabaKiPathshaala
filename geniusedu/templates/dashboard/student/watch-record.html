@@ -1,0 +1,37 @@
+{%extends 'layouts/master-layout.html'%}
+{%block meta%}
+<title>Dashboard | Free Online Live Tuition Classes - Genius EDU</title>
+<meta name="description" content="Genius EDU one of the best education website in Malaysia. We offer freeonline livetuition classes to achieve their goals by providing creative, innovative and evaluative programs.">
+<meta name="keywords" content="Online Tuition, Best Education Website in Malaysia, Online Live free Classes Malaysia">
+{%endblock%}
+{%block content%}
+<section>
+    <div class="container">
+        <img class="img-fluid" src="{{url_for('static',filename='assets/images/login-ban.jpg')}}">
+    </div>
+</section>
+<section>
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            <div class="col-md-3">
+                <div>
+                    <h4 class="blue-color">Welcome Student</h4>
+                </div>
+                {%include 'dashboard/student/dash-menu.html'%}
+            </div>
+            <div class="col-md-9">
+                <h3>{{online_live_class.class_title|title}}</h3>
+                <p>{{online_live_class.description}}</p>
+                {% if broadcast_classe_stream_records %}
+                    {%for record in broadcast_classe_stream_records%}
+                    <video controls width="100%" controlsList="nodownload">
+                        <source src="https://geniusclasses.s3-ap-southeast-1.amazonaws.com/streams/{{record.stream_id}}.mp4"/>
+                    </video>
+                   {%endfor%}
+                {%endif%}
+                 
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}

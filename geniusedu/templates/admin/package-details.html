@@ -1,0 +1,131 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+        Course package of <span class="text-danger">{{course_package.course_name|title}}</span>
+    </h1>
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{category}}" role="alert">
+              {{ message|safe }}
+              </div>
+            {% endfor %}  
+          {% endif %}
+        {% endwith %}
+        <div class="box box-primary">     
+          <form method="post"  enctype="multipart/form-data" novalidate>
+              {{ form.hidden_tag() }}
+              <input type="hidden" name="pac_course_id" value="{{course_package.id}}">
+              <div class="box-body">
+                  <div class="form-group">
+                      {{ form.comp_subject_id.label }}
+                      {{ form.comp_subject_id(class="form-control") }}
+                      {% for error in form.comp_subject_id.errors %}
+                      <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                  </div>
+              </div>
+              <div class="box-body">
+                <div class="form-group">
+                    {{ form.comp_price.label }}
+                    {{ form.comp_price(class="form-control") }}
+                    {% for error in form.comp_price.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+              </div>
+              <div class="box-body">
+                  <div class="form-group">
+                      {{ form.opt_subject_id.label }}
+                      {{ form.opt_subject_id(class="form-control") }}
+                      {% for error in form.opt_subject_id.errors %}
+                      <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                  </div>
+              </div>
+              <div class="box-body">
+                <div class="form-group">
+                    {{ form.opt_price.label }}
+                    {{ form.opt_price(class="form-control",id="datepicker") }}
+                    {% for error in form.opt_price.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                    {% endfor %}
+                </div>
+              </div>
+              <div class="box-footer">
+                  {{ form.submit(class="btn btn-success") }}
+              </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h5>Compulsory Subjects</h5>
+        <div class="box box-primary">
+            {% if comp_sub_list %}
+            <table class="table table-stripped">
+                <thead>
+                     <tr>
+                        <th>S.N</th>
+                        <th>Subject Name</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                     </tr>
+                </thead>
+                <tbody>
+                    {%for comp_sub in comp_sub_list%}
+                     <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{comp_sub.subject_name}}</td>
+                        <td>{{comp_sub.price}}</td>
+                        <td> </td>
+                     </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+            {%endif%}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h5>Optional Sunjects</h5>
+        <div class="box box-primary">
+            {% if opt_sub_list %}
+            <table class="table table-stripped">
+                <thead>
+                     <tr>
+                        <th>S.N</th>
+                        <th>Subject Name</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                     </tr>
+                </thead>
+                <tbody>
+                    {%for comp_sub in opt_sub_list%}
+                     <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{comp_sub.subject_name}}</td>
+                        <td>{{comp_sub.price}}</td>
+                        <td> </td>
+                     </tr>
+                     {%endfor%}
+                </tbody>
+            </table>
+            {%endif%}
+        </div>
+      </div>
+      <!--/.col (right) -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+{%endblock%}

@@ -1,0 +1,67 @@
+{%extends 'layouts/master-layout.html'%}
+{%block meta%}
+<title>Dashboard | Free Online Live Tuition Classes - Genius EDU</title>
+<meta name="description" content="Genius EDU one of the best education website in Malaysia. We offer freeonline livetuition classes to achieve their goals by providing creative, innovative and evaluative programs.">
+<meta name="keywords" content="Online Tuition, Best Education Website in Malaysia, Online Live free Classes Malaysia">
+{%endblock%}
+{%block content%}
+<section>
+	<div class="container">
+		<img class="img-fluid" src="{{url_for('static',filename='assets/images/login-ban.jpg')}}">
+	</div>
+</section>
+<section>
+	<div class="container pt-5 pb-5">
+		
+	  <div class="row">
+		<div class="col-md-3">
+		 <div>
+      <h4 class="blue-color">Welcome Student</h4>
+    </div>
+		{%include 'dashboard/student/dash-menu.html'%}
+  
+		</div>
+		<div class="col-md-9">
+			<h5 class="mb-3">Live Classes</h5>
+			
+			{%if optional_live_classes_list%}
+			<!-- {{optional_live_classes_list}} -->
+			{%for live_classes in optional_live_classes_list%}
+				<div class="cls-box mb-3">
+				<!-- <a href=""> -->
+				<div class="row">
+				<div class="col-md-12">
+					<div class="pl-3 pr-3 pt-2 pb-2 cls-box-header">
+					<p> {{live_classes.course_name|safe|upper}} {{live_classes.subject_name|safe|upper}}</p>
+				</div>
+					<div class="p-3">
+					<h6 class="m-0 mb-2 text-danger">{{live_classes.class_title|safe|upper}}</h6>
+
+					<div class="mb-3">
+						<span class="badge badge-success">{{live_classes.create_date}}</span>
+						
+					  </div>
+					<small class="mb-2">{{live_classes.description|safe}}</small><br/>
+					<hr>
+					<div class="text-right">
+						<a href="{{url_for('watch_live_class',cano_url=live_classes.canonical_url)}}" class="btn btn-success btn-sm">Live Watch</a>
+					</div>
+				</div>
+				</div>
+				</div>
+				<!-- </a> -->
+				</div>
+			{%endfor%}
+		{%endif%}
+   
+		
+			<!-- <h5 class="mb-3">Compulsory Live Classes</h5> -->
+			 
+   
+		</div>
+
+	  </div>
+	</div>
+</section>
+  
+{%endblock%}

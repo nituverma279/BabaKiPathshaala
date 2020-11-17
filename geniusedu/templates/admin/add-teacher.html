@@ -1,0 +1,156 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Add New Teacher
+        
+      </h1>
+      <!-- <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">General Elements</li>
+      </ol> -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+		{% for category, message in messages %}
+		  <div class="alert alert-{{category}}" role="alert">
+			{{ message|safe }}
+		  </div>
+		{% endfor %}  
+		{% endif %}
+		{% endwith %}
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <!-- general form elements -->
+          <div class="box box-primary">
+             
+            <!-- /.box-header -->
+			<!-- form start -->
+			
+            <form method="post" class="{% if form.errors%} was-validated {%endif%} user-log-form" novalidate>
+				{{ form.hidden_tag() }}
+				<div class="box-body">
+					<div class="form-group">
+                        {{ form.first_name.label }}
+                        {{ form.first_name(maxlength=32,class="form-control") }}
+                        {% for error in form.first_name.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                
+                    <div class="form-group">
+                        {{ form.last_name.label }}
+                        {{ form.last_name(maxlength=32,class="form-control") }}
+                        {% for error in form.last_name.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.email.label }}
+                        {{ form.email(maxlength=40,class="form-control") }}
+                        {% for error in form.email.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="form-group">
+                        {{ form.gender.label }}
+                          
+                        {{ form.gender(class="form-control") }}
+                        {% for error in form.gender.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                
+                
+                    <div class="form-group">
+                        {{ form.mobile.label }}
+                        {{ form.mobile(class="form-control",maxlength=10,onkeypress="return isNumber(event);") }}
+                        {% for error in form.mobile.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                
+                   <!--  <div class="form-group col-md-6">
+                        {{ form.parent_mobile.label }}
+                        {{ form.parent_mobile(class="form-control") }}
+                        {% for error in form.parent_mobile.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div> -->
+                
+                    <div class="form-group">
+                        {{ form.password.label }}
+                        {{ form.password(class="form-control") }}
+                        {% for error in form.password.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                
+                    <div class="form-group">
+                        {{ form.confirm.label }}
+                        {{ form.confirm(class="form-control") }}
+                        {% for error in form.confirm.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.ic_number.label }}
+                        {{ form.ic_number(class="form-control") }}
+                        {% for error in form.ic_number.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div> 
+                
+                    <!-- <div class="form-group">
+                        {{ form.zipcode.label }}
+                        {{ form.zipcode(class="form-control") }}
+                        {% for error in form.zipcode.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div> -->
+                
+                    <!-- <div class="form-group">
+                        {{ form.address.label }}
+                        {{ form.address(class="form-control") }}
+                        {% for error in form.address.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div> -->
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+				{{ form.submit(class="btn btn-success") }}
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <script type="text/javascript">
+      function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+  </script>
+{%endblock%}

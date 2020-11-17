@@ -1,0 +1,203 @@
+{%extends 'layouts/master-layout.html'%}
+
+{%block meta%}
+<title>{{course_package.seo_title}} | Free Online Live Tuition Classes - Genius EDU</title>
+<meta name="description" content="Genius EDU one of the best education website in Malaysia. We offer freeonline livetuition classes to achieve their goals by providing creative, innovative and evaluative programs.">
+<meta name="keywords" content="Online Tuition, Best Education Website in Malaysia, Online Live free Classes Malaysia">
+{%endblock%}
+
+{%block content%}
+<link rel="stylesheet" href="/static/assets/file/css/bootstrap-multiselect.css" type="text/css">
+<script type="text/javascript" src="/static/assets/file/js/bootstrap-multiselect.min.js"></script>
+<style>
+  .bg_white{
+    background: white;
+  }
+</style>
+{% if course_package%}
+<section>
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="bg_white ">
+        	<div class="bg-red p-2">
+        		<h4 class="text-white m-0"><b>{{course_package.seo_title}}</b></h4>		
+        	</div>
+        <div class="p-3">
+        <p>Course : {{course_package.course_name}} </p>
+        <p>{{course_package.description}}</p>
+        <br>
+        </div>
+      </div>
+      </div>
+      <div class="col-md-3">
+        <div class="bg_white p-4">
+          <img class="img-fluid" src="{{course_package.cover_banner}}">  
+        </div>
+      </div>
+    </div>
+    <form  method="post" id="purchase-package-form">
+      <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+      <input type="hidden" name="pcgd" value="{{course_package.id}}">
+      <input type="hidden" name="cano" value="{{course_package.cano_url}}">
+    <div class="row mt-4">
+      
+      <div class="col-md-7">
+        {% if opt_sub %}
+        <div class="bg_white">
+        	<div class="bg-red p-2">
+          		<h5 class="text-white m-0"><b>Subjects</b></h5>
+          </div>
+          <div class="p-3">
+          {% for optional_sub in opt_sub%}
+          <div class="d-flex opt_subs">
+            <div class="flex-fill">
+              <div class="custom-control custom-checkbox sub-check pt-2 pb-2">
+                <input type="checkbox" class="custom-control-input opt-sub" data-name="{{optional_sub.subject_name}}" data-price="{{optional_sub.price}}" name="optional_subject" value="{{optional_sub.id}}" id="customCheck{{loop.index}}">
+                <label class="custom-control-label" for="customCheck{{loop.index}}">{{optional_sub.subject_name}}</label>
+              </div>
+            </div>
+
+          </div>
+          {%endfor%}
+        </div>
+        
+        </div>
+        {%else%}
+        <div class="bg_white p-2">
+                <img class="p-5 img-fluid" src="/static/assets/images/got.png">
+          </div>
+        {%endif%}
+      </div>
+      <div class="col-md-5">
+        
+        <div class="bg_white">
+        	<div class="bg-red p-2">
+          		<h5 class="text-white m-0"><b>Selected Subjects</b></h5>
+            </div>
+          <div class="p-3">
+          {% if comp_sub %}
+          {% for compul_sub in comp_sub%}
+          <div class="d-flex">
+            <div class="flex-fill">
+              <p class="mb-1"><b>{{compul_sub.subject_name}}</b></p>
+            </div>
+            <div></div>
+          </div>
+          {%endfor%}
+          {%endif%}   
+          <div id="optsb">
+          
+          </div>
+          
+          <hr>
+          		<div class="text-center">
+                <p>RM <b>{{'%0.2f' %course_package.price}}</b></p>
+                <p class="text-info">You be will charged extra RM 1.00 for the notes</p>
+                <label><b>Select Subscription Month</b></label>
+            </div>
+            {% if months %}
+            <select class="custom-select" id="basic" name="month" multiple="multiple">
+                {%for month in months%}
+                  <option value="{{month.id}}">{{month.month_name}}</option>
+                {%endfor%}
+            </select>
+            {%endif%}
+           
+
+          
+          <div class="text-right mt-2">
+             
+            <button type="submit" class="btn btn-success btn-block"><b>Proceed to Pay</b></button>
+          </div>
+          </div>
+        </div>
+       
+      </div>
+     
+
+    </div>
+  </form>
+  </div>
+</section>
+{%endif%}
+
+<script>
+  $('#basic').multiselect({
+    templates: {
+        li: '<li><a href="javascript:void(0);"><label class="pl-2"></label></a></li>'
+    }
+});
+</script>
+
+<script>
+  $(document).ready(function(){
+
+    show_select_subjects();
+
+    $(".opt-sub").on('click',function(){
+        var name =$(this).data('name');
+        if($(this).is(':checked')){
+          var element='<div class="d-flex">'+
+                      '<div class="flex-fill">'+
+                        '<p class="mb-1"><b>'+name+'</b></p>'+
+                      '</div>'+
+
+                    '</div>';
+          $("#optsb").append(element);
+
+        }else{
+          $("#optsb .d-flex .flex-fill p").each(function(element,index){
+             if($(this).text()==name){
+              $(this).parent().parent().remove();
+             }
+          });
+        }
+    });
+  })
+
+  function show_select_subjects(){
+      $(".opt_subs .flex-fill .sub-check input:checkbox").each(function(element,index){
+
+            if($(this).is(":checked")){
+              var name =$(this).data('name');
+               var element='<div class="d-flex">'+
+                      '<div class="flex-fill">'+
+                        '<p class="mb-1"><b>'+name+'</b></p>'+
+                      '</div>'+
+
+                    '</div>';
+                  $("#optsb").append(element);
+            }
+      });
+  }
+
+
+
+</script>
+
+
+<script>
+ 
+  $(document).ready(function() {
+
+    $("#purchase-package-form").validate({
+      rules: {
+        optional_subject: {
+          required: true,
+        },
+        month: {
+          required: true,
+        },
+      },
+      messages: {
+      	optional_subject:{
+      		required:'Select at least one subject',
+      	}
+      }
+    });
+  });
+
+</script>
+
+{%endblock%}

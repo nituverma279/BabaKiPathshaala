@@ -1,0 +1,25 @@
+{%extends 'layouts/master-layout.html'%}
+{%block content%}
+<section>
+    <div class="container">
+        <img class="img-fluid" src="{{url_for('static',filename='assets/images/login-ban.jpg')}}">
+    </div>
+</section>
+<section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-12">
+                <div class="card my-card">
+                    <div class="card-body">
+                        {%if message%}
+                        <h5 class="text-center">{{message|safe}}</h5>
+                        {%endif%}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</section>
+{%endblock%}

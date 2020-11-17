@@ -1,0 +1,101 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            All Seminar List
+        </h1>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    {%if seminar_list%}
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>S.N</th>
+                                <th>Cover</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Seminar Date</th>
+                                <th>Create date</th>
+                                <th>Show/Hide</th>
+                                <th>Add Topics</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for seminar in seminar_list %}
+                            <tr>
+                                <td>{{loop.index}}</td>
+                                <td><img src="{{seminar.cover_banner}}" width="150"/></td>
+                                <td>{{seminar.title}}</td>
+                                <td>{{seminar.description}}</td>
+                                <td>{{seminar.seminar_date}} </td>
+                                <td>{{seminar.create_date}}</td>
+                                <td>
+                                    <div class="checkbox checbox-switch switch-success">
+                                        {%if seminar.is_active %}
+                                        <label>
+                                            <input type="checkbox" class="seminartopic" data-id="{{seminar.id}}"
+                                                checked="checked" />
+                                            <span></span>
+                                        </label>
+                                        {%else%}
+                                        <label>
+                                            <input type="checkbox" class="seminartopic" data-id="{{seminar.id}}" />
+                                            <span></span>
+                                        </label>
+                                        {%endif%}
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="{{url_for('add_seminar_topic',id=seminar.id)}}" class="btn btn-primary btn-sm">Add Seminar Topics</a>
+                                </td>
+                                <td>
+                                    <a href="{{url_for('edit_seminar',id=seminar.id)}}">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="{{url_for('seminar_joined_students',id=seminar.id)}}" title="see students list who joined"><i class="fa fa-eye"></i></a>
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                    {%endif%}
+                </div>
+            </div>
+            <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+{%endblock%}
+{%block script%}
+<script>
+    $(".seminartopic").on('click', function () {
+        var status = $(this).is(':checked') ? 1 : 0;
+        var sid = $(this).data('id');
+        var csrf_token = "{{csrf_token()}}";
+        $.ajax({
+            url: "{{url_for('switch_seminar')}}",
+            method: 'POST',
+            data: {
+                sid,
+                status,
+                csrf_token
+            },
+            beforeSend: function () {},
+            success: function (response) {
+                alert(response.message);
+            }
+        })
+    })
+</script>
+{%endblock%}

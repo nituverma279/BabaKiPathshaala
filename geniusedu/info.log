@@ -1,0 +1,195 @@
+[2020-09-15 15:12:21,654] {D:\Liveprojects\geniusedu\geniusapp\admin\controller.py:1233} ERROR - 'list' object has no attribute 'paginate'
+ERROR:flask.app:'list' object has no attribute 'paginate'
+[2020-09-15 16:24:48,157] {D:\Liveprojects\geniusedu\geniusapp\home\controller.py:639} ERROR - local variable 'pac_course' referenced before assignment
+ERROR:flask.app:local variable 'pac_course' referenced before assignment
+[2020-09-15 16:24:54,375] {D:\Liveprojects\geniusedu\geniusapp\home\controller.py:639} ERROR - local variable 'pac_course' referenced before assignment
+ERROR:flask.app:local variable 'pac_course' referenced before assignment
+[2020-09-15 16:33:17,941] {D:\Liveprojects\geniusedu\geniusapp\home\controller.py:599} ERROR - unsupported operand type(s) for -: 'float' and 'decimal.Decimal'
+ERROR:flask.app:unsupported operand type(s) for -: 'float' and 'decimal.Decimal'
+[2020-09-15 16:41:18,785] {D:\Liveprojects\geniusedu\geniusapp\home\controller.py:599} ERROR - unsupported operand type(s) for -: 'float' and 'decimal.Decimal'
+ERROR:flask.app:unsupported operand type(s) for -: 'float' and 'decimal.Decimal'
+[2020-10-17 14:55:57,189] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:671} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 3, 'param2': 17, 'param3': 7}'
+[2020-10-17 14:56:10,146] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:671} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 3, 'param2': 17, 'param3': 7}'
+[2020-10-17 14:56:41,895] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:674} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 3, 'param2': 17, 'param3': 7}'
+[2020-10-17 14:57:24,036] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:674} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 3, 'param2': 17, 'param3': 7}'
+[2020-10-17 15:04:09,857] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:672} ERROR - 'param1'
+[2020-10-17 15:11:23,584] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:670} ERROR - Object of type Courses is not JSON serializable
+[2020-10-17 15:14:49,618] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:672} ERROR - Object of type Courses is not JSON serializable
+[2020-10-17 15:52:47,658] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:687} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+[2020-10-17 15:52:59,993] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:687} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+[2020-10-17 15:53:08,993] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:687} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+[2020-10-17 15:53:12,579] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:687} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+[2020-10-17 15:53:54,539] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:687} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+[2020-10-17 15:54:37,608] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:687} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+[2020-10-17 15:54:38,387] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:687} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+[2020-10-17 15:55:24,562] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:687} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+[2020-10-17 15:56:40,925] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:687} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+[2020-10-17 15:57:54,615] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:687} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+[2020-10-17 15:57:56,109] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:687} ERROR - SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+[2020-10-17 16:01:20,346] {D:\Liveprojects\geniusedu\geniusapp\dashboard\controller.py:686} ERROR - 'BaseQuery' object has no attribute 'ordery_by'
+ERROR:flask.app:'BaseQuery' object has no attribute 'ordery_by'
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+[2020-10-29 20:34:13,183] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+ERROR:__name__:Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+[2020-10-29 20:34:27,044] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+ERROR:__name__:Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+[2020-10-29 20:34:31,925] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+ERROR:__name__:Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+[2020-10-29 20:34:35,850] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+ERROR:__name__:Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+[2020-10-29 20:35:19,740] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+ERROR:__name__:Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+[2020-10-29 20:35:32,312] {D:\genn\geniusedu\geniusapp\home\controller.py:70} ERROR - Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+ERROR:__name__:Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+[2020-10-29 20:35:35,016] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+ERROR:__name__:Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+INFO:werkzeug: * Detected change in 'D:\\genn\\geniusedu\\geniusapp\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+[2020-10-29 20:36:49,371] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+ERROR:__name__:Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+INFO:werkzeug: * Detected change in 'D:\\genn\\geniusedu\\geniusapp\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+[2020-10-29 20:37:32,335] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+ERROR:__name__:Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+[2020-10-29 20:37:36,991] {D:\genn\geniusedu\geniusapp\home\controller.py:70} ERROR - Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+ERROR:__name__:Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+[2020-10-29 20:37:39,746] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+ERROR:__name__:Can't load plugin: sqlalchemy.dialects:mysql.pymsql
+INFO:werkzeug: * Detected change in 'D:\\genn\\geniusedu\\geniusapp\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+[2020-10-29 20:39:55,388] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - (sqlite3.OperationalError) no such table: online_demo_classes
+[SQL: SELECT online_demo_classes.id AS online_demo_classes_id, online_demo_classes.user_id AS online_demo_classes_user_id, online_demo_classes.course_id AS online_demo_classes_course_id, online_demo_classes.subject_id AS online_demo_classes_subject_id, online_demo_classes.class_title AS online_demo_classes_class_title, online_demo_classes.canonical_url AS online_demo_classes_canonical_url, online_demo_classes.description AS online_demo_classes_description, online_demo_classes.cover_banner AS online_demo_classes_cover_banner, online_demo_classes.create_date AS online_demo_classes_create_date, online_demo_classes.is_active AS online_demo_classes_is_active, online_demo_classes.is_approved AS online_demo_classes_is_approved, online_demo_classes.is_complete AS online_demo_classes_is_complete, online_demo_classes.is_start AS online_demo_classes_is_start 
+FROM online_demo_classes 
+WHERE online_demo_classes.is_active = 1 AND online_demo_classes.is_complete = 0]
+(Background on this error at: http://sqlalche.me/e/13/e3q8)
+ERROR:__name__:(sqlite3.OperationalError) no such table: online_demo_classes
+[SQL: SELECT online_demo_classes.id AS online_demo_classes_id, online_demo_classes.user_id AS online_demo_classes_user_id, online_demo_classes.course_id AS online_demo_classes_course_id, online_demo_classes.subject_id AS online_demo_classes_subject_id, online_demo_classes.class_title AS online_demo_classes_class_title, online_demo_classes.canonical_url AS online_demo_classes_canonical_url, online_demo_classes.description AS online_demo_classes_description, online_demo_classes.cover_banner AS online_demo_classes_cover_banner, online_demo_classes.create_date AS online_demo_classes_create_date, online_demo_classes.is_active AS online_demo_classes_is_active, online_demo_classes.is_approved AS online_demo_classes_is_approved, online_demo_classes.is_complete AS online_demo_classes_is_complete, online_demo_classes.is_start AS online_demo_classes_is_start 
+FROM online_demo_classes 
+WHERE online_demo_classes.is_active = 1 AND online_demo_classes.is_complete = 0]
+(Background on this error at: http://sqlalche.me/e/13/e3q8)
+INFO:werkzeug: * Detected change in 'D:\\genn\\geniusedu\\geniusapp\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+INFO:werkzeug: * Detected change in 'D:\\genn\\geniusedu\\geniusapp\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+[2020-10-29 20:43:16,523] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - (pymysql.err.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+(Background on this error at: http://sqlalche.me/e/13/e3q8)
+ERROR:__name__:(pymysql.err.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+(Background on this error at: http://sqlalche.me/e/13/e3q8)
+INFO:werkzeug: * Detected change in 'D:\\genn\\geniusedu\\geniusapp\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+[2020-10-29 20:46:48,876] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - (pymysql.err.InternalError) (1049, "Unknown database 'geniusedu'")
+(Background on this error at: http://sqlalche.me/e/13/2j85)
+ERROR:__name__:(pymysql.err.InternalError) (1049, "Unknown database 'geniusedu'")
+(Background on this error at: http://sqlalche.me/e/13/2j85)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+[2020-10-29 20:47:31,567] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - (pymysql.err.InternalError) (1049, "Unknown database 'geniusedu'")
+(Background on this error at: http://sqlalche.me/e/13/2j85)
+ERROR:__name__:(pymysql.err.InternalError) (1049, "Unknown database 'geniusedu'")
+(Background on this error at: http://sqlalche.me/e/13/2j85)
+INFO:werkzeug: * Detected change in 'D:\\genn\\geniusedu\\geniusapp\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+INFO:werkzeug: * Detected change in 'D:\\genn\\geniusedu\\geniusapp\\security\\controller.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+INFO:werkzeug: * Detected change in 'D:\\genn\\geniusedu\\geniusapp\\security\\controller.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+[2020-10-29 21:04:08,191] {D:\genn\geniusedu\geniusapp\security\controller.py:133} ERROR - Error: name 'zipcode' is not defined
+ERROR:__name__:Error: name 'zipcode' is not defined
+INFO:werkzeug: * Detected change in 'D:\\genn\\geniusedu\\geniusapp\\security\\controller.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+[2020-10-29 21:07:21,031] {D:\genn\geniusedu\geniusapp\security\controller.py:133} ERROR - Error: name 'zipcode' is not defined
+ERROR:__name__:Error: name 'zipcode' is not defined
+INFO:werkzeug: * Detected change in 'D:\\genn\\geniusedu\\geniusapp\\security\\controller.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+[2020-11-08 23:25:15,118] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([Errno 10061] WSAECONNREFUSED)")
+(Background on this error at: http://sqlalche.me/e/13/e3q8)
+ERROR:__name__:(pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([Errno 10061] WSAECONNREFUSED)")
+(Background on this error at: http://sqlalche.me/e/13/e3q8)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 530-651-231
+[2020-11-08 23:27:45,931] {D:\genn\geniusedu\geniusapp\home\controller.py:52} ERROR - (pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([Errno 10061] WSAECONNREFUSED)")
+(Background on this error at: http://sqlalche.me/e/13/e3q8)
+ERROR:__name__:(pymysql.err.OperationalError) (2003, "Can't connect to MySQL server on 'localhost' ([Errno 10061] WSAECONNREFUSED)")
+(Background on this error at: http://sqlalche.me/e/13/e3q8)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 320-462-678
+[2020-11-12 01:00:15,409] {D:\Java Learning\babakipathshaala\new code base\geniusedu\geniusedu\geniusapp\home\controller.py:52} ERROR - No module named 'pymysql'
+ERROR:__name__:No module named 'pymysql'
+[2020-11-12 01:00:20,880] {D:\Java Learning\babakipathshaala\new code base\geniusedu\geniusedu\geniusapp\home\controller.py:70} ERROR - No module named 'pymysql'
+ERROR:__name__:No module named 'pymysql'
+[2020-11-12 01:00:23,090] {D:\Java Learning\babakipathshaala\new code base\geniusedu\geniusedu\geniusapp\home\controller.py:70} ERROR - No module named 'pymysql'
+ERROR:__name__:No module named 'pymysql'
+[2020-11-12 01:00:37,480] {D:\Java Learning\babakipathshaala\new code base\geniusedu\geniusedu\geniusapp\home\controller.py:70} ERROR - No module named 'pymysql'
+ERROR:__name__:No module named 'pymysql'
+[2020-11-12 01:00:40,460] {D:\Java Learning\babakipathshaala\new code base\geniusedu\geniusedu\geniusapp\home\controller.py:52} ERROR - No module named 'pymysql'
+ERROR:__name__:No module named 'pymysql'
+[2020-11-12 01:01:11,489] {D:\Java Learning\babakipathshaala\new code base\geniusedu\geniusedu\geniusapp\home\controller.py:52} ERROR - No module named 'pymysql'
+ERROR:__name__:No module named 'pymysql'
+[2020-11-12 01:01:13,113] {D:\Java Learning\babakipathshaala\new code base\geniusedu\geniusedu\geniusapp\home\controller.py:70} ERROR - No module named 'pymysql'
+ERROR:__name__:No module named 'pymysql'
+[2020-11-12 01:01:23,490] {D:\Java Learning\babakipathshaala\new code base\geniusedu\geniusedu\geniusapp\home\controller.py:672} ERROR - No module named 'pymysql'
+ERROR:__name__:No module named 'pymysql'
+[2020-11-12 01:01:49,023] {D:\Java Learning\babakipathshaala\new code base\geniusedu\geniusedu\geniusapp\home\controller.py:52} ERROR - No module named 'pymysql'
+ERROR:__name__:No module named 'pymysql'
+[2020-11-12 01:02:02,150] {D:\Java Learning\babakipathshaala\new code base\geniusedu\geniusedu\geniusapp\home\controller.py:70} ERROR - No module named 'pymysql'
+ERROR:__name__:No module named 'pymysql'
+[2020-11-12 01:02:06,982] {D:\Java Learning\babakipathshaala\new code base\geniusedu\geniusedu\geniusapp\home\controller.py:52} ERROR - No module named 'pymysql'
+ERROR:__name__:No module named 'pymysql'
+[2020-11-12 01:02:20,668] {D:\Java Learning\babakipathshaala\new code base\geniusedu\geniusedu\geniusapp\home\controller.py:70} ERROR - No module named 'pymysql'
+ERROR:__name__:No module named 'pymysql'
+INFO:werkzeug: * Detected change in 'D:\\Java Learning\\babakipathshaala\\new code base\\geniusedu\\geniusedu\\geniusapp\\config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 320-462-678
+INFO:werkzeug: * Restarting with stat

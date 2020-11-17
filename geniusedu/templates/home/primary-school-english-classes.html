@@ -1,0 +1,122 @@
+{%extends 'layouts/master-layout.html'%}
+
+{%block meta%}
+<title>Online Primary School English Classes in Malaysia - Genius EDU</title>
+<meta name="description" content="Genius EDU provides online primary school English classes in Malaysia. We motivate and educate students to achieve their goals by providing creative, innovative and evaluative programs.">
+<meta name="keywords" content="Online Tuition, Best Education Website in Malaysia, Online Live free Classes Malaysia">
+{%endblock%}
+
+{%block content%}
+<style>
+    .vission ul.timeline {
+    list-style-type: none;
+    position: relative;
+}
+.mission ul.timeline:before {
+    content: ' ';
+    background: #d4d9df;
+    display: inline-block;
+    position: absolute;
+    left: 29px;
+    width: 2px;
+    height: 100px;
+    z-index: 400;
+}
+.mission ul.timeline > li {
+    margin: 20px 0;
+    padding-left: 60px;
+}
+.mission ul.timeline > li:before {
+    content: ' ';
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #22c0e8;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    z-index: 400;
+}
+.mission {
+    background: #59a8ec;
+        padding: 2px 0px;
+}
+.mission h4{
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    color: #FF5722;
+    font-size: 36px;
+    
+}
+.mission li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 500;
+    border-bottom: 1px solid #fff;
+}
+.mission li p{
+    color:#fff;
+}
+.our-top-mission-heading{
+    color: #FF5722;
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.wbg-white{
+    padding: 15px;
+    background: #fff;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+    
+</style>
+    <!--================Home Banner Area =================-->
+        <div class="containerx">
+        <section class="about_banner_area banner_area">
+            <div class="banner_inner d-flex align-items-center">
+                <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
+                <div class="container">
+                    <div class="banner_content text-center">
+                        <div class="page_link">
+                            <a href="{{url_for('home')}}">Home</a>
+                            <a href="about">Primary School English Classes</a>
+                        </div>
+                        <h2>Primary School English Classes</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </div>
+        <!--================End Home Banner Area =================-->
+
+         <!--================Event Time Area =================-->
+        
+        <!--================End Event Time Area =================-->
+
+         <!--================Welcome Area =================-->
+        <section class="welcome_area pad_btm">
+            <div class="container">
+                <div class="welcome_inner row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        
+                    
+                        <div class="welcome_text wbg-white">                        
+                            
+                            <p>Our primary school English classes create a rich English language environment. With us, the student will have a more rewarding learning experience, getting the most out of learning English with a combination of lively classes with a specialist teacher and Interactive independent study. Student will develop critical thinking skills in a relaxed environment where they can be themselves. We help you to improve your English reading, writing and listening skills by providing high-quality online learning resources designed by experts. We have included a personalized dashboard so that students can understand where they are within their learning journey. Our courses are based on fun, creative and interesting tasks on a range of stimulating topics. You can watch lessons over and over again. Our course is designed to get you comfortable with everyday English. Our qualified teachers will inspire you at every turn.. 
+</p>
+                            <!--<a class="main_btn" href="#">View More Details</a>-->
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </section>
+        <!--================End Welcome Area =================-->
+
+
+{%endblock%}

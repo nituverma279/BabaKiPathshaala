@@ -1,0 +1,89 @@
+{%extends 'layouts/master-layout.html'%}
+
+{%block meta%}
+<title>{{seminar.title|title}} | Free Online Live Seminar - Genius EDU</title>
+<meta name="description" content="Genius EDU one of the best education website in Malaysia. We offer freeonline livetuition classes to achieve their goals by providing creative, innovative and evaluative programs.">
+<meta name="keywords" content="Online Tuition, Best Education Website in Malaysia, Online Live free Classes Malaysia">
+{%endblock%}
+
+{%block content%}
+<style>
+    .bg_white {
+        background: white;
+    }
+</style>
+{% if seminar_topic_details%}
+<section>
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="bg_white ">
+                    <div class="bg-red p-2">
+                        <h4 class="text-white m-0"><b>{{seminar.title}}</b></h4>
+                    </div>
+                    <div class="p-3">
+                        <p>{{seminar.description}}</p>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="bg_white p-4">
+                    <img class="img-fluid" src="{{seminar.cover_banner}}">
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-9">
+                {% if seminar_topic_details %}
+                <div class="bg_white">
+                    <div class="bg-red p-2">
+                        <h5 class="text-white m-0"><b>Seminar Schedule</b></h5>
+                    </div>
+                    <div class="p-3 table-responsive">
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th>Topic</th>
+                                    <th>Course</th>
+                                    <th>Subject</th>
+                                    <th>Teacher</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%for sem_topic in seminar_topic_details%}
+                                <tr>
+                                    <td>{{sem_topic.topic_titile}}</td>
+                                    <td>{{sem_topic.course_name}}</td>
+                                    <td>{{sem_topic.subject_name}}</td>
+                                    <td>{{sem_topic.teacher_name}}</td>
+                                    <td>{{sem_topic.start_time}}</td>
+                                    <td>{{sem_topic.end_time}}</td>
+                                </tr>
+                                {%endfor%}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {%else%}
+                <div class="bg_white p-2">
+                    <img class="p-5 img-fluid" src="/static/assets/images/got.png">
+                </div>
+                {%endif%}
+            </div>
+            <div class="col-md-3">
+                <div class="bg_white">
+                    <div class="p-3">
+                        <div class="text-right mt-2">
+                            <a href="{{url_for('join_seminar',cano_url=seminar.canonical_url)}}" class="btn btn-success btn-block">REGISTER NOW</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%endif%}
+{%endblock%}

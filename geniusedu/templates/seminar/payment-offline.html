@@ -1,0 +1,102 @@
+{%extends 'layouts/master-layout.html'%}
+{%block meta%}
+<title>Payment Offline | Genius EDU</title>
+<meta name="description"
+      content="Genius EDU one of the best education website in Malaysia. We offer freeonline livetuition classes to achieve their goals by providing creative, innovative and evaluative programs.">
+<meta name="keywords" content="Online Tuition, Best Education Website in Malaysia, Online Live free Classes Malaysia">
+{%endblock%}
+{%block content%}
+<section>
+    <div class="container">
+        <img class="img-fluid" src="{{url_for('static',filename='assets/images/login-ban.jpg')}}">
+    </div>
+</section>
+<section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card my-card">
+                    <div class="p-3 site-bg">
+                        <h4 class="text-center text-white m-0"><b>Upload Payment Receipt/Screenshot</b></h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="payment-offline-form" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+
+                            <h6 class="text-center"><b>Upload your bank transaction receipt or screenshot of <span
+                                    class="text-success">RM {{pur_seminar.price}}</span></b></h6>
+                            <div class="custom-file mb-3">
+                                <input type="file" class="custom-file-input" id="payment_receipt" name="payment_receipt"
+                                       accept=".png,.jpg,.jpeg"/>
+                                <label class="custom-file-label" for="img-preview">Choose Payment Receipt</label>
+                                <label class="text-secondary small">Only jpeg, jpg, png and pdf files are allowed of
+                                    maximum 10 MB</label>
+                            </div>
+                            <br>
+                            <img class="img-fluid" id="image_preview"
+                                 src="https://dummyimage.com/600x400/dbdbdb/616161&text=++++Preview++++">
+                            <br>
+                            <br>
+
+                            <button type="submit" class="btn btn-success btn-block">Upload Payment Receipt</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</section>
+
+<!--<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>-->
+<!--<script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>-->
+<script>
+	$(function () {
+        $("#payment_receipt").change(function () {
+          if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+              $("#image_preview").attr("src", e.target.result);
+              
+            }
+            reader.readAsDataURL(this.files[0]);
+          }
+        });
+         });
+
+</script>
+
+<script>
+ 
+  $(document).ready(function() {
+
+  	jQuery.validator.addMethod("filesize_max", function(value, element) {
+		var isOptional = this.optional(element),
+		file;
+		if(isOptional) {
+			return isOptional;
+		}
+		if ($(element).attr("type") === "file") {
+			if (element.files && element.files.length) {
+				file = element.files[0];
+				return (file.size && file.size <= 1000000);
+			}
+		}
+		return false;
+	}, "File size should be less than or equal to 10 Mb");
+
+    $("#payment-offline-form").validate({
+      rules: {
+        payment_receipt: {
+			required: true,
+			extension: ".pdf|.jpg|.png|.jpeg",
+
+        },
+      },
+
+    });
+  });
+
+</script>
+{%endblock%}

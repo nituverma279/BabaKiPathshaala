@@ -1,0 +1,98 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Add new subjects to  <span class="text-danger">{{course_package.course_title|title}}</span> package   
+      </h1>
+      <!-- <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">General Elements</li>
+      </ol> -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+		
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <!-- general form elements -->
+          {% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+		{% for category, message in messages %}
+		  <div class="alert alert-{{category}}" role="alert">
+			{{ message|safe }}
+		  </div>
+		{% endfor %}  
+		{% endif %}
+		{% endwith %}
+          <div class="box box-primary">
+             
+            <form method="post" novalidate>
+                {{ form.hidden_tag() }}
+                <input type="hidden" name="course_id" value="{{pid}}"/>
+                
+                <div class="box-body">
+                    <div class="form-group">
+                        {{ form.comp_subject_id.label }} (Compulsory)
+                        {{ form.comp_subject_id(class="form-control select2", multiple="multiple") }}
+                        {% for error in form.comp_subject_id.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    <div class="form-group">
+                        {{ form.opt_subject_id.label }} (optional)
+                        {{ form.opt_subject_id(class="form-control select2", multiple="multiple") }}
+                        {% for error in form.opt_subject_id.errors %}
+                        <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+               <!--  <div class="box-body">
+                  <div class="form-group">
+                      {{ form.expire_date.label }} (optional)
+                      {{ form.expire_date(class="form-control",id="datepicker") }}
+                      {% for error in form.expire_date.errors %}
+                      <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                  </div>
+                </div> -->
+                
+
+                <div class="box-footer">
+                    {{ form.submit(class="btn btn-success") }}
+                </div>
+            </form>
+			
+          
+          </div>
+          <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+{%endblock%}
+{%block script%}
+<script>
+    $(".select2").select2();
+    $('#datepicker').datepicker({
+      autoclose: true,
+      format:'yyyy-mm-dd',
+      startDate: '0d',
+      startView:'0'
+    });
+</script>
+{%endblock%}

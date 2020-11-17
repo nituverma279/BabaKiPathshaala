@@ -1,0 +1,97 @@
+{%extends 'layouts/master-layout.html'%}
+{%block meta%}
+<title>Dashboard | Free Online Live Tuition Classes - Genius EDU</title>
+<meta content="Genius EDU one of the best education website in Malaysia. We offer freeonline livetuition classes to achieve their goals by providing creative, innovative and evaluative programs."
+      name="description">
+<meta content="Online Tuition, Best Education Website in Malaysia, Online Live free Classes Malaysia" name="keywords">
+{%endblock%}
+{%block content%}
+
+<section>
+    <div class="container">
+        <img class="img-fluid" src="{{url_for('static',filename='assets/images/login-ban.jpg')}}">
+    </div>
+</section>
+<section>
+    <div class="container pt-5 pb-5">
+
+        <div class="row">
+            <div class="col-md-3">
+                <div>
+                    <h4 class="blue-color">Welcome Student</h4>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <h5 class="mb-3">Wallet</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                {%include 'dashboard/student/dash-menu.html' %}
+            </div>
+            <div class="col-md-9">
+                {%with messages = get_flashed_messages(with_categories=true)%}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{category}}" role="alert">
+                                {{ message|safe }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {%endwith%}
+                <div class="cls-box mb-3">
+                    <div class="row">
+                        {%if current_user.referral_code%}
+                        <div class="col-md-12 mb-3">
+                            <div class="pl-3 pr-3 pt-2 pb-2 cls-box-header">
+                                <p>Your referral code</p>
+                            </div>
+                            <div class="p-3">
+                                <div class="form-group">
+                                    <input class="form-control" id="myInput" readonly
+                                           type="text" value="https://www.geniusedu.my/register/{{current_user.referral_code}}">
+                                    <button class="btn btn-dark" onclick="myFunction()">Copy text</button>
+                                </div>
+                            </div>
+                        </div>
+                        {%endif%}
+                        <div class="col-md-12 ">
+                            <div class="pl-3 pr-3 pt-2 pb-2 cls-box-header">
+                                <p>Amount available in your wallet</p>
+                            </div>
+                            <div class="p-3">
+                                {% if wallet %}
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h6 class="m-0 mb-2 alert">RM {{'%0.2f' %wallet.amount|float}}</h6>
+                                        </div>
+                                        <div class="col-md-6">
+                                            {% if wallet.amount>0%}
+                                                <a href="{{url_for('withdrawal_wat_amt')}}" onclick="return confirm('Are you sure?')" 
+                                                class="btn btn-success btn-sm">Request for withdrawal</a>
+                                            {%endif%}
+                                        </div>
+                                    </div>
+                                {%else%}
+                                    <h6 class="m-0 mb-2 text-danger">RM 00</h6>
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}
+{%block script%}
+<script>
+        function myFunction() {
+          var copyText = document.getElementById("myInput");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+          document.execCommand("copy");
+          alert("Copied");
+        }
+</script>
+{%endblock%}

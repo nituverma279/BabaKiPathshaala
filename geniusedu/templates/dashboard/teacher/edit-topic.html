@@ -1,0 +1,120 @@
+{%extends 'layouts/master-layout.html'%}
+{%block meta%}
+<title>Dashboard | Free Online Live Tuition Classes - Genius EDU</title>
+<meta name="description" content="Genius EDU one of the best education website in Malaysia. We offer freeonline livetuition classes to achieve their goals by providing creative, innovative and evaluative programs.">
+<meta name="keywords" content="Online Tuition, Best Education Website in Malaysia, Online Live free Classes Malaysia">
+{%endblock%}
+{%block content%}
+<link rel="stylesheet" href="{{url_for('static',filename='assets/datetime/zebra_datepicker.min.css')}}"/>
+<script src="{{url_for('static',filename='assets/datetime/zebra_datepicker.min.js')}}"></script>
+<section>
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <h5 class="mb-3">Add Topic</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+               
+               {%include 'dashboard/teacher/dash-menu.html'%}
+
+            </div>
+
+            <div class="col-md-9">
+                <div class="cls-box p-3 mb-3">
+                    
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+                        <div class="alert alert-{{category}}" role="alert">
+                            {{ message|safe }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <form method="post">
+                            <div class="row">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                            
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="top-label">Topic Title</label>
+                                    <input type="text" class="form-control" name="class_title" value="{{online_classes.class_title}}">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="top-label">Description</label>
+                                    <textarea class="form-control" rows="5" name="description">{{online_classes.description}}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                 <label class="top-label">Pick Date and Time</label>
+                            </div>
+                            <div class="col-md-6 mt-3">
+                                <div class="form-group">
+                                    <input id="datepicker" name="create_date" type="text" value="{{online_classes.create_date}}" class="form-control">
+                                </div>
+                               
+                            </div>
+                            <div class="col-md-12 mt-2">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Add Topic</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        $("#course").on('change', function () {
+            var course_id = $(this).val();
+            if (course_id != '') {
+                $.ajax({
+                    url: "/dashboard/ajax-fetch-subjects/" + course_id,
+                    success: function (response) {
+                        if (response.error != 0) {
+                            $("#subject").html(response);
+                        } else {
+                            $("#subject").html('<option>No subject</option>')
+                        }
+                    }
+                });
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
+   	
+$('#datepicker').Zebra_DatePicker({
+    format: 'Y-m-d H:i:s'
+});
+</script>
+
+<script>
+  $(document).ready(function() {
+
+    $("#topic_form").validate({
+      rules: {
+
+        class_title: {
+          required: true,
+          minlength: 10,
+          maxlength: 150
+        },
+
+        create_date: {
+          required: true,
+        },
+      },
+    });
+  });
+</script>
+
+{%endblock%}

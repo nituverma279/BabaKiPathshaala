@@ -1,0 +1,12 @@
+<div class="text-center">
+    <img width="100px" style="position: relative; left: 11px;" src="/static/assets/images/teacher.svg">
+    <p>{{current_user.first_name|title}}</p>
+</div>
+
+<div class="nav flex-column nav-pills">
+    <a class="nav-link" href="{{url_for('dashboard')}}">Live Classes</a>
+    <a class="nav-link" href="{{url_for('add_new_class')}}">Add Topic</a>
+    <a class="nav-link" href="{{url_for('demo_add_new_class')}}">Add Demo Topic</a>
+    <a class="nav-link" href="{{url_for('teacher_joined_sem_list')}}">Seminars</a>
+    <a class="nav-link" href="{{url_for('teacher_wallet')}}">Affliate Program</a>
+</div>

@@ -1,0 +1,50 @@
+{%extends 'layouts/master-layout.html'%}
+
+{%block meta%}
+<title>Payment Success | Genius EDU</title>
+<meta name="description" content="Genius EDU one of the best education website in Malaysia. We offer freeonline livetuition classes to achieve their goals by providing creative, innovative and evaluative programs.">
+<meta name="keywords" content="Online Tuition, Best Education Website in Malaysia, Online Live free Classes Malaysia">
+{%endblock%}
+
+{%block content%}
+<section>
+	<div class="container">
+		<img class="img-fluid" src="{{url_for('static',filename='assets/images/login-ban.jpg')}}">
+	</div>
+</section>
+<section class="pt-5 pb-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<div class="card my-card">
+					<div class="card-body bg-success">
+						<h4 class="text-center m-0 text-white"><b>Receipt Uploaded</b></h4>
+					</div>
+					<div class="card-body">
+						<center>
+						<img width="120" src="/static/assets/images/green-tick.svg">
+						</center>
+						
+						{% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+                        <div class="alert alert-{{category}}" role="alert">
+                            {{ message|safe }}
+                        </div>
+                        {% endfor %}  
+                        {% endif %}
+                        {% endwith %}
+
+                        <p class="text-center">
+                        	We have received your payment receipt/screenshot and we will activate your course subjects after payment verification. Usually it takes up to 12 hours to activate the course subjects. For any further clarification please call or Whatsapp at +60125160040
+                        </p>
+						 
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+</section>
+{%endblock%}

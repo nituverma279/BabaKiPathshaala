@@ -1,0 +1,60 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Wallet List
+    </h1>
+<!--  -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}}" role="alert">
+      {{ message|safe }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <div class="box box-primary">
+        {% if wallet_list%}
+          <table class="table table-stripped">
+            <thead>
+              <tr>
+                <th>S.N</th>
+                <th>Name</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+               {%for wallet in wallet_list%}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{wallet.user_name}}</td>
+                    <td>{{wallet.amount}}</td>
+                </tr>
+               {%endfor%}
+            </tbody>
+          </table>
+        {%endif%}
+        </div>
+
+      </div>
+
+      <!--/.col (right) -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+{%endblock%}

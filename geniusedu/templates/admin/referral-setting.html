@@ -1,0 +1,83 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Update Referral Amount
+       
+      </h1>
+      
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+		{% for category, message in messages %}
+		  <div class="alert alert-{{category}}" role="alert">
+			{{ message|safe }}
+		  </div>
+		{% endfor %}  
+		{% endif %}
+		{% endwith %}
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <!-- general form elements -->
+          <div class="box box-primary">
+             
+            <!-- /.box-header -->
+			<!-- form start -->
+			
+        <form method="post" class="{% if form.errors%} was-validated {%endif%} user-log-form" novalidate>
+				{{ form.hidden_tag() }}
+				<div class="box-body">
+                    <div class="form-group">
+                        {{ form.amount.label }}
+                        {{ form.amount(class="form-control") }}
+                        {% for error in form.amount.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    <div class="form-group">
+                        {{ form.dis_type.label }}
+                        {{ form.dis_type(class="form-control") }}
+                        {% for error in form.dis_type.errors %}
+                            <span style="color: red;">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+				{{ form.submit(class="btn btn-success") }}
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->
+
+          
+
+         
+         
+
+        </div>
+		
+
+       
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+   
+{%endblock%}

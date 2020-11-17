@@ -1,0 +1,208 @@
+{%extends 'layouts/master-layout.html'%}
+{%block content%}
+<link rel="stylesheet" href="/static/assets/file/css/bootstrap-multiselect.css" type="text/css">
+<script type="text/javascript" src="/static/assets/file/js/bootstrap-multiselect.min.js"></script>
+<style>
+  .bg_white{
+    background: white;
+  }
+</style>
+{% if course_package%}
+<section>
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="bg_white ">
+        	<div class="bg-red p-2">
+        		<h4 class="text-white m-0"><b>{{course_package.seo_title}}</b></h4>		
+        	</div>
+        <div class="p-3">
+        <p>Course : {{course_package.course_name}} </p>
+        <p>{{course_package.description}}</p>
+        <br>
+        </div>
+      </div>
+      </div>
+      <div class="col-md-3">
+        <div class="bg_white p-4">
+          <img class="img-fluid" src="{{course_package.cover_banner}}">  
+        </div>
+      </div>
+    </div>
+    <form  method="post" id="purchase-package-form">
+      <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+      <input type="hidden" name="pcgd" value="{{course_package.id}}">
+      <input type="hidden" name="cano" value="{{course_package.cano_url}}">
+    <div class="row mt-4">
+      
+      <div class="col-md-7">
+         
+        {% if opt_sub %}
+        <div class="bg_white">
+        	<div class="bg-red p-2">
+          		<h5 class="text-white m-0"><b>Subjects</b></h5>
+          </div>
+          <div class="p-3">
+         
+          {% for optional_sub in opt_sub%}
+          {%if optional_sub.id in subscribed_optional_subjects %}
+          <div class="d-flex">
+            <div class="flex-fill">
+              <div class="custom-control custom-checkbox sub-check pt-2 pb-2">
+                <input type="checkbox" class="custom-control-input opt-sub" data-name="{{optional_sub.subject_name}}" data-price="{{optional_sub.price}}" name="optional_subject" value="{{optional_sub.id}}" id="customCheck{{loop.index}}" checked="checked">
+                <label class="custom-control-label" for="customCheck{{loop.index}}">{{optional_sub.subject_name}}</label>
+              </div>
+            </div>
+            <div>
+              RM {{optional_sub.price}}
+            </div>
+          </div>
+          {%else%}
+          <div class="d-flex">
+            <div class="flex-fill">
+              <div class="custom-control custom-checkbox sub-check pt-2 pb-2">
+                <input type="checkbox" class="custom-control-input opt-sub" data-name="{{optional_sub.subject_name}}" data-price="{{optional_sub.price}}" name="optional_subject" value="{{optional_sub.id}}" id="customCheck{{loop.index}}"  >
+                <label class="custom-control-label" for="customCheck{{loop.index}}">{{optional_sub.subject_name}}</label>
+              </div>
+            </div>
+            <div>
+              RM {{optional_sub.price}}
+            </div>
+          </div>
+          {%endif%}
+          {%endfor%}
+        </div>
+        
+        </div>
+        {%else%}
+        <div class="bg_white p-2">
+                <img class="p-5 img-fluid" src="/static/assets/images/got.png">
+          </div>
+        {%endif%}
+      </div>
+      <div class="col-md-5">
+        
+        <div class="bg_white">
+        	<div class="bg-red p-2">
+          		<h5 class="text-white m-0"><b>Selected Subjects</b></h5>
+            </div>
+          <div class="p-3">
+          {% if comp_sub %}
+          {% for compul_sub in comp_sub%}
+          <div class="d-flex">
+            <div class="flex-fill">
+              <p class="mb-1"><b>{{compul_sub.subject_name}}</b></p>
+            </div>
+            <div><p class="mb-1"><b>RM {{compul_sub.price}}</b></p></div>
+          </div>
+          {%endfor%}
+          {%endif%}   
+          <div id="optsb">
+            {% for optional_sub in opt_sub%}
+            {%if optional_sub.id in subscribed_optional_subjects %}
+            <div class="d-flex">
+              <div class="flex-fill">
+              <p class="mb-1"><b>{{optional_sub.subject_name}}</b></p>
+              </div>
+              <div><p class="mb-1"><b> RM {{optional_sub.price}}</b></p></div>
+              </div>
+            {%endif%}
+            {%endfor%}
+          </div>
+          
+          <hr>
+          		<div class="text-center">
+            <label><b>Select Subscription Month<b></label>
+            </div>
+            {% if months %}
+            <select class="custom-select" id="basic" name="month" multiple="multiple">
+                {%for month in months%}
+                {% if month.id not in subscribed_optional_months%}
+                  <option value="{{month.id}}">{{month.month_name}}</option>
+                {%endif%}
+                {%endfor%}
+            </select>
+            {%endif%}
+           
+            <div class="d-flex mt-3">
+            {% if comp_sub %}
+              <!-- <div class="flex-fill">
+                <p class="mb-1">Total Price</p>
+              </div>
+              <div>
+                <p class="mb-1 total-amt"><b>RM {{total_comp_sub_price}}</b></p>
+              </div> -->
+
+            {%else%}
+
+             <!--  <div class="flex-fill">
+                <p class="mb-1">Total Price</p>
+              </div>
+              <div>
+                <p class="mb-1 total-amt"><b></b></p>
+              </div> -->
+
+            {%endif%}
+
+
+
+
+          </div>
+          
+          <div class="text-right mt-2">
+             
+            <button type="submit" class="btn btn-success btn-block"><b>Proceed to Pay</b></button>
+          </div>
+          </div>
+        </div>
+       
+      </div>
+     
+
+    </div>
+  </form>
+  </div>
+</section>
+{%endif%}
+
+<script>
+  $('#basic').multiselect({
+    templates: {
+        li: '<li><a href="javascript:void(0);"><label class="pl-2"></label></a></li>'
+    }
+});
+</script>
+
+<script>
+  $(document).ready(function(){
+    var total="{% if total_comp_sub_price%}{{total_comp_sub_price}}{%else%}0{%endif%}";
+    $(".opt-sub").on('click',function(){
+        var name =$(this).data('name');
+        var price=parseFloat($(this).data('price'));
+        
+        if($(this).is(':checked')){
+          var element='<div class="d-flex">'+
+                      '<div class="flex-fill">'+
+                        '<p class="mb-1"><b>'+name+'</b></p>'+
+                      '</div>'+
+                      '<div><p class="mb-1"><b>RM '+price+'</b></p></div>'+
+                    '</div>';
+          $("#optsb").append(element);
+          total=parseFloat(total)+price;
+          var amt = '<b>RM '+total+'</b>';
+          $(".total-amt").html(amt);
+        }else{
+          $("#optsb .d-flex .flex-fill p").each(function(element,index){
+             if($(this).text()==name){
+              $(this).parent().parent().remove();
+             }
+          });
+
+          total=parseFloat(total)-price;
+          var amt = '<b>RM '+total+'</b>';
+          $(".total-amt").html(amt);
+        }
+    });
+  })
+</script>
+{%endblock%}

@@ -1,0 +1,158 @@
+{%extends 'layouts/master-layout.html'%}
+{%block meta%}
+<title>Dashboard | Free Online Live Tuition Classes - Genius EDU</title>
+<meta name="description" content="Genius EDU one of the best education website in Malaysia. We offer freeonline livetuition classes to achieve their goals by providing creative, innovative and evaluative programs.">
+<meta name="keywords" content="Online Tuition, Best Education Website in Malaysia, Online Live free Classes Malaysia">
+{%endblock%}
+{%block content%}
+<section>
+	<div class="container">
+		<img class="img-fluid" src="{{url_for('static',filename='assets/images/login-ban.jpg')}}">
+	</div>
+</section>
+<section>
+	<div class="container pt-5 pb-5">
+		
+	  <div class="row">
+		<div class="col-md-3">
+			<div>
+      <h4 class="blue-color">Welcome Student</h4>
+    </div>
+		</div>
+		<div class="col-md-9">
+		  <h5 class="mb-3">Package Subscription</h5>
+		</div>
+	  </div>
+	  <div class="row">
+		<div class="col-md-3">
+		    {%include 'dashboard/student/dash-menu.html' %}
+		</div>
+		<div class="col-md-9">
+			{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+			{% for category, message in messages %}
+			<div class="alert alert-{{category}}" role="alert">
+				{{ message|safe }}
+			</div>
+			{% endfor %}  
+			{% endif %}
+			{% endwith %}
+
+			{% if course_package_info %}
+			{%for package in course_package_info%}
+            <div class="x">
+                <div class="our-box shadow-sm mb-3">
+                	<div class="d-flex">
+                		<div class="flex-fill">
+                			<p class="m-0 p-0 big_txt"><b>{{package.seo_title|title}}</b></p>
+                		</div>
+                		<div>
+                			{% if package.price>0%}
+								<a href="{{url_for('spec_renew_subscription', id=package.package_id,subs_id=package.id)}}" class="badge badge-info">
+									<img width="15" src="/static/assets/icons/renew.svg">Renew subscription
+								</a>
+							{%else%}
+								<a href="{{url_for('renew_subscription', id=package.package_id,subs_id=package.id)}}" class="badge badge-info">
+									<img width="15" src="/static/assets/icons/renew.svg">Renew subscription
+								</a>
+							{%endif%}
+                			{%if package.subs_status==True%}
+								<span class="badge badge-success">Active</span>
+							{%else%}
+								<span class="badge badge-danger">Inactive</span>
+							{%endif%}
+                		</div>
+                	</div>
+                    
+                    <hr class="mt-1">
+					<!-- <p>{{package.description|safe}}</p> -->
+					<div class="row">
+						<div class="col-md-6" id="pack-{{package.id}}">
+							<script>
+								load_sub_info('{{package.id}}');
+								function load_sub_info(subs_id){
+									$.ajax({
+										url:'/dashboard/subs-package-details/'+subs_id,
+										success:function(response){
+											$("#pack-"+subs_id).html(response)
+										}
+									})
+								}
+							</script>
+						</div>
+						<div class="col-md-6 text-right">
+							<!-- <a href="javascript:;" class="subs-btn" data-sbid="{{package.id}}" data-pcid="{{package.package_id}}">See Deatils</a> -->
+							<div class="row">
+								<div class="col-md-6">
+									<a href="{{url_for('subscription_live_class',cano_url=package.cano_url,id=package.id)}}" class="btn btn-block btn-sm btn-dark mt-1">View upcoming classes</a>		
+								</div>
+								<div class="col-md-6">
+									<a href="{{url_for('recordings',cano_url=package.cano_url)}}" class="btn btn-block btn-sm btn-dark mt-1">View recorded classes</a>	
+								</div>
+							</div>
+						</div>
+					</div>
+					 
+                </div>
+			</div>
+			{%endfor%}
+            {%endif%} 
+		</div>
+	  </div>
+	</div>
+</section>
+
+
+<!-- Modal for -->
+<div class="modal" id="pac-info-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+<!-- End Modal-->
+{%endblock%}
+
+{%block script%}
+<script>
+	$(document).ready(function(){
+		$('.subs-btn').on('click',function(){
+			var sbid=$(this).data('sbid');
+			var pcid =$(this).data('pcid');
+			var csrf_token = "{{csrf_token()}}";
+			$("#pac-info-modal").modal();
+			$.ajax({
+				url:"{{url_for('subscription_info')}}",
+				method:'POST',
+				data:{sbid,pcid,csrf_token},
+				beforeSend:function(){
+					$("#pac-info-modal .modal-body").html('<p class="text-center">Please wait...</p>');
+				},
+				success:function(response){
+					$("#pac-info-modal .modal-body").html(response);
+				}
+			})
+		})
+	})
+</script>
+
+
+
+{%endblock%}

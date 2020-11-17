@@ -1,0 +1,54 @@
+{%extends 'layouts/master-layout.html'%}
+
+{%block meta%}
+<title>Best Education Website in Malaysia | Free Online Live Tuition Classes - Genius EDU</title>
+<meta name="description" content="Genius EDU one of the best education website in Malaysia. We offer freeonline livetuition classes to achieve their goals by providing creative, innovative and evaluative programs.">
+<meta name="keywords" content="Online Tuition, Best Education Website in Malaysia, Online Live free Classes Malaysia">
+{%endblock%}
+
+{%block content%}
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp'>
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/jellee-typeface" type="text/css" />
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'>
+<style>
+    .img-thumbnail {
+        background-color: unset !important;
+        border: none !important;
+        padding: 14px !important;
+    }
+    .pl-3.pt-2.pr-2.pb-2.w-75.full-width {
+        background: aliceblue;
+    }
+</style>
+<section class="four-story">
+    <div class="container">
+        <div class="form-promo">
+            <h3 class="heading-tag">Package for student</h3>
+        </div>
+        <div class="row">
+            {% if course_package%}
+            {%for package in course_package%}
+                <div class="col-md-4">
+                    <div class="our-box shadow-sm mb-3">
+                        <img class="img-fluid mb-3" src="{{package.cover_banner}}">
+                        <h6>{{package.seo_title|title}}</h6>
+                        <hr class="m-0">
+                         <p>{{package.description|safe}}</p>
+                        <div class="text-right">
+                            {%if package.price>0%}
+                                <a href="{{url_for('spec_purchase_package',cano_url=package.cano_url)}}"
+                                class="btn btn-dark btn-block mt-2 btn-sm lg-watch-d">Buy Package</a>
+                            {%else%}
+
+                             <a href="{{url_for('purchase_packages',cano_url=package.cano_url)}}"
+                                class="btn btn-dark btn-block mt-2 btn-sm lg-watch-d">Buy Package</a>
+                            {%endif%}
+                        </div>
+                    </div>
+                </div>
+            {%endfor%}
+            {%endif%}     
+        </div>
+    </div>
+</section>
+{%endblock%}

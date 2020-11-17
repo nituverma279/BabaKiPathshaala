@@ -1,0 +1,14 @@
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 3, 'param2': 17, 'param3': 7}'
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 3, 'param2': 17, 'param3': 7}'
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 3, 'param2': 17, 'param3': 7}'
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 3, 'param2': 17, 'param3': 7}'
+ERROR:flask.app:'param1'
+ERROR:flask.app:Object of type Courses is not JSON serializable
+ERROR:flask.app:Object of type Courses is not JSON serializable
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'
+ERROR:flask.app:SQL expression, column, or mapped entity expected - got '{'param1': 327, 'param2': 23}'

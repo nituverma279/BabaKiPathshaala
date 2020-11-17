@@ -1,0 +1,119 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1> Update seminar </h1>
+      <!-- <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">General Elements</li>
+      </ol> -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+		
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <!-- general form elements -->
+          {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{category}}" role="alert">
+            {{ message|safe }}
+            </div>
+          {% endfor %}  
+          {% endif %}
+          {% endwith %}
+          <div class="box box-primary">
+             
+            <form method="post" enctype="multipart/form-data" novalidate>
+                {{ form.hidden_tag() }}
+                <div class="box-body">
+                  <div class="form-group">
+                      {{ form.title.label }}
+                      {{ form.title(class="form-control") }}
+                      {% for error in form.title.errors %}
+                      <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                  </div>
+                </div>
+
+                 
+
+                <div class="box-body">
+                  <div class="form-group">
+                      {{ form.seminar_date.label }}
+                      {{ form.seminar_date(class="form-control",id="datepicker") }}
+                      {% for error in form.seminar_date.errors %}
+                      <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                  </div>
+                </div>
+
+
+                <div class="box-body">
+                  <div class="form-group">
+                      {{ form.description.label }}
+                      {{ form.description(class="form-control") }}
+                      {% for error in form.description.errors %}
+                      <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                  </div>
+                </div>
+
+                <div class="box-body">
+                  <div class="form-group">
+                      {{ form.price.label }}
+                      {{ form.price(class="form-control") }}
+                      {% for error in form.price.errors %}
+                      <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                  </div>
+                </div>
+                
+
+                <div class="box-body">
+
+                  <div class="form-group">
+                      {{ form.cover_banner.label }}
+                      {{ form.cover_banner(  class="form-control", accept="image/*") }}
+                      {% for error in form.cover_banner.errors %}
+                      <span style="color: red;">{{ error }}</span>
+                      {% endfor %}
+                  </div>
+                </div>
+
+                <div class="box-footer">
+                    {{ form.submit(class="btn btn-success",value="Update seminar") }}
+                </div>
+            </form>
+			
+          
+          </div>
+          <!-- /.box -->
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+{%endblock%}
+{%block script%}
+<script>
+    var date = new Date();
+    date.setDate(date.getDate()+2);
+    $('#datepicker').datepicker({
+      autoclose: true,
+      format:'yyyy-mm-dd',
+      startDate: date
+    //   minViewMode: 2,
+    });
+</script>
+{%endblock%}

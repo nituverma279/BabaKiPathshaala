@@ -1,0 +1,186 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Report
+        
+      </h1>
+      <!-- <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">General Elements</li>
+      </ol> -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		{% if messages %}
+		{% for category, message in messages %}
+		  <div class="alert alert-{{category}}" role="alert">
+			{{ message|safe }}
+		  </div>
+		{% endfor %}  
+		{% endif %}
+		{% endwith %}
+      <div class="row">
+        <!-- left column -->
+        
+        <div class="col-md-12">
+          <!-- general form elements -->
+          <div class="box box-primary">
+             
+            <form role="form" method="POST">
+                <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+                <div class="box-body">
+                  
+                 
+                  <div class="form-group">
+                    <label>From</label>
+                    <input type="text" name="start_date" id="start_date" class="form-control" required/>
+                  </div>
+                  <div class="form-group">
+                    <label>To</label>
+                    <input type="text" name="end_date" id="end_date" class="form-control" required/>
+                  </div>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="subs_type" value="1"> New
+                    </label>
+                  </div>
+
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" name="subs_type" value="2"> Renewal
+                    </label>
+                  </div>
+
+                </div>
+                <!-- /.box-body -->
+  
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+			
+            
+          </div>
+          <!-- /.box -->
+ 
+
+        </div>
+
+
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+               
+              
+                {% if records%}
+                    <div class="table-responsive">
+
+                    
+                    <table class="table table-sripped" id="myTable3">
+                        <thead>
+                            <tr>
+                                <th>S.N</th>
+                                <th>Package name</th>
+                                <th>Student name</th>
+                                <th>Mobile</th>
+                                <th>Email</th>
+                                <th>Total Amt.</th>
+                                <th>Discount Amt.</th>
+                                <th>Pay Amt.</th>
+                                <th>Trans Id</th>
+                                <th>Invoice</th>
+                                <th>Receipt</th>
+                                <th>Subscribe Date</th>
+                                <th>Subs Type</th>
+                                <th>Subs Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for record in records%}
+                                {% if record.subs_status==True and record.is_expired==False%}
+                                    {%set color='success'%}
+                                {%elif record.is_expired==True %}
+                                    {%set color='danger'%}
+                                {%else%}
+                                    {%set color='warning'%}
+                                {%endif%}
+                            <tr class="{{color}}">
+                                <td>{{loop.index}}</td>
+                                <td>{{record.seo_title}}</td>
+                                <td>{{record.first_name}} {{record.last_name}}</td>
+                                <td>{{record.mobile}}</td>
+                                <td>{{record.email}}</td>
+                                <td>{{record.total_amount}}</td>
+                                <td>{{record.discount_amount}}</td>
+                                <td>{{record.total_payable_amount}}</td>
+                                <td>{{record.transcation_id}}</td>
+                                <td>{{record.invoice}}</td>
+                                <td>{{record.receipt}}</td>
+                                <td>{{record.payment_date}}</td>
+                                <td>{% if record.purpose==1%} New {%else%} Renew {%endif%}</td>
+                                <td>
+                                    {% if record.subs_status==True and record.is_expired==False%}
+                                        <label class="text-success">Active</label>
+                                    {%elif record.is_expired==True %}
+                                        <label class="text-danger">Expired</label>
+                                    {%else%}
+                                        <label class="text-info">Approval Pending</label>
+                                    {%endif%}
+                                </td>   
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                        
+                    </table>
+                </div>
+                {%endif%}
+      
+              
+            </div>
+            <!-- /.box -->
+  
+            
+          </div>
+
+
+
+         
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+{%endblock%}
+
+{%block script%}
+<script>
+    var date = new Date();
+    // date.setDate(date.getDate()+2);
+    $('#start_date').datepicker({
+      autoclose: true,
+      format:'yyyy-mm-dd',
+    //   startDate: date
+    });
+
+    $('#end_date').datepicker({
+      autoclose: true,
+      format:'yyyy-mm-dd',
+    //   startDate: date
+    });
+
+    $('#myTable3').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+           'csv', 'excel'
+        ]
+    } );
+</script>
+{%endblock%}

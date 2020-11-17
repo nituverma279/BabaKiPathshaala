@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paymnet online</title>
+</head>
+<body>
+    <form action='https://www.qlicknpay.com/merchant/api/v1/receiver' method='POST'>
+        <input type="hidden" name="merchant_id" value="{{merchant_id}}">
+        <input type="hidden" name="invoice" value="{{invoice}}">
+        <input type="hidden" name="amount" value="{{amount}}">
+        <input type="hidden" name="payment_desc" value="{{payment_desc}}">
+        <input type="hidden" name="hash" id="hash" value="">
+        <input type="hidden" name="callback_url_be" value="https://www.geniusedu.my/callbackv1">
+        <input type="hidden" name="callback_url_fe_succ" value="https://www.geniusedu.my/payment-success">
+        <input type="hidden" name="callback_url_fe_fail" value="https://www.geniusedu.my/payment-fail">
+        <button type="submit">submit</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
+    
+    <script>
+        
+        hashCode("{{hashed_string}}");
+        function hashCode(str){
+        var hash = 0;
+        if (str.length == 0) return hash;
+            hash = 	CryptoJS.MD5(str);
+            document.getElementById("hash").value = hash;
+        }
+    </script>
+
+
+</body>
+</html>

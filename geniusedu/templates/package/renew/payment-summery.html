@@ -1,0 +1,137 @@
+{%extends 'layouts/master-layout.html'%}
+{%block content%}
+<section>
+    <div class="container">
+        <img class="img-fluid" src="{{url_for('static',filename='assets/images/login-ban.jpg')}}">
+    </div>
+</section>
+<section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card my-card">
+                    <div class="p-3 site-bg">
+                        <h4 class="text-center m-0 text-white"><b>MAKE ONLINE PAYMENT</b></h4>
+                    </div>
+                    <div class="card-body">
+
+                        <table class="table table-bordered table-sm">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th colspan="2">Bank Account Details
+                                </td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Account Name</td>
+                                <td>GENIUS ARENA SDN BHD</td>
+                            </tr>
+                            <tr>
+                                <td>Bank Name</td>
+                                <td>Maybank</td>
+                            </tr>
+                            <tr>
+                                <td>Account No.</td>
+                                <td>562021631936</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        {% if optional_subject_details%}
+                        <table class="table table-bordered table-striped table-sm">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>Subject Name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {%for opt_subj in optional_subject_details%}
+                            <tr>
+                                <td>{{opt_subj.subject_name}}</td>
+                            </tr>
+                            {%endfor%}
+                            </tbody>
+                        </table>
+                        {%endif%}
+                        {%if comp_subject_details%}
+                        <table class="table table-bordered table-sm">
+                            <thead>
+                            <tr>
+                                <th>Subject Name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {%for comp_sub in comp_subject_details%}
+                            <tr>
+                                <td>{{comp_sub.subject_name}}</td>
+                            </tr>
+                            {%endfor%}
+                            </tbody>
+                        </table>
+                        {%endif%}
+                        {%if subs_months_details%}
+                        <table class="table table-bordered table-sm">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>Subscription Month</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    {%for month in subs_months_details%}
+                                    {{month.month_name}},
+                                    {%endfor%}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        {%endif%}
+
+
+                        <table class="table table-bordered table-sm">
+
+                            <tr>
+                                <td>Total Amount</td>
+                                <td>RM {{'%0.2f' %subtotal}}</td>
+                            </tr>
+
+                            {%if discount_amt%}
+                            <tr>
+                                <td>Discount Amount</td>
+                                <td>RM {{discount_amt}}</td>
+                            </tr>
+                            {%endif%}
+                            {%if total_payable_amount%}
+                            <tr class="table-success">
+                                <td>Total Payable Amount</td>
+                                <td>RM {{'%0.2f' %total_payable_amount|float}}</td>
+                            </tr>
+                            {%endif%}
+
+                            {%if wt_amt %}
+                                {%if total_payable_amount>wt_amt%}
+                                <tr class="table-success">
+                                    <td>If you use wallet you have to pay</td>
+                                    <td>RM {{'%0.2f' % (total_payable_amount-wt_amt)|float}}</td>
+                                </tr>
+                                {%elif total_payable_amount <= wt_amt %}
+                                 <tr class="table-success">
+                                    <td colspan="2" class="text-center">Your wallet has enough amount to subscribed package.</td>
+                                </tr>
+                                {%endif%}
+                            {%endif%}
+
+                        </table>
+                        <a class="btn btn-success btn-block" href="{{url_for('spec_renew_payment_option')}}">Choose
+                            Payment option</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</section>
+{%endblock%}

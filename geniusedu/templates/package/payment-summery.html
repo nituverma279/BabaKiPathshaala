@@ -1,0 +1,118 @@
+{%extends 'layouts/master-layout.html'%}
+{%block meta%}
+<title>Payment | Genius EDU</title>
+<meta content="Genius EDU one of the best education website in Malaysia. We offer freeonline livetuition classes to achieve their goals by providing creative, innovative and evaluative programs."
+      name="description">
+<meta content="Online Tuition, Best Education Website in Malaysia, Online Live free Classes Malaysia" name="keywords">
+{%endblock%}
+{%block content%}
+<section>
+    <div class="container">
+        <img class="img-fluid" src="{{url_for('static',filename='assets/images/login-ban.jpg')}}">
+    </div>
+</section>
+<section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card my-card">
+                    <div class="p-3 site-bg">
+                        <h4 class="text-center m-0 text-white"><b>MAKE PAYMENT</b></h4>
+                    </div>
+                    <div class="card-body">
+                        {% if optional_subject_details%}
+                        <table class="table table-bordered table-striped table-sm">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>Subject Name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {%for opt_subj in optional_subject_details%}
+                            <tr>
+                                <td>{{opt_subj.subject_name}}</td>
+                            </tr>
+                            {%endfor%}
+                            </tbody>
+                        </table>
+                        {%endif%}
+                        {%if comp_subject_details%}
+                        <table class="table table-bordered table-sm">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>Subject Name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {%for comp_sub in comp_subject_details%}
+                            <tr>
+                                <td>{{comp_sub.subject_name}}</td>
+                            </tr>
+                            {%endfor%}
+                            </tbody>
+                        </table>
+                        {%endif%}
+                        {%if subs_months_details%}
+                        <table class="table table-bordered table-sm">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>Subscription Month</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    {%for month in subs_months_details%}
+                                    {{month.month_name}},
+                                    {%endfor%}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        {%endif%}
+
+                        <table class="table table-bordered table-sm">
+
+                            <tr>
+                                <td>Total Amount</td>
+                                <td>RM {{'%0.2f' % subtotal|float}}</td>
+                            </tr>
+
+                            {%if discount_amt%}
+                            <tr>
+                                <td>Discount Amount</td>
+                                <td>RM {{'%0.2f' % discount_amt|float}}</td>
+                            </tr>
+                            {%endif%}
+                            {%if total_payable_amount%}
+                            <tr class="table-success">
+                                <td>Total Payable Amount</td>
+                                <td>RM {{'%0.2f' % total_payable_amount|float}}</td>
+                            </tr>
+                            {%endif%}
+                            {%if wt_amt %}
+                                {%if total_payable_amount>wt_amt%}
+                                <tr class="table-success">
+                                    <td>If you use wallet you have to pay</td>
+                                    <td>RM {{'%0.2f' % ((total_payable_amount-wt_amt)+1)|float}}</td>
+
+                                </tr>
+                                {%elif total_payable_amount <= wt_amt %}
+                                 <tr class="table-success">
+                                    <td colspan="2" class="text-center">Your wallet has enough amount to subscribed package.</td>
+                                </tr>
+                                {%endif%}
+                            {%endif%}
+
+                        </table>
+                        <a class="btn btn-success btn-block" href="{{url_for('spec_payment_option')}}">Choose option for
+                            payment</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</section>
+{%endblock%}

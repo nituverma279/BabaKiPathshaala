@@ -1,0 +1,153 @@
+{%extends 'layouts/master-layout.html'%}
+{%block meta%}
+<title>Dashboard | Free Online Live Tuition Classes - Genius EDU</title>
+<meta name="description" content="Genius EDU one of the best education website in Malaysia. We offer freeonline livetuition classes to achieve their goals by providing creative, innovative and evaluative programs.">
+<meta name="keywords" content="Online Tuition, Best Education Website in Malaysia, Online Live free Classes Malaysia">
+{%endblock%}
+{%block content%}
+<section>
+  <div class="container pt-5 pb-5">
+  
+    <div class="row">
+      <div class="col-md-3">
+        <div class="mb-4">
+          <div>
+      <h4 class="blue-color">Teacher's Dashboard</h4>
+    </div>
+        {%include 'dashboard/teacher/dash-menu.html'%}
+        </div>
+         
+      </div>
+      <div class="col-md-7">
+        <h5 class="mb-3">Upcoming Live Classes</h5>
+
+        {% if online_live_classes_list%}
+        {%for live_class in online_live_classes_list%}
+        <div class="cls-box shadow-sm mb-3">          
+            <div class="row">
+              <div class="col-md-12">
+                <div class="pl-3 pr-3 pt-2 pb-2 cls-box-header">
+                <p> {{live_class.course_name|safe|upper}} {{live_class.subject_name|safe|upper}}</p>
+                </div>
+                <div class="p-3">
+                <h6 class="m-0 mb-2 text-danger">{{live_class.class_title|safe}}</h6>
+
+                <div class="mb-3">
+                  <span class="badge badge-dark">{{live_class.create_date.strftime('%A %Y-%m-%d %H:%m:%S')}}</span>
+                  
+                </div>
+                <small class="mb-2">{{live_class.description|safe}}</small>
+                <hr class="">
+                <div class="text-right">
+                   <a href="{{url_for('edit_new_class',cano_url=live_class.canonical_url)}}" class="btn btn-dark btn-sm text-white">Edit</a>
+                 <a href="{{url_for('broadcast_online_class',cano_url=live_class.canonical_url)}}" class="btn btn-dark btn-sm text-white">Start Class</a>
+                 <button class="btn btn-danger cp-btn" data-coid="{{live_class.id}}">Mark as completed</button>
+                </div>
+                 </div>
+              </div>
+            </div>
+       
+        </div>
+        {%endfor%}
+        {%endif%}
+
+        {% if demo_live_classes%}
+
+        <h5 class="mb-3">Demo Classes</h5>
+        {%for live_class in demo_live_classes%}
+        <div class="cls-box mb-3 shadow-sm">
+          
+            <div class="row">
+              <div class="col-md-12">
+                <div class="pl-3 pr-3 pt-2 pb-2 cls-box-header">
+                <p>Course Name{{live_class.course_name}}</p>
+                </div>
+                <div class="p-3">
+                <h6 class="m-0 mb-2 text-danger">{{live_class.class_title|safe}}</h6>
+                <div class="mb-3">
+                  <span class="badge badge-dark">{{live_class.create_date.strftime('%A %Y-%m-%d %H:%m:%S')}}</span>
+                  
+                </div> 
+                <small class="mb-2">{{live_class.description|safe}}</small>
+                <div class="text-right">
+                 <hr>
+                <a href="{{url_for('demo_broadcast_online_class',cano_url=live_class.canonical_url)}}" class="btn btn-dark btn-sm text-white">Start Class</a>
+                <button class="btn btn-danger demo-cp-btn" data-coid="{{live_class.id}}">Mark as completed</button>
+                </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        {%endfor%}
+        {%endif%}
+
+      </div>
+    </div>
+  </div>
+</section>
+{%endblock%}
+
+{%block script%}
+<script>
+        $(document).on('click','.cp-btn',function(){
+            var coid=$(this).data('coid');
+            var csrf_token = "{{csrf_token()}}";
+            var _th = $(this);
+            var tmp_bt='<button class="btn btn-default cp-btn">Please wait...</button>';
+            var actual_btn='<button class="btn btn-danger cp-btn" data-coid="'+coid+'">Mark as completed</button>';
+            var comp_btn='<button class="btn btn-sucess">Completed</button>';
+            if(confirm('Are you sure?')){
+                $.ajax({
+                    url:"{{url_for('complete_topic_mark')}}",
+                    method:'POST',
+                    data:{coid,csrf_token},
+                    beforeSend:function(){
+                        _th.parent().html();
+                        //  _th.parent().html('<p>Please wait..</p>');
+                    },
+                    success:function(response){
+                        
+                        if(response.error==0){
+                            _th.parent().html(comp_btn); 
+                        }else{
+                            
+                            _th.parent().html(actual_btn) ; 
+                        }
+                        //console.log(response.message);
+                    }
+                });
+            }
+        });
+
+        $(document).on('click','.demo-cp-btn',function(){
+            var coid=$(this).data('coid');
+            var csrf_token = "{{csrf_token()}}";
+            var _th = $(this);
+            var tmp_bt='<button class="btn btn-default cp-btn">Please wait...</button>';
+            var actual_btn='<button class="btn btn-danger cp-btn" data-coid="'+coid+'">Mark as completed</button>';
+            var comp_btn='<button class="btn btn-sucess">Completed</button>';
+            if(confirm('Are you sure?')){
+                $.ajax({
+                    url:"{{url_for('complete_demo_topic_mark')}}",
+                    method:'POST',
+                    data:{coid,csrf_token},
+                    beforeSend:function(){
+                        _th.parent().html();
+                        //  _th.parent().html('<p>Please wait..</p>');
+                    },
+                    success:function(response){
+                        
+                        if(response.error==0){
+                            _th.parent().html(comp_btn); 
+                        }else{
+                            
+                            _th.parent().html(actual_btn) ; 
+                        }
+                        //console.log(response.message);
+                    }
+                });
+            }
+        });
+</script>
+{%endblock%}

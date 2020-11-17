@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content=" ">
+    <meta name="author" content=" ">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0"/> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title> </title>
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="{{url_for('static',filename='assets/img/favicon.png')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/file/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/mb-broadcast-style.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/toast/jquery.toast.css')}}">
+    <script src="{{url_for('static',filename='assets/file/js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/file/js/popper.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/file/js/bootstrap.min.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/file/css/dropzone.css')}}"/>
+    <script src="{{url_for('static',filename='assets/file/js/dropzone.js')}}"></script>
+    <script type="text/javascript">
+	    var width = window.screen.width;
+	    if (width>799){
+	        window.location.href="{{url_for('broadcast_online_class',cano_url=live_course.canonical_url)}}";
+	    }
+	</script>
+</head>
+<body>
+<section class="main-vdo-section">
+    <div class="dummy">
+        <div class="card broadcast-chat">
+            <div class="vdo-details-vdo">
+                <video class="oh-video" width="100%"  id="video" autoplay muted loop preload="auto" playsinline></video>
+            </div>
+            <div class="card-header pt-1 pb-1">
+                <h4 class="card-title"><strong>Live Chat</strong></h4>
+            </div>
+            <div class="ps-container ps-theme-default ps-active-y m_chat_box" id="chat-content">
+                
+                {%if chat_history%}
+                    {%for chat in chat_history%}
+
+                        {%if chat.receiver_id==chat.sender_id%}
+                        <div class="media media-chat "> 
+                            <div class="media-body">
+                                <p>@{{chat.user_id|lower}}: {{chat.message|safe}}</p>
+                            </div>
+                        </div>
+                        {%else%}
+                        <div class="media media-chat media-chat-reverse">
+                            <div class="media-body">
+                                <p>@{{chat.user_id|lower}}: {{chat.message|safe}}</p>
+                            </div>
+                        </div>
+                        {%endif%}
+                    {%endfor%}
+                {%endif%}
+                
+                <div class="message_holder">
+                </div>
+                
+            </div>
+            <div class="publisher bt-1 border-light">               
+                <input class="message_input publisher-input" autocomplete="off" 
+                    data-user_id="{{current_user.first_name|lower}}" 
+                    data-show_id="{{live_course.id}}" 
+                    data-receiver_id="{{current_user.id}}" 
+                    data-sender_id="{{current_user.id}}"  
+                    placeholder="Type your message here..." maxlength="150" />  
+                
+                <a class="publisher-btn message_input_btn text-info" href="javascript:;" data-abc="true"  
+                    data-user_id="{{current_user.first_name|lower}}" 
+                    data-show_id="{{live_course.id}}" 
+                    data-receiver_id="{{current_user.id}}" 
+                    data-sender_id="{{current_user.id}}">
+                    <img width="15" src="{{url_for('static',filename='assets/icons/send.svg')}}">
+                </a>
+                <a href="javascript:;" data-toggle="modal" data-target="#fileModel">
+                            <img src="{{url_for('static',filename='assets/icons/attached.svg')}}" width="20"/>
+                        </a>
+            </div>
+        </div>
+    </div>
+     
+     <div class="mover_btn d-flex">
+        <div> 
+                <button id="movable"  onclick="btn_rotate()" class="trn-btn">
+                    <img width="20px" src="{{url_for('static',filename='assets/icons/left-chevron.svg')}}"> 
+               </button>
+           </div>
+        <div>
+            <a href="javascript:;"class="btn btn-ac trn-btn" id="start_publish_button">
+                <img width="20px" src="{{url_for('static',filename='assets/icons/play.svg')}}"/> 
+           </a>
+
+        </div>
+        <div>
+            <button class="trn-btn" id="stop_publish_button" onclick="stopPublishing()">
+                <img width="20px" src="{{url_for('static',filename='assets/icons/stop.svg')}}"/> 
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- User block modal -->
+    <div class="modal fade user-block-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="row">
+                     
+                  <div class="col-6 text-center">
+                      <a href="javascript:;" class="ban-btn" data-ban_for="chat">
+                          <div class="ban_img">
+                              <img src="{{url_for('static',filename='assets/icons/chat-ban.svg')}}">
+                          </div>
+                          <p>Chat ban</p>
+                      </a>
+                  </div>
+                   
+                 <!--  <div class="col-6 text-center">
+                    <a href="javascript:;" class="ban-btn" data-ban_for="show">
+                          <div class="ban_img">
+                               <img src="{{url_for('static',filename='assets/icons/user-ban.svg')}}">
+                          </div>
+                          <p>User ban</p>
+                    </a>
+                  </div> -->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+    </div>
+<!-- end of user block modal -->
+
+<input type="hidden" id="streamName" value=""/>
+
+<!-- chat script -->
+ <!-- User block modal -->
+    <div id="fileModel" class="modal fade" tabindex="-1" role="dialog"   aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="row">
+                  <div class="col-12 text-center">
+                    <form id="id_dropzone" 
+                    class="dropzone" 
+                    enctype="multipart/form-data" 
+                    method="post">
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+                    </form>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- end of user block modal -->
+
+<script type="text/javascript">
+    Dropzone.autoDiscover = false;
+    $(document).ready(function () {
+        $("#id_dropzone").dropzone({
+            maxFiles: 2000,
+            uploadMultiple:false,
+            acceptedFiles:'.jpg,.png,.jpeg,.pdf',
+            paramName:'show_gallery',
+            url: "{{url_for('upload_chat_content')}}",
+            success: function (file, response) {
+                if(response.error==0){
+                    send_chat_file(response.file_path);
+                    show_toast_message('File is shared successfully');
+                }
+                setTimeout(function(){
+                    $(".dz-preview").remove();
+                    $(".dz-message").show();
+                    $('#fileModel').modal('hide')
+                }, 2000);
+            },
+            
+         });
+    })
+</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+<script src="{{url_for('static',filename='assets/toast/jquery.toast.js')}}"></script>
+<script>
+    function show_toast_message(message)
+    {
+        var toast= $.toast({ 
+                    text : message, 
+                    showHideTransition : 'slide',   
+                    bgColor : '#000',           
+                    textColor : '#fff',             
+                    allowToastClose : false,        
+                    hideAfter : 3000,               
+                    stack : 5,                      
+                    textAlign : 'left',             
+                    position : 'bottom-right'
+                })
+        return toast;
+    }
+</script>
+<script>
+
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+window.addEventListener('resize', () => {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+</script>
+
+
+<script>
+    $(document).ready(function() {
+   var sideMenu = false;
+    $("#movable").click(function() {
+      if (!sideMenu) {
+        $(".mover_btn").animate({right: "0"});
+        document.getElementById('movable').style.transform ="rotate(180deg)";
+        sideMenu = true;
+      }
+      else {
+        $(".mover_btn").animate({right: "-40px"});
+        document.getElementById('movable').style.transform ="rotate(0deg)";
+        sideMenu = false;     
+      }
+    });
+}); 
+    
+
+
+    
+</script>
+<script src="https://livelearn.xyz:5443/WebRTCAppEE/js/webrtc_adaptor.js"></script>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+<script>$('#chat-content').scrollTop($('#chat-content')[0].scrollHeight);</script>
+
+ <script>
+
+        $(document).ready(function(){
+            var show_id='';
+            var sender_id='';
+            var sid ='';
+            $(document).on('click',".block_btn",function(){
+                show_id=$(this).data('show_id');
+                sender_id=$(this).data('sender_id');
+                sid=$(this).data('sid');
+                $(".user-block-modal").modal();    
+            });
+
+            $(document).on('click','.ban-btn',function(){
+                block_chat_member(show_id,sender_id)  
+                ban_user_from_room(sid); 
+                $(".user-block-modal").modal('hide');    
+            });
+        });
+
+        function block_chat_member(show_id,sender_id,ban_for){
+            var broadcaster_id="{{current_user.id}}";
+            var csrf_token = "{{csrf_token()}}"
+            $.ajax({
+                url:'/dashboard/block-chat-member',
+                method:'POST',
+                data:{show_id:show_id,sender_id:sender_id,broadcaster_id:broadcaster_id,csrf_token:csrf_token},
+                beforeSend:function(){
+                },
+                success:function(response){
+                    show_toast_message(response.message);
+                    $(".user-block-modal").modal('hide');
+                }
+            })
+        }
+    </script>
+
+
+<script>
+    get_stream_name();
+    function get_stream_name()
+    {
+      var csrf_token = "{{csrf_token()}}";
+     $.ajax({
+            url:'{{url_for('generate_stream')}}',
+            method:'POST',
+            data:{csrf_token},
+            success:function(response){
+                streamname=response
+                $("#streamName").val(streamname);
+            }
+        })
+    }
+    
+    var streamname=''
+    $(document).ready(function(){
+        $("#stop_publish_button").hide()
+    
+        $("#start_publish_button").on('click',function(){
+            $("#start_publish_button").hide()
+            $("#stop_publish_button").show();
+            get_stream_name();
+            store_live_stream();
+        })
+        
+        $("#stop_publish_button").on('click',function(){
+            
+        })
+    })
+    
+    
+    function store_live_stream()
+    {
+        show_id = '{{live_course.id}}';
+        stream_id = $("#streamName").val()
+        csrf_token = "{{csrf_token()}}";
+        $.ajax({
+            url:'/dashboard/store-live-records',
+            method:'POST',
+            data:{show_id:show_id,stream_id:stream_id,csrf_token:csrf_token},
+            success:function(response){
+                console.log(response)
+            }
+        })
+    }
+</script>
+
+
+<script>
+    var token = "null";
+    var start_publish_button = document.getElementById("start_publish_button");
+    var stop_publish_button = document.getElementById("stop_publish_button");
+    
+    var streamNameBox = document.getElementById("streamName"); 
+    //var streamNameBox = streamname
+    var streamId;
+    function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };
+    
+    var name = getUrlParameter("name");
+    if(name !== "undefined")
+    {
+        streamNameBox.value = name;
+    }
+    
+
+    function startPublishing() {
+        
+        streamId = streamNameBox.value;
+        webRTCAdaptor.publish(streamId, token);
+        //store_live_stream();
+        broad_message();
+       
+    }
+
+    function stopPublishing() {
+        sid="{{live_course.id}}"; 
+        $.confirm({
+                title: 'Confirm!',
+                content: 'You want to finish the live class.',
+                buttons: {
+                    endclass: function () {
+                        $.ajax({
+                            url:'/complete-live-show',
+                            method:'POST',
+                            data:{sid:sid},
+                            beforeSend:function(){
+
+                            },
+                            success:function(response){
+                                if (response.error==0){    
+                                    webRTCAdaptor.stop(streamId);
+                                    $("#stop_publish_button").hide()
+                                    $("#start_publish_button").show();
+                                    leave_room();
+                                    window.location.href='/';  
+                                }
+                            }
+                        })
+                    },
+                    close: function () {
+                        
+                    },
+                    refresh:function(){
+                        window.location.reload();
+                    },
+
+                }
+            });
+    }
+    
+    function enableDesktopCapture(enable) {
+        if (enable == true) {
+            webRTCAdaptor.switchDesktopCapture(streamId);
+        }
+        else {
+            webRTCAdaptor.switchVideoCapture(streamId);
+        }
+    }
+    
+    function startAnimation() {
+
+        $("#broadcastingInfo").fadeIn(800, function () {
+          $("#broadcastingInfo").fadeOut(800, function () {
+            var state = webRTCAdaptor.signallingState(streamId);
+            if (state != null && state != "closed") {
+                var iceState = webRTCAdaptor.iceConnectionState(streamId);
+                if (iceState != null && iceState != "failed" && iceState != "disconnected") {
+                    startAnimation();
+                }
+            }
+          });
+        });
+
+      }
+
+    var pc_config = null;
+
+    var sdpConstraints = {
+        OfferToReceiveAudio : false,
+        OfferToReceiveVideo : false
+
+    };
+    
+    var mediaConstraints = {
+        video : true,
+        audio : true
+    };
+    
+    var path = 'livelearn.xyz:5443/WebRTCAppEE/websocket';
+    
+    var websocketURL =  "ws://" + path;
+    
+    if (location.protocol.startsWith("https")) {
+        websocketURL = "wss://" + path;
+    }
+    
+    
+    var webRTCAdaptor = new WebRTCAdaptor({
+        websocket_url : websocketURL,
+        mediaConstraints : mediaConstraints,
+        peerconnection_config : pc_config,
+        sdp_constraints : sdpConstraints,
+        //localVideoId : "localVideo",
+        localVideoId : "video",
+        debug:true,
+        callback : function(info, description) {
+            if (info == "initialized") {
+                //console.log("initialized");
+                start_publish_button.disabled = false;
+                stop_publish_button.disabled = true;
+            } else if (info == "publish_started") {
+                //stream is being published
+                //console.log("publish started");
+                start_publish_button.disabled = true;
+                stop_publish_button.disabled = false;
+                startAnimation();
+            } else if (info == "publish_finished") {
+                //stream is being finished
+                //console.log("publish finished");
+                start_publish_button.disabled = false;
+                stop_publish_button.disabled = true;
+            }
+            else if (info == "screen_share_extension_available") {
+                screen_share_checkbox.disabled = false;
+                //console.log("screen share extension available");
+                install_extension_link.style.display = "none";
+            }
+            else if (info == "screen_share_stopped") {
+                //console.log("screen share stopped");
+            }
+            else if (info == "closed") {
+                //console.log("Connection closed");
+                if (typeof description != "undefined") {
+                    //console.log("Connecton closed: " + JSON.stringify(description));
+                }
+            }
+            else if (info == "pong") {
+                //ping/pong message are sent to and received from server to make the connection alive all the time
+                //It's especially useful when load balancer or firewalls close the websocket connection due to inactivity
+            }
+        },
+        callbackError : function(error, message) {
+            //some of the possible errors, NotFoundError, SecurityError,PermissionDeniedError
+            
+            console.log("error callback: " +  JSON.stringify(error));
+            var errorMessage = JSON.stringify(error);
+            if (typeof message != "undefined") {
+                errorMessage = message;
+            }
+            var errorMessage = JSON.stringify(error);
+            if (error.indexOf("NotFoundError") != -1) {
+                errorMessage = "Camera or Mic are not found or not allowed in your device.";
+            }
+            else if (error.indexOf("NotReadableError") != -1 || error.indexOf("TrackStartError") != -1) {
+                errorMessage = "Camera or Mic is being used by some other process that does not not allow these devices to be read.";
+            }
+            else if(error.indexOf("OverconstrainedError") != -1 || error.indexOf("ConstraintNotSatisfiedError") != -1) {
+                errorMessage = "There is no device found that fits your video and audio constraints. You may change video and audio constraints."
+            }
+            else if (error.indexOf("NotAllowedError") != -1 || error.indexOf("PermissionDeniedError") != -1) {
+                errorMessage = "You are not allowed to access camera and mic.";
+            }
+            else if (error.indexOf("TypeError") != -1) {
+                errorMessage = "Video/Audio is required.";
+            }
+            else if (error.indexOf("UnsecureContext") != -1) {
+                errorMessage = "Fatal Error: Browser cannot access camera and mic because of unsecure context. Please install SSL and access via https";
+            }
+            else if (error.indexOf("WebSocketNotSupported") != -1) {
+                errorMessage = "Fatal Error: WebSocket not supported in this browser";
+            }
+        
+            //alert(errorMessage);
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    chatWindow = document.getElementById('chat-content');
+    var xH = chatWindow.scrollHeight;
+    var namespace='/test';
+    var socket = io.connect('https://' + document.domain + ':' +location.port+namespace);
+    var room="{{live_course.class_title}}-{{live_course.id}}";
+    socket.emit('join', {room: room});
+    var csrf_token="{{csrf_token()}}"; 
+   socket.on('connect', function() {
+
+        var form= $('.message_input').keyup(function (e)
+        {
+            if (e.which == 13)
+            {
+                var sender_id,receiver_id,show_id,chat_msg,user_id,user_type
+                sender_id=$(this).data('sender_id')
+                receiver_id=$(this).data('receiver_id')
+                show_id=$(this).data('show_id')  
+                tmp_user_id =$(this).data('user_id')
+                user_id=tmp_user_id.substring(0,15)
+                chat_msg = $('.message_input').val()
+                user_type ='teacher'
+                chat_msg.trim();
+                if (chat_msg.length>0)
+                {
+                   
+                    socket.emit('my_room_event', {room: room, show_id:show_id,user_id:user_id, sender_id:sender_id,receiver_id:receiver_id,chat_msg: chat_msg,user_type:user_type}); 
+                    $.ajax({
+                        url:"{{url_for('send_chat_message')}}",
+                        method:'POST',
+                        data:{user_id:user_id,sender_id:sender_id,receiver_id:receiver_id,chat_msg,show_id:show_id,csrf_token:csrf_token},
+                        success:function(response){    
+                        }    
+                    });
+                }
+                $('.message_input').val('');
+                chatWindow.scrollTo(0, xH);
+            } 
+        });
+        
+        var send_chat_msg= $('.message_input_btn').click(function (e)
+        {
+            var sender_id,receiver_id,show_id,chat_msg,user_id,user_type
+            sender_id=$(this).data('sender_id')
+            receiver_id=$(this).data('receiver_id')
+            show_id=$(this).data('show_id')
+            tmp_user_id =$(this).data('user_id')
+            user_id=tmp_user_id.substring(0,15)
+            chat_msg = $('.message_input').val()
+            user_type = 'teacher'
+            chat_msg.trim();
+            if (chat_msg.length>0)
+            {
+                socket.emit('my_room_event', {room: room, show_id:show_id,user_id:user_id, sender_id:sender_id,receiver_id:receiver_id,chat_msg: chat_msg,user_type:user_type}); 
+                $.ajax({
+                    url:"{{url_for('send_chat_message')}}",
+                    method:'POST',
+                    data:{user_id:user_id,sender_id:sender_id,receiver_id:receiver_id,chat_msg,show_id:show_id,csrf_token:csrf_token},
+                    success:function(response){    
+                    }    
+                });
+            }
+
+            $('.message_input').val('');
+            chatWindow.scrollTo(0, xH);   
+        });
+
+    });
+
+
+       socket.on('my_response', function(msg) {
+         //console.log(msg);
+        var chat_message_temp;
+        if(msg['sender_id'] == msg['receiver_id'])
+        {
+             
+            chat_message_temp=
+                    '<div class="media media-chat">'+ 
+                        '<div class="media-body">'+
+                            '<p><b>@'+msg['user_id']+': </b>'+msg['chat_msg']+'</p>'+
+                        '</div>'+
+                    '</div>';
+            $('div.message_holder').append(chat_message_temp);
+        }
+        else if(msg['user_type']=='chat_monitor_member')
+            {
+                var imgUrl="{{url_for('static',filename='assets/icons/menu.svg')}}";
+                chat_message_temp=
+                        '<div class="media media-chat monitor-chat">'+
+                            '<div class="media-body">'+
+                                '<p>@'+msg['user_id']+': '+ msg['chat_msg']+'</p>'+
+                            '</div>'+
+                        '</div>';
+                $('div.message_holder').append(chat_message_temp);
+            }
+        else
+        {
+            chat_message_temp=
+                    '<div class="media media-chat media-chat-reverse">'+
+                        '<div class="media-body">'+
+                            '<p><button type="button" data-sid="'+msg['sid']+'" class="block_btn" data-show_id="'+msg['show_id']+'" data-sender_id="'+msg['sender_id']+'">'+
+                                    '<img width="15" src="{{url_for('static',filename='assets/icons/menu.svg')}}">'+
+                            '</button>  @'+msg['user_id']+':'+ msg['chat_msg']+'</p>'+
+                        '</div>'+
+                    '</div>';
+            $('div.message_holder').append(chat_message_temp);
+        } 
+        if(msg) {
+            $('#chat-content').scrollTop($('#chat-content')[0].scrollHeight);
+        }
+      });
+
+
+    function leave_room() {
+        socket.emit('left', {'msg':'Hey all, Teacher has ended the classes.','room':room}, function() {
+                socket.disconnect();
+        });      
+    }
+
+    function ban_user_from_room(id){
+         
+        socket.emit('ban',{'status':'banned','sid':id})
+    }
+    
+
+    function broad_message(){
+        socket.emit('broadmsg',{'message':'Hello all, I am now streaming live, please reload your page if you can not see the feed.','room':room})
+    }
+
+
+function send_chat_file(file){
+
+        if (file.length>0){
+
+            var downloadImg="{{url_for('static',filename='assets/icons/file.svg')}}";
+            tmp_user_id="{{current_user.first_name|lower}}";
+            user_id=tmp_user_id.substring(0,15)
+            sender_id="{{current_user.id}}";
+            receiver_id = "{{current_user.id}}";
+            chat_msg = '<a href="'+file+'" target="_blank"><img src="'+downloadImg+'" width="30"></a> Download file';
+            show_id = "{{live_course.id}}";
+            user_type ="teacher";
+            $.ajax({
+                url:"{{url_for('send_chat_message')}}",
+                method:'POST',
+                data:{user_id:user_id,sender_id:sender_id,receiver_id:receiver_id,chat_msg,show_id:show_id},
+                success:function(response){    
+                }    
+            });
+
+            
+            chat_message_temp='<div class="media media-chat monitor-chat">'+ 
+                    '<div class="media-body">'+
+                        '<p><b>@'+user_id+': </b><a href="'+file+'" target="_blank"><img src="'+downloadImg+'" width="30"></a> Download file </p>'+
+                    '</div>'+
+                '</div>';    
+            $('div.message_holder').append(chat_message_temp);
+            $('#chat-content').scrollTop($('#chat-content')[0].scrollHeight);
+            socket.emit('sendfile',{'message':chat_msg,'user_id':user_id,'room':room,'user_type':user_type})
+        }
+    }
+
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83730659-5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-83730659-5');
+</script>
+</body>
+</html>

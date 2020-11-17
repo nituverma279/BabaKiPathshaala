@@ -1,0 +1,59 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Contact queries
+
+      </h1>
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="row">
+        <!-- left column -->
+
+
+		<div class="col-md-12">
+			<div class="box box-primary">
+				<table class="table table-stripped">
+                    <thead>
+                        <tr>
+                            <th>S.N</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Subject</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for contact_query in contact_queries%}
+                            <tr>
+                                <td>{{loop.index}}</td>
+                                <td>{{contact_query.name}}</td>
+                                <td>{{contact_query.email}}</td>
+                                <td>{{contact_query.mobile}}</td>
+                                <td>{{contact_query.subject}}</td>
+                                <td>{{contact_query.message}}</td>
+                            </tr>
+                        {%endfor%}
+                    </tbody>
+				</table>
+			</div>
+
+		</div>
+
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{%endblock%}

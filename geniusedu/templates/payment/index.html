@@ -1,0 +1,49 @@
+{%extends 'layouts/master-layout.html'%}
+{%block content%}
+<section>
+    <div class="container">
+        <img class="img-fluid" src="{{url_for('static',filename='assets/images/login-ban.jpg')}}">
+    </div>
+</section>
+<section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card my-card">
+                    <div class="p-3 site-bg">
+                        <h4 class="text-center text-white m-0"><b>Upload Payment Receipt/Screenshot</b></h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+                            <div class="form-group">
+                                <label>Amount</label>
+                                <input type="text" name="amount" value="" placeholder="Amount to pay, for example 12.20"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Payment Description</label>
+                                <input type="text" name="payment_desc" value=""
+                                    placeholder="Description of the transaction" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Invoice</label>
+                                <input type="text" name="invoice" value=""
+                                    placeholder="Unique id to reference the transaction or order" class="form-control">
+
+                            </div>
+                            <button class="btn btn-dark btn-block">Procced to pay</button>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</section>
+
+
+
+{%endblock%}

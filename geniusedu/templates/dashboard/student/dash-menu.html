@@ -1,0 +1,11 @@
+<div class="text-center">
+	<img width="100px" src="/static/assets/images/student.svg">
+	<p>{{current_user.first_name|title}} {{current_user.last_name|title}} </p>
+</div>
+
+<div class="nav flex-column nav-pills">
+	<a class="nav-link" href="{{url_for('dashboard')}}">Live Classes</a>
+	<a class="nav-link" href="{{url_for('stu_joined_sem_list')}}">Seminar</a>
+	<a class="nav-link" href="{{url_for('expired_subscribed_packages')}}">Expired Classes</a>
+	<a class="nav-link" href="{{url_for('wallet')}}">Affliate Program</a>
+</div>

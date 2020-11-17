@@ -1,0 +1,54 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+    {%if Livetopic%}
+      ({{Livetopic.course_name|title}})----->({{Livetopic.subject_name|title}})
+    </h1>
+    {%endif%}
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <div class="box box-primary">
+            
+          <table class="table table-stripped">
+            <thead>
+              <tr>
+                <th>S.N</th>
+                <th>Student Name</th>
+              </tr>
+            </thead>
+            <tbody>
+                {%for subs_course in subs_stu_course%}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{subs_course.user_name|title}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+             
+          </table>
+        </div>
+        
+      </div>
+
+      <!--/.col (right) -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+{%endblock%}
+{%block script%}
+ 
+{%endblock%}

@@ -1,0 +1,36 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+     {{online_classes.class_title|title}}
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+        {%if recording_list%}
+        {%for record in recording_list%}
+      <div class="col-md-6">
+        <div class="box box-primary">
+            <h4>{{online_classes.course_name}} <b>({{online_classes.subject_name}})</b> </h4>
+            
+                    <video controls width="100%">
+                        <source src="https://geniusclasses.s3-ap-southeast-1.amazonaws.com/streams/{{record.stream_id}}.mp4"/>
+                    </video>
+        </div>
+      </div>
+      {%endfor%}
+      {%endif%}
+
+      <!--/.col (right) -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+{%endblock%}

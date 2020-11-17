@@ -1,0 +1,192 @@
+{%extends 'admin/layouts/master-layout.html'%}
+{%block content%}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      
+    </h1>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{category}}" role="alert">
+          {{ message|safe }}
+          </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+      </div>
+      <!-- left column -->
+      <div class="col-md-4">
+        <div class="box box-primary">
+            
+
+           <div class="box-body box-profile">
+            <img class="profile-user-img img-responsive " src="{{package_info.cover_banner}}" alt="User profile picture">
+
+            <h3 class="profile-username text-center">{{package_info.seo_title}}</h3>
+            <p class="text-muted text-center">{{package_info.description}}</p>
+            <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Expired Time:-</b> <a class="pull-right">{{package_info.expire_month}}/{{package_info.expire_year}}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Purchase Date:-</b> <a class="pull-right">{{package_info.create_date}}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Student Name:-</b> <a class="pull-right">{{student_details.first_name}} {{student_details.last_name}}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>email:-</b> <a class="pull-right">{{student_details.email}}</a>
+                </li>
+                 <li class="list-group-item">
+                  <b>Mobile:-</b> <a class="pull-right">{{student_details.mobile}}</a>
+                </li>
+                 <li class="list-group-item">
+                  <b>Parents Mobile:-</b> <a class="pull-right">{{student_details.parent_mobile}}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>School Name:-</b> <a class="pull-right">{{student_details.school_name}}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Registerd Date:-</b> <a class="pull-right">{{student_details.register_date}}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Zipcode:-</b> <a class="pull-right">{{student_details.zipcode}}</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Address:-</b> <a class="pull-right">{{student_details.address}}</a>
+                </li>
+            </ul>
+             
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+        <div class="box box-primary">
+           <div class="box-body box-profile">
+            <span class="float-right">
+              <a href="javascript:;" data-toggle="modal" data-target="#myModal">Add Subjects</a>
+            </span>
+            <h3 class="profile-username text-center">Subscription Subjects</h3>
+            <ul class="list-group list-group-unbordered">
+
+                {%if optional_subject_details%}
+                <p>Optional Subject</p>
+                {%for optional_sub in  optional_subject_details%}
+                <li class="list-group-item">
+                  <b>{{optional_sub.subject_name}}:-</b> <a class="pull-right">{{optional_sub.price}}</a>
+                </li>
+                {%endfor%}
+                {%endif%}
+                 
+              
+                {%if  compulsory_subject_details %}
+                <p>Compulsory Subject Details</p>
+                {%for comp_sub in  compulsory_subject_details%}
+                <li class="list-group-item">
+                  <b>{{comp_sub.subject_name}}:-</b> <a class="pull-right">{{comp_sub.price}}</a>
+                </li>
+                {%endfor%}
+                {%endif%}
+
+                {%for month in subs_months_details %}
+                  <small class="label label-success">{{month.month_name}}</small>
+                {%endfor%}
+
+            </ul>
+          </div>
+        </div>
+      </div>
+   
+
+      <div class="col-md-4">
+        <div class="box box-primary">
+          <h3 class="profile-username text-center">Payment Details</h3>
+          <div class="box-body box-profile">
+          <ul class="list-group list-group-unbordered">
+            <li class="list-group-item">
+              <b>Total Amount:-</b> <a class="pull-right">{{stu_pac_subs.total_amount}}</a>
+            </li>
+            <li class="list-group-item">
+              <b>Discount Amount:-</b> <a class="pull-right">{{stu_pac_subs.discount_amount}}</a>
+            </li>
+            <li class="list-group-item">
+              <b>Total Amount:-</b> <a class="pull-right">{{stu_pac_subs.total_payable_amount}}</a>
+            </li>
+            <li class="list-group-item">
+              <b>Purchase Date:-</b> <a class="pull-right">{{stu_pac_subs.payment_date}}</a>
+            </li>
+            <li class="list-group-item">
+              <b>Receipt :-</b> <a class="pull-right"><img src="{{stu_pac_subs.receipt}}" width="100"/></a>
+            </li>
+          </ul>
+            </div>
+        </div>
+      </div>
+      <!--/.col (right) -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+
+
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <form method="post" action="{{url_for('add_optional_subject_subs_student')}}">
+                <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+                <input type="hidden" name="package_id" value="{{package_info.id}}">
+                <input type="hidden" name="stu_pac_subs_id" value="{{stu_pac_subs.id}}">
+                <div class="form-group">
+                  <select class="form-control" name="pac_optional_id">
+                    {%if pack_optional_subjects%}
+                    {%for pac_opt_sub in pack_optional_subjects%}
+                      <option value="{{pac_opt_sub.id}}">{{pac_opt_sub.subject_name}} </option>
+                    {%endfor%}
+                    {%endif%}
+                  </select>
+                </div>
+                <div class="form-group float-right">
+                  <button type="submit" class="btn btn-danger">Add New class</button>
+                </div>
+            </form>
+          </div>
+
+        </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+{%endblock%}
+
