@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <title>Genius EDU</title> -->
+    <meta charset="utf-8">
+    {%block meta%}{%endblock%}
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/file/css/bootstrap.min.css')}}">
+    <script src="{{url_for('static',filename='assets/file/js/jquery.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/file/js/popper.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/file/js/bootstrap.min.js')}}"></script>
+    <script src="https://kit.fontawesome.com/890cbd889d.js"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/file/css/jquery.fancybox.min.css')}}" media="screen">
+    <script src="{{url_for('static',filename='assets/file/js/jquery.fancybox.min.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/file/css/stylepage.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/file/css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/style.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/toast/jquery.toast.css')}}">
+    <script src="{{url_for('static',filename='assets/file/js/jquery.validate.min.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/file/css/dropzone.css')}}"/>
+    <script src="{{url_for('static',filename='assets/file/js/dropzone.js')}}"></script>
+    <link rel="icon" href="/static/assets/images/favicon2.png" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/static/assets/images/favicon2.png" type="image/x-icon"/>
+    
+
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+     fbq('init', '939632502909878'); 
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+     <img height="1" width="1" 
+    src="https://www.facebook.com/tr?id=939632502909878&ev=PageView
+    &noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+</head>
+<body>
+
+    <!-- header -->
+    <div class="fixed-topxx">
+        <header class="topbar">
+        <div class="container-fluid">  
+                <div class="row">
+                    <!-- social icon-->
+                    <div class="col-sm-12">
+                        <div class="top-header-address"></div>
+                        <ul class="social-network pull-right">
+                            <li><a class="waves-effect waves-dark"
+                                href="https://www.facebook.com/babaonfb" target="_blank"><i
+                                    class="fa fa-facebook"></i></a></li>
+                        <li><a class="waves-effect waves-dark" target="_blank" href="https://api.whatsapp.com/send?phone=8434240378&text=Hello Baba Ki Pathshaala Team,%0AI am looking for help regarding online course and classes. %0ACan you please guide me on how to join the online classes? %0AThanks"><i class="fa fa-whatsapp"></i></a></li>
+                        <li><a class="waves-effect waves-dark" target="_blank" href="https://www.instagram.com/baba_ki_pathshaala/"><i class="fa fa-instagram"></i></a></li>
+                        <li><a class="waves-effect waves-dark" target="_blank" href="https://twitter.com/Babakpathshaala"><i class="fa fa-twitter"></i></a></li>
+                        <li><a class="waves-effect waves-dark" target="_blank" href="https://www.youtube.com/channel/UCi6RTzLSEPGHCevK4ra8fFQ"><i class="fa fa-youtube-play"></i></a></li>
+                        <li><a class="waves-effect waves-dark" target="_blank" href="https://www.linkedin.com/in/babakipathshaala/"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a class="waves-effect waves-dark" target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to=social.babakipathshaala@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+
+            </header>
+        </div>
+
+
+        
+            <!-- Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-light bg-white " style="overflow: hidden;" >
+                <div class="container-fluid" style="height: 50px;">
+                    <a class="navbar-brand" href="{{url_for('home')}}">
+                        <img src="/static/assets/images/Baba-ki-Pathshaala.jpg" style="width: 50px;
+                        height: 40px;"alt="logo">
+                    </a>
+                    <div class="input-group border rounded-pill p-1">
+                         <div class="input-group-prepend border-0">
+                            <button id="button-addon4" type="button" class="btn btn-link text-info"><i class="fa fa-search"></i></button>
+                        </div>
+                        <input type="search" placeholder="What're you searching for?" aria-describedby="button-addon4" class="form-control bg-none border-0">
+                    </div>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse change-color" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{url_for('home')}}">Home
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            
+                           <!--  <li class="nav-item">
+                                <a class="nav-link" href="/genius-tuition">Genius Online Tuition</a>
+                            </li> -->
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/about">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/genius-online-tuition">Courses</a>
+                            </li>
+                           
+                            {%if current_user.is_authenticated %}
+                            <li class="dropdown nav-item notes-menu-bg">   
+                                <a class="dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Profile
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="{{url_for('dashboard')}}">Dashboard</a> 
+                                    <a  class="dropdown-item" href="{{url_for('logout')}}">  Logout</a> 
+                                </div>
+                            </li>
+                            {%else%}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url_for('login')}}">Educator</a>  
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact">Contact Us</a>
+                            </li>
+                             <li class="nav-item">
+                                <a class="nav-link" href="{{url_for('login')}}">Login</a>  
+                            </li>
+                            {%endif%}
+
+                            {% if session.get('is_login')==True and session.get('used_for')=='demo'%}
+                            <!-- <li class="nav-item">
+                                <a class="nav-link" href="{{url_for('demo_logout')}}">Logout</a>
+                            </li> -->
+                            {%endif%}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+           
+    </div>
+    <!-- end of header -->
+    {%block content%}{%endblock%}
+     <div class="footer">
+    <div class="container-fluid">
+       
+            <div class="row">
+                <div class="col-lg-3  col-md-3 col-sm-3 col-12">
+                    <div class="footer_dv">
+                        <h4>Contact Info</h4>
+                        <address>
+                            <span class="icon-footer"><i class="fas fa-home"></i></span>2nd cross road, Electronic City Phase 2, Bengaluru<br>
+                            <span class="icon-footer"><i class="fas fa-phone-volume"></i></span> +91- 7762865386 <br>
+                            <span class="icon-footer"><i class="fas fa-envelope"></i></span>
+                            social.babakipathshaala@gmail.com
+                        </address>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-3 col-12">
+                    <div class="footer_dv">
+                        <h4>Quick Link</h4>
+                        <div class="line-dash"></div>
+                        <ul>
+                            <li><a class="a-font" href="{{url_for('home')}}">Home</a></li>
+                            <li><a class="a-font" href="/seminar">Courses</a></li>
+                            <li><a class="a-font" href="/genius-tuition">Educator</a></li>
+                            <li><a class="a-font" href="/about">About Us</a></li>
+                            <!-- <li><a class="a-font" href="/sitemap.xml">Educators</a></li> -->
+                            <li><a class="a-font" href="/contact">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-3 col-12">
+                    <div class="footer_dv">
+                        <h4>Facebook Feed</h4>
+                        <div class="line-dash"></div>
+                        <div class="latest-footer">
+
+                           <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fbabaonfb&tabs=timeline&width=350&height=250&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=376163789388709"
+                            width="100%" height="250" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                             allowTransparency="true" allow="encrypted-media"></iframe>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-12">
+                    <div class="footer_dv">
+                        <h4>Upcoming Events</h4>
+                        <div class="line-dash"></div>
+                        <div class="image-gallary">
+
+
+                            <!-- Page Content -->
+                            <div class="container page-top">
+
+                                <!-- <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb"> -->
+                                     <div class="row" > 
+                                        <a href="https://babakipathshaala.com/virtual-winter-camp" class="fancybox" rel="ligthbox">
+                                            <!-- <img src="/static/assets/images/winter camp.jfif" class="zoom img-fluid " alt=""> -->
+                                            <img src="/static/assets/images/winter camp.jfif" 
+                                            style="border:none;overflow:hidden;height:250px;width: 210px;" alt="">
+
+                                        </a>
+                                    </div>
+
+                                <!-- <div class="row">
+
+
+                                    <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
+                                        <a href="/static/assets/selfieimg/selfie1.jpeg" class="fancybox" rel="ligthbox">
+                                            <img src="/static/assets/selfieimg/selfie1.jpeg" class="zoom img-fluid " alt="">
+
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
+                                        <a href="/static/assets/selfieimg/selfie2.jpeg" class="fancybox" rel="ligthbox">
+                                            <img src="/static/assets/selfieimg/selfie2.jpeg" class="zoom img-fluid" alt="">
+                                        </a>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
+                                        <a href="/static/assets/selfieimg/selfie3.jpeg" class="fancybox" rel="ligthbox">
+                                            <img src="/static/assets/selfieimg/selfie3.jpeg" class="zoom img-fluid " alt="">
+                                        </a>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
+                                        <a href="/static/assets/selfieimg/selfie4.jpeg" class="fancybox" rel="ligthbox">
+                                            <img src="/static/assets/selfieimg/selfie4.jpeg" class="zoom img-fluid " alt="">
+                                        </a>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
+                                        <a href="/static/assets/selfieimg/selfie5.jpeg" class="fancybox" rel="ligthbox">
+                                            <img src="/static/assets/selfieimg/selfie5.jpeg" class="zoom img-fluid " alt="">
+                                        </a>
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
+                                        <a href="/static/assets/selfieimg/selfie6.jpeg" class="fancybox" rel="ligthbox">
+                                            <img src="/static/assets/selfieimg/selfie6.jpeg" class="zoom img-fluid " alt="">
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
+                                        <a href="/static/assets/selfieimg/selfie7.jpeg" class="fancybox" rel="ligthbox">
+                                            <img src="/static/assets/selfieimg/selfie7.jpeg" class="zoom img-fluid " alt="">
+                                        </a>
+                                    </div>
+									<div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
+                                        <a href="/static/assets/selfieimg/selfie8.jpeg" class="fancybox" rel="ligthbox">
+                                            <img src="/static/assets/selfieimg/selfie8.jpeg" class="zoom img-fluid " alt="">
+                                        </a>
+                                    </div>
+									<div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
+                                        <a href="/static/assets/selfieimg/selfie9.jpeg" class="fancybox" rel="ligthbox">
+                                            <img src="/static/assets/selfieimg/selfie9.jpeg" class="zoom img-fluid " alt="">
+                                        </a>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end of footer  -->
+
+    <!-- footer copy section -->
+     <footer class=" bg-dark">
+    <div class="container-fluid">
+       
+            <div id="copyright">
+
+                <div class="row">
+                    <div class="col-md-4 col-12">
+                        <p class="pull-left text-white">Copyright © 2020 Baba Ki Pathshaala | All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-8 col-12">
+                        <span class="span float-right">
+                            <ul>
+                                <li><a class="waves-effect waves-dark"
+                                    href="https://www.facebook.com/babaonfb" target="_blank"><i
+                                        class="fa fa-facebook"></i></a></li>
+                            <li><a class="waves-effect waves-dark" target="_blank" href="https://api.whatsapp.com/send?phone=8434240378&text=Hello Baba Ki Pathshaala Team,%0AI am looking for help regarding online course and classes. %0ACan you please guide me on how to join the online classes? %0AThanks"><i class="fa fa-whatsapp"></i></a></li>
+                            <li><a class="waves-effect waves-dark" target="_blank" href="https://www.instagram.com/baba_ki_pathshaala/"><i class="fa fa-instagram"></i></a></li>
+                            <li><a class="waves-effect waves-dark" target="_blank" href="https://twitter.com/Babakpathshaala"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="waves-effect waves-dark" target="_blank" href="https://www.youtube.com/channel/UCi6RTzLSEPGHCevK4ra8fFQ"><i class="fa fa-youtube-play"></i></a></li>
+                            <li><a class="waves-effect waves-dark" target="_blank" href="https://www.linkedin.com/in/babakipathshaala/"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a class="waves-effect waves-dark" target="_blank" href="https://mail.google.com/mail/?view=cm&fs=1&to=social.babakipathshaala@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+    </footer>
+    <!-- end of footer copy section -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script src="{{url_for('static',filename='assets/toast/jquery.toast.js')}}"></script>
+    
+    <script>
+        function show_toast_message(message)
+        {
+            var toast= $.toast({ 
+                        text : message, 
+                        showHideTransition : 'slide',  // It can be plain, fade or slide
+                        bgColor : '#000',           // Background color for toast
+                        textColor : '#fff',            // text color
+                        allowToastClose : false,       // Show the close button or not
+                        hideAfter : 3000,              // `false` to make it sticky or time in miliseconds to hide after
+                        stack : 5,                     // `fakse` to show one stack at a time count showing the number of toasts that can be shown at once
+                        textAlign : 'left',            // Alignment of text i.e. left, right, center
+                        position : 'bottom-right'       // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values to position the toast on page
+                    })
+            return toast;
+        }
+    </script>
+    {%block script%}
+    {%endblock%}
+
+
+       <script>
+       $(document).ready(function(){
+  	$(".fancybox").fancybox({
+        openEffect: "none",
+        closeEffect: "none"
+   	 });
+    
+   	 $(".zoom").hover(function(){
+		
+		$(this).addClass('transition');
+	}, function(){
+        
+		$(this).removeClass('transition');
+	});
+	});
+    
+       </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83730659-5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-83730659-5');
+</script>
+</body>
+</html>

@@ -1,0 +1,633 @@
+{%extends 'layouts/master-layout.html'%}
+
+{%block meta%}
+<title> Welcome to Baba Ki Pathshaala</title>
+<meta name="description" content="Baba Ki Pathshaala is one of the best educational website in India. We offer live tuition classes to achieve their goals by providing creative, innovative and evaluative programs.">
+<meta name="keywords" content="Online Tuition, Best Educational Website in India, Online Live Classes, Online Mental Health Support">
+<link rel="canonical" href="https://www.geniusedu.my/">
+{%endblock%}
+
+{%block content%}
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp'>
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/jellee-typeface" type="text/css"/>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css'>
+
+<style>
+.error{
+	color:#800000;
+}
+.img-thumbnail {
+    background-color: unset !important;
+    border:none !important;
+    padding:14px !important;
+    }
+    .pl-3.pt-2.pr-2.pb-2.w-75.full-width {
+    background: aliceblue;
+}
+</style>
+
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li> -->
+    <!-- <li data-target="#carouselExampleIndicators" data-slide-to="4"></li> -->
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <a href="https://www.geniusedu.my/genius-online-tuition">
+       <!-- <img class="img-fluid" src="/static/assets/images/genius-pakej.jpg"> -->
+       <img class="img-fluid" src="/static/assets/images/bkp_home.png" style="width: 100%;">
+       </a>
+    </div>
+   
+    <!-- <div class="carousel-item">
+       <img class="img-fluid" src="/static/assets/images/banner1.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="img-fluid" src="/static/assets/images/tuition.jpg">
+    </div>
+    <div class="carousel-item">
+      <img class="img-fluid" src="/static/assets/images/home.jpg">
+    
+    </div> -->
+     <!-- <div class="carousel-item">
+      
+       <img class="img-fluid" src="/static/assets/images/genius-pakej2.jpg">
+      
+    </div> -->
+  </div>
+  <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a> -->
+</div>
+
+<!-- <section class="pb-5">
+  <div class="red-bg pt-4 pb-4 text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h4 class="text-center m-0 mb-1 p-0"><b>FREE SPM SEMINAR ONLINE</b></h4>
+          <h6 class="text-center m-0"><b>Add Maths/Physics/Chemistry/Biology</b></h6>
+        </div>
+        <div class="col-md-6">
+          
+          <h6 class="text-center"><b>Date : 16th May 2020 Saturday</b></h6>
+          <h6 class="text-center"><b>Time : 9:00 AM - 6:00 PM</b></h6>
+          <h5 class="text-center"><a class="reg_btn" href="https://www.geniusedu.my/free-spm-seminar">Register Free</a></h5>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section> -->
+ 
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="h-tag">
+                        <h1 class="heading-change">The Best One Stop Education Website in <span class="" style="color:#00a5ff;">MALAYSIA.</span></h1>                    
+                    </div>
+                </div>
+            </div><!--row-->
+        </div><!--container-->
+        <div class="container mb-5">
+        	<div class="row">
+        		<div class="col-md-6">
+        					<div class="bg-fff d-flex mb-3">
+        						<div class="p-4 site-bg"><img width="50" src="/static/assets/icons/003-live-class.svg"></div>
+        						<div class="flex-fill bg-dark text-white p-4 text-center"><h4 class="mt-3">Live Online Classes</h4></div>
+        					</div>
+        					<div class="bg-fff d-flex mb-3">
+        						<div class="p-4 site-bg"><img width="50" src="/static/assets/icons/002-record.svg"></div>
+        						<div class="flex-fill bg-dark text-white p-4 text-center"><h4 class="mt-3">Recorded Previous Live Classes</h4></div>
+        					</div>
+        				</div>
+        				<div class="col-md-6">
+        					<div class="bg-fff d-flex mb-3">
+        						<div class="p-4 site-bg"><img width="50" src="/static/assets/icons/001-notes.svg"></div>
+        						<div class="flex-fill bg-dark text-white p-4 text-center"><h4 class="mt-3">Notes Prior To Classes</h4></div>
+        					</div>
+        					<div class="bg-fff d-flex mb-3">
+        						<div class="p-4 site-bg"><img width="50" src="/static/assets/icons/004-live-chat.svg"></div>
+        						<div class="flex-fill bg-dark text-white p-4 text-center"><h4 class="mt-3">Live Chat With Voice Notes</h4></div>
+        					</div>
+        				</div>
+        	</div>
+        </div>
+<!-- 
+        <div class="container">
+    <div class="adjust-padding">
+        <div class="row no-guiter">
+                <div class="col-sm-4 col-md-4 col-12 top-banner-bellow-remove-padding">
+                  <a href="/genius-online-tuition">
+                  <div class="top-banner-bellow-under-content1">
+                  <div class="under-div">
+                        <span class="border-top-under-banner-bellow"></span>
+                        <span class="border-top-under-banner-bellow2"></span>
+                        <h2>Genius</h2>
+                        <h2>Online</h2>
+                        <h2>Tuition</h2>
+                        <span class="border-bottom-under-banner-bellow"></span>
+                        <span class="border-bottom-under-banner-bellow2"></span>
+                    </div></div></a>
+                </div>
+                <div class="col-sm-4 col-md-4 col-12 top-banner-bellow-remove-padding">
+                   
+                    <a href="/genius-tuition-center">
+                         <div class="top-banner-bellow-under-content2">
+                        <div class="under-div">
+                        <span class="border-top-under-banner-bellow"></span>
+                        <span class="border-top-under-banner-bellow2"></span>
+                        <h2>Genius</h2>
+                        <h2>Tuition</h2>
+                        <h2>Center</h2>
+                        <span class="border-bottom-under-banner-bellow"></span>
+                        <span class="border-bottom-under-banner-bellow2"></span>
+                    </div>
+                    </div></a>
+                </div>
+                <div class="col-sm-4 col-md-4 col-12 top-banner-bellow-remove-padding">
+                    
+                    <a href="/genius-tuition">
+                        <div class="top-banner-bellow-under-content3">
+                            <div class="under-div">
+                        <span class="border-top-under-banner-bellow"></span>
+                        <span class="border-top-under-banner-bellow2"></span>
+                        <h2>Seminar</h2>
+                        <h2>Genius</h2>
+                        <h2 style="color: #dc354500 !important;">2</h2>
+                        <span class="border-bottom-under-banner-bellow"></span>
+                        <span class="border-bottom-under-banner-bellow2"></span>
+                        </div>
+                    </div></a>
+                </div>
+  </div>
+     </div>
+     </div> -->
+
+     <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <a href="/genius-online-tuition">
+                        <img class="img-fluid" src="/static/assets/images/sm-1.jpg">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <a href="/genius-tuition-center">
+                        <img class="img-fluid" src="/static/assets/images/sm-2.jpg">
+                     </a>
+                 </div>
+            </div>
+            <!-- <div class="col-md-4">
+                <div class="mb-3">
+                     <a href="/genius-tuition">
+                         <img class="img-fluid" src="/static/assets/images/sm-3.jpg">
+                    </a>
+                </div>
+            </div> -->
+        </div>
+     </div>
+     <!--container-->
+
+
+
+
+<!--      <div class="container">
+    <section class="counter">
+
+        <div id="projectFacts" class="sectionClass">
+            <div class="fullWidth eight columns">
+                <div class="projectFactsWrap ">
+                    <div class="item wow fadeInUpBig animated animated" data-number="300K" style="visibility: visible;">
+                       <i class="fa fa-users" aria-hidden="true"></i>
+                        <p id="number1" class="number">300K</p>
+
+                        <p>ATTENDEES</p>
+                    </div>
+                    <div class="item wow fadeInUpBig animated animated" data-number="10+" style="visibility: visible;">
+                        <i class="fa fa-smile-o"></i>
+                        <p id="number2" class="number">10+</p>
+
+                        <p>YEAR EXPERIENCE</p>
+                    </div>
+                    <div class="item wow fadeInUpBig animated animated" data-number="500+" style="visibility: visible;">
+                       <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                        <p id="number3" class="number">500+</p>
+
+                        <p>SCHOOL NATION WIDE</p>
+                    </div>
+                    <div class="item wow fadeInUpBig animated animated" data-number="300+" style="visibility: visible;">
+                        <i class="fa fa-camera"></i>
+                        <p id="number4" class="number">300+</p>
+
+                        <p>EVENTS YEARLY</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+    </section>
+</div> -->
+
+ {% if seminars%}
+<section class="four-story">
+    <div class="container">
+        <div class="form-promo">
+            <h3 class="heading-tag">Geniusedu seminars</h3>
+        </div>
+        <div class="row">
+           
+            {%for seminar in seminars%}
+                <div class="col-md-4">
+                    <div class="our-box shadow-sm mb-3">
+                        <img class="img-fluid mb-3" src="{{seminar.cover_banner}}">
+                        <h6>{{seminar.title|title}}</h6>
+                        <hr class="m-0">
+                        <p>{{seminar.description|safe}}</p>
+                        <div class="text-right">
+                            <a href="{{url_for('seminar_topics_list',cano_url=seminar.canonical_url)}}"  
+                            class="btn btn-dark btn-block mt-2 btn-sm"><b>REGISTER NOW</b></a>
+                        </div>
+                    </div>
+                </div>
+            {%endfor%}
+               
+        </div>
+    </div>
+</section>   
+
+ {%endif%} 
+
+
+
+{% if demo_live_classes %}
+<section class="four-story">
+  <div class="container">
+        <div class="form-promo">
+            <h3 class="heading-tag">Our Live FREE Classes</h3>
+        </div>
+        <div class="row">
+          {%for live_class in demo_live_classes%}
+            <div class="col-md-4">
+                
+                    <div class="our-box shadow-sm mb-3">
+                      {% if live_class.cover_banner is none %}
+                    	<img class="img-fluid mb-3" src="https://www.geniusedu.my/static/assets/images/sm-1.jpg">
+                      {%else%}
+                      <img class="img-fluid mb-3" src="{{live_class.cover_banner}}">
+                      {%endif%}
+                        <h6>{{live_class.class_title}}</h6>
+                        <hr class="m-0">
+                        <p class="m-0">Class : {{live_class.course_name|title}} &nbsp;&nbsp; | &nbsp;&nbsp;Subject : {{live_class.subject_name|title}}</p>
+                        <div class="text-center mb-3"><div class="time-badge">{{live_class.create_date }}</div></div>
+                        <small>{{live_class.description|title|safe}}</small>
+                        {% if not current_user.is_authenticated  %} 
+                        <div class="text-right">
+                            {% if session.get('is_login')==True and session.get('used_for')=='demo'%}
+                            <a href="{{url_for('demo_watch_live_class',cano_url=live_class.canonical_url)}}" class="btn btn-dark mt-2 btn-block btn-sm">Watch Free</a>
+                            {%else%}
+                            <a href="javascript:;" data-url="{{url_for('demo_watch_live_class',cano_url=live_class.canonical_url)}}"  class="btn btn-dark btn-block mt-2 btn-sm lg-watch-d">Watch Free</a>
+                            {%endif%}
+                        </div>
+                        {%endif%}
+                       
+                    </div>
+                 
+            </div>
+          {%endfor%}
+        </div>
+  </div>
+</section>
+{%endif%}
+
+<div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="why-border">
+                    <div class="h-tag">
+                        <h3 class="heading-change">Why Us</h3>                    
+                    </div>
+                    </div>
+                </div>
+            </div><!--row-->
+        </div><!--container-->   
+        <section class="bg-fff pt-4 pb-4">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <img class="img-fluid" src="static/assets/images/online-edu.png">
+              </div>
+              <div class="col-md-8">
+                <p>Geniusedu live online tuition is an immensely personalized tutoring platform. We have grown leaps and bounds to be the finest online tuition website in Malaysia with extremely talented teachers from the most reputed institutions. We provide study materials prior to the scheduled class ensuring effective learning.  We also provide class recordings ensuring that none of the topics remain unattended. Our website is the best education website in Malaysia that brings numerous opportunities and benefits to the students. Our online live free classes are designed to establish a healthy learning environment. Our motive is to encourage student interaction and make learning fun and enjoyable. We have added features like live chat and voice note for our students to make sure that none of their doubts are left unexplained. Students can frequently re-watch recorded lectures, repeat exercises, and take the time they need to master concepts, which could be especially advantageous for students who are struggling in a particular subject. In today’s competitive era, students need to be on the edge to score good in their exams. Classroom education isn’t sufficient for school students, they need to acquire a new study pattern and require thorough understanding of the different concepts. This can be attained only through tuition classes, which would help them to deliver their best performance.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+  <div class="container mt-4 mb-4">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="why_box">
+            <div class="why_img"><img class="img-fluid" src="/static/assets/images/icon1.png"></div>
+            <h4 class="why-heading text-center mt-3">Best Teachers</h4>
+              <p class="p-tag">Genius edu seminar is handled by professional teachers. Our teachers are each an expert in a particular subject. Well they are not only ordinary teachers, they are also examiners whom can point out student  &apos;s mistake perfectly and teach you easy techniques to collect your mistake. Since our lectures are also examiners they will teach you the easiest way to score for your examination.</p>
+          </div>
+        </div>
+
+         <div class="col-md-6">
+          <div class="why_box">
+            <div class="why_img"><img class="img-fluid" src="/static/assets/images/icon3.png"></div>
+            <h4 class="why-heading text-center mt-3">Teaching Techniques</h4>
+              <p class="p-tag">In our seminar, we only emphasize a simple and easy technique so that students will be able to capture the simple techniques easily and more faster compared to complicated techniques. Our teaching techniques are all simple and are based on "smart studying skills". Due to that we assure you that our seminar is worth the time you will spend. </p>
+          </div>
+        </div>
+
+         <div class="col-md-6">
+          <div class="why_box">
+            <div class="why_img"><img class="img-fluid" src="/static/assets/images/icon4.png"></div>
+            <h4 class="why-heading text-center mt-3">Notes & modules</h4>
+              <p class="p-tag">Here you need not to wrong about bringing along a notepad with you. It &apos;s because we will provide you notes and modules based on the lecture, these notes and modules ensures better understanding of students as they listen and see what they learn. Our notes and modules also comprises of simple and well elaborated facts that can boast the understanding of students. Our notes and modules are all up to date as we keep changing and improvising it according to the latest syllabus.</p>
+          </div>
+        </div>
+
+         <div class="col-md-6">
+          <div class="why_box">
+            <div class="why_img"><img class="img-fluid" src="/static/assets/images/icon2.png"></div>
+            <h4 class="why-heading text-center mt-3">Results</h4>
+              <p class="p-tag">As for results, comprising all the factors, we assure you the best results. Students that attended our seminar are able to perform well in their examinations as they noticed a positive change compared to their previous results- And we are proud to share that most of our students are Top A Scores.</p>
+          </div>
+        </div>
+
+      </div>
+  </div>
+
+
+
+
+<section class="four-story">
+        
+        <div class="container">
+             <div class="form-promo">
+                <h3 class="heading-tag">Our Success Story</h3>
+            </div>
+   <div class="row userMain">
+       <div class="col-lg-3 col-md-6 col-12">
+           <div class="userBlock userBlock_one">
+               <div class="backgrounImg" style="background:#ff4f57;">
+               </div>
+               <div class="userImg">
+                   <img src="/static/assets/images/sucess1.png">
+               </div>
+               <div class="userDescription">
+                   <h5>Mohd Harith</h5>
+                   <p class="userTitle">Smk SanzacKota Kinabalu</p>
+                   <p>The ideas and techniques taught in the seminar really helped me a lot. I got to know a lot more about answering techniques that really helped me to answer certain complicated questions. I was also able to solve a number of questions<span id="text4"> using the techniques that did not require memory.</span></p><button id="toggle4">Read More</button>
+               </div>
+              
+           </div>
+       </div>
+       <div class="col-lg-3 col-md-6 col-12">
+           <div class="userBlock userBlock_two">
+               <div class="backgrounImg" style="background:#5fcbbb;">
+               </div>
+               <div class="userImg">
+                   <img src="/static/assets/images/sucess2.png">
+               </div>
+               <div class="userDescription">
+                   <h5>Wang Wei</h5>
+                   <p class="userTitle">Smk ConventBukit Mertajam</p>
+                   <p>The seminar was very interactive as the lecturers also gave us a chance to answer questions there and then. I think that really helped me to figure out my mistake and also the common mistake we make unknowingly. I was able<span id="text3"> to recognizemy mistakes and when I learn from mistakes , that’s when I stopped repeating it.</span></p><button id="toggle3">Read More</button>
+               </div>
+             
+           </div>
+       </div>
+       <div class="col-lg-3 col-md-6 col-12">
+           <div class="userBlock userBlock_three">
+               <div class="backgrounImg" style="background:#f26522;">
+               </div>
+               <div class="userImg">
+                   <img src="/static/assets/images/sucess3.png">
+               </div>
+               <div class="userDescription">
+                   <h5>Nurul Hana</h5>
+                   <p class="userTitle">Smk Taman UniversitiJohor Bahru</p>
+                   <p>The notes really helped me a lot. When my examinations were just around the corner I used to fully depend on the notes and modules provided in the seminar for a quick revision. The simple and well elaborated notes gave me a better<span id="text2">understanding. Since I am a person who is weak in memory work, these notes really helped me to understand well without the need of memorizing it.</span></p><button id="toggle2">Read More</button>
+                  
+                    
+               </div>
+              
+           </div>
+       </div>
+       <div class="col-lg-3 col-md-6 col-12">
+           <div class="userBlock userBlock_four">
+               <div class="backgrounImg" style="background:#4596ec;">
+               </div>
+               <div class="userImg">
+                   <img src="/static/assets/images/sucess4.png">
+               </div>
+               <div class="userDescription">
+                   <h5>Rakshita</h5>
+                   <p class="userTitle">Smk ConventKajang</p>
+                   <p>As for me I would really say this seminar really enhanced my understanding and also love towards education. The lectures were really awesome as they were straight to the point and important facts. I would say that they taught<span id="text"> me the right and best way to answer questions without clacking my head. The techniques emphasized in the seminar had opened my mind on ways to learn smart. The smart learning techniques were the key factors for me to answer question without fear in examination.</span> </p><button id="toggle1">Read More</button>
+               </div>
+             
+           </div>
+       </div>
+     
+      
+    </div>
+</div>
+            
+            
+               <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                
+                         <button type="button" class="btn btn-primary view-all-videos">View all Story</button>                  
+                   
+                </div>
+            </div><!--row-->
+        </div><!--container-->
+        </section>
+
+
+ 
+<!-- The Modal -->
+<div class="modal" id="guestLoginModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Fill your info to watch free class</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+           <form action="{{url_for('demo_login')}}" method="post" id="demo-class-reg">
+               <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+               <input type="hidden" name="watchurl" id="wturl" value="">
+               <div class="form-group">
+                   <label for="">Name</label>
+                   <input type="text" name="first_name" id="first_name" maxlength="40" class="form-control">
+                </div>
+               <div class="form-group">
+                   <label for="">Email</label>
+                   <input type="text" name="email" id="email" maxlength="40" class="form-control">
+                </div>
+               <div class="form-group">
+                   <label for="">Hand Phone</label>
+                   <input type="text" name="mobile" id="mobile" class="form-control" maxlength="11" onkeypress="return isNumber(event);">
+                </div>
+                <div class="form-group text-right">
+                    <button type="submit" id="submut-btn" class="btn btn-dark">Proceed for watch</button>
+                </div>
+           </form>
+        </div>
+        
+      </div>
+    </div>
+</div>
+<!-- End Modal -->
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".lg-watch-d").on('click',function(){
+      var watchUrl=$(this).data('url');
+      $("#wturl").val(watchUrl);
+      $("#guestLoginModal").modal();
+    });
+  })
+</script>
+
+<script>
+  $(document).ready(function() {
+
+  	var form = $( "#demo-class-reg" ); 
+        
+        $( "#demo-class-reg" ).submit(function() {
+              if(form.valid()==1){
+                 $("#submut-btn").attr('type','button');
+                 $("#submut-btn").text('Please wait..');
+                 return true;
+              }else{
+                  return false;
+            }
+        });
+
+
+    $("#demo-class-reg").validate({
+      rules: {
+        first_name: {
+          required: true,
+          minlength: 2,
+          maxlength: 40
+        },
+        course: {
+          required: true
+        },
+        email: {
+          required: true,
+          email:true,
+          minlength: 5,
+          maxlength: 40
+        },
+        mobile: {
+          required: true,
+          minlength: 10,
+          maxlength: 11,
+          digits: true
+        },
+      },
+    });
+  });
+
+
+  function isNumber(evt) {
+            evt = (evt) ? evt : window.event;
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+</script>
+
+
+
+<script>$(document).ready(function() {
+  $("#toggle1").click(function() {
+    var elem = $("#toggle1").text();
+    if (elem == "Read More") {
+      //Stuff to do when btn is in the read more state
+      $("#toggle1").text("Read Less");
+      $("#text").slideDown();
+     
+    } else {
+      //Stuff to do when btn is in the read less state
+      $("#toggle1").text("Read More");
+      $("#text").slideUp();
+     
+    }
+  });
+  
+    $("#toggle2").click(function() {
+    var elem = $("#toggle2").text();
+    if (elem == "Read More") {
+      //Stuff to do when btn is in the read more state
+      $("#toggle2").text("Read Less");
+      $("#text2").slideDown();
+     
+    } else {
+      //Stuff to do when btn is in the read less state
+      $("#toggle2").text("Read More");
+      $("#text2").slideUp();
+     
+    }
+  });
+  
+   $("#toggle3").click(function() {
+    var elem = $("#toggle3").text();
+    if (elem == "Read More") {
+      //Stuff to do when btn is in the read more state
+      $("#toggle3").text("Read Less");
+      $("#text3").slideDown();
+     
+    } else {
+      //Stuff to do when btn is in the read less state
+      $("#toggle3").text("Read More");
+      $("#text3").slideUp();
+     
+    }
+  });
+});
+
+ $("#toggle4").click(function() {
+    var elem = $("#toggle4").text();
+    if (elem == "Read More") {
+      //Stuff to do when btn is in the read more state
+      $("#toggle4").text("Read Less");
+      $("#text4").slideDown();
+     
+    } else {
+      //Stuff to do when btn is in the read less state
+      $("#toggle4").text("Read More");
+      $("#text4").slideUp();
+     
+    }
+  });
+</script>
+{%endblock%}
