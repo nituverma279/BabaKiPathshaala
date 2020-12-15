@@ -105,13 +105,13 @@ ul.social-network li i {
 .bg-white {
     border-top: 1px solid #18191b !important;
     padding: 5px 0px;
-    background: #212529 !important;
+    background: #193756 !important;
 }
 .navbar-brand img {
     width: 120px;
     filter: brightness(1.15);
-    width: 200px;
-    height: 50px;
+    width: 120px;
+    height: 100px;
 }
 .nav-item {
     padding: 2px !important;
@@ -470,7 +470,7 @@ address {
  
 }
 .image-gallary img {
-    width: 80px;
+    /*width: 210px !important; */
     float: left;
     padding: 0px;
     margin: 0px;

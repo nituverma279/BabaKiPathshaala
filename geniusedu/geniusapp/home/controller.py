@@ -51,6 +51,7 @@ def home():
     except Exception as e:
         app.logger.error(str(e))
         return abort(500)
+        #  return render_template('home/home.html')
 
 @app.route('/about')
 def about_us():

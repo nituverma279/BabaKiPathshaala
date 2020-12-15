@@ -1,344 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <!-- <title>Genius EDU</title> -->
-    <meta charset="utf-8">
-    {%block meta%}{%endblock%}
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+  <title>Welcome to Baba ki Pathshaala</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{url_for('static',filename='assets/file/css/bootstrap.min.css')}}">
-    <script src="{{url_for('static',filename='assets/file/js/jquery.min.js')}}"></script>
-    <script src="{{url_for('static',filename='assets/file/js/popper.min.js')}}"></script>
-    <script src="{{url_for('static',filename='assets/file/js/bootstrap.min.js')}}"></script>
-    <script src="https://kit.fontawesome.com/890cbd889d.js"></script>
-    <link rel="stylesheet" href="{{url_for('static',filename='assets/file/css/jquery.fancybox.min.css')}}" media="screen">
-    <script src="{{url_for('static',filename='assets/file/js/jquery.fancybox.min.js')}}"></script>
-    <link rel="stylesheet" href="{{url_for('static',filename='assets/file/css/stylepage.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='assets/file/css/style.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='assets/style.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-    <link rel="stylesheet" href="{{url_for('static',filename='assets/toast/jquery.toast.css')}}">
-    <script src="{{url_for('static',filename='assets/file/js/jquery.validate.min.js')}}"></script>
-    <link rel="stylesheet" href="{{url_for('static',filename='assets/file/css/dropzone.css')}}"/>
-    <script src="{{url_for('static',filename='assets/file/js/dropzone.js')}}"></script>
-    <link rel="icon" href="/static/assets/images/favicon2.png" type="image/x-icon"/>
-    <link rel="shortcut icon" href="/static/assets/images/favicon2.png" type="image/x-icon"/>
-    
+  <!-- Favicons -->
+  <link href="static/assets/img/favicon.png" rel="icon">
+  <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Facebook Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window,document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-     fbq('init', '939632502909878'); 
-    fbq('track', 'PageView');
-    </script>
-    <noscript>
-     <img height="1" width="1" 
-    src="https://www.facebook.com/tr?id=939632502909878&ev=PageView
-    &noscript=1"/>
-    </noscript>
-    <!-- End Facebook Pixel Code -->
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
+  <!-- Vendor CSS Files -->
+  <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Bethany - v2.2.0
+  * Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
+
 <body>
 
-    <!-- header -->
-    <div class="fixed-topxx">
-        <header class="topbar">
-        <div class="container-fluid">
-            
-
-                <div class="row">
-                    <!-- social icon-->
-                    <div class="col-sm-12">
-                        <div class="top-header-address"></div>
-                        <ul class="social-network pull-right">
-                            <li><a class="waves-effect waves-dark"
-                                    href="https://www.facebook.com/geniusedu.my" target="_blank"><i
-                                        class="fa fa-facebook"></i></a></li>
-                            <li><a class="waves-effect waves-dark" target="_blank" href="https://api.whatsapp.com/send?phone=60127020040&text=Hello Geniusedu Team,%0AI am looking for help regarding online course and classes. %0ACan you please guide me on how to join the online classes? %0AThanks"><i class="fa fa-whatsapp"></i></a></li>
-                            <li><a class="waves-effect waves-dark" target="_blank" href="https://www.instagram.com/geniusedu.my"><i class="fa fa-instagram"></i></a></li>
-
-                        </ul>
-                    </div>
-                </div>
-                </div>
-
-            </header>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container">
+      <div class="header-container d-flex align-items-center">
+        <div class="logo mr-auto">
+          <h1 class="text-light"><a href="home/home.html"><span>Baba Ki Pathshaala</span></a></h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
         </div>
 
+        <nav class="nav-menu d-none d-lg-block">
+          <ul>
+            <li class="active"><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#liveClasses">Live Classes</a></li>
+            <li><a href="#educator">Educators</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <!-- <li class="drop-down"><a href="">Drop Down</a>
+              <ul>
+                <li><a href="#">Drop Down 1</a></li>
+                <li class="drop-down"><a href="#">Drop Down 2</a>
+                  <ul>
+                    <li><a href="#">Deep Drop Down 1</a></li>
+                    <li><a href="#">Deep Drop Down 2</a></li>
+                    <li><a href="#">Deep Drop Down 3</a></li>
+                    <li><a href="#">Deep Drop Down 4</a></li>
+                    <li><a href="#">Deep Drop Down 5</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Drop Down 3</a></li>
+                <li><a href="#">Drop Down 4</a></li>
+                <li><a href="#">Drop Down 5</a></li>
+              </ul>
+            </li> -->
+            <li><a href="#contact">Contact</a></li>
 
-        
-            <!-- Navigation -->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-white static-top">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="{{url_for('home')}}">
-                        <img src="/static/assets/images/logo.png" alt="logo">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse change-color" id="navbarResponsive">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{url_for('home')}}">Home
-                                    <span class="sr-only">(current)</span>
-                                </a>
-                            </li>
-                            
-                           <!--  <li class="nav-item">
-                                <a class="nav-link" href="/genius-tuition">Genius Online Tuition</a>
-                            </li> -->
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="/genius-online-tuition">Genius Online Tuition</a>
-                            </li>
-                           
-                           
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="/about">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/contact">Contact Us</a>
-                            </li>
-                            {%if current_user.is_authenticated %}
-                            <li class="dropdown nav-item notes-menu-bg">   
-                                <a class="dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Profile
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a class="dropdown-item" href="{{url_for('dashboard')}}">Dashboard</a> 
-                                    <a  class="dropdown-item" href="{{url_for('logout')}}">  Logout</a> 
-                                </div>
-                            </li>
-                            {%else%}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{url_for('login')}}">Login</a>  
-                            </li>
-                             <li class="nav-item">
-                                <a class="nav-link" href="{{url_for('register')}}">Register</a>  
-                            </li>
-                            {%endif%}
-
-                            {% if session.get('is_login')==True and session.get('used_for')=='demo'%}
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="{{url_for('demo_logout')}}">Logout</a>
-                            </li> -->
-                            {%endif%}
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-           
+            <li class="get-started"><a href="#about">Sign In</a></li>
+          </ul>
+        </nav><!-- .nav-menu -->
+      </div><!-- End Header Container -->
     </div>
-    <!-- end of header -->
-    {%block content%}{%endblock%}
-     <div class="footer">
-    <div class="container-fluid">
-       
-            <div class="row">
-                <div class="col-lg-3  col-md-3 col-sm-3 col-12">
-                    <div class="footer_dv">
-                        <h4>Contact Info</h4>
-                        <address>
-                            <span class="icon-footer"><i class="fas fa-home"></i></span>A-3-1, MKH AVENUE, JALAN AVENUE
-                            1A 43000 Kajang, Malaysia<br>
-                            <span class="icon-footer"><i class="fas fa-phone-volume"></i></span> +60 12-516 0040 <br>
-                            <span class="icon-footer"><i class="fas fa-envelope"></i></span>geniusedu.my@gmail.com
-                        </address>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-3 col-12">
-                    <div class="footer_dv">
-                        <h4>Quick Link</h4>
-                        <div class="line-dash"></div>
-                        <ul>
-                            <li><a class="a-font" href="{{url_for('home')}}">Home</a></li>
-                            <li><a class="a-font" href="/seminar">Seminar</a></li>
-                            <li><a class="a-font" href="/genius-tuition">Genius Tuition</a></li>
-                            <li><a class="a-font" href="/about">About Us</a></li>
-                            <li><a class="a-font" href="/contact">Contact Us</a></li>
-                            <li><a class="a-font" href="/sitemap.xml">Sitemap</a></li>
+  </header><!-- End Header -->
 
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-3 col-12">
-                    <div class="footer_dv">
-                        <h4>Facebook Feed</h4>
-                        <div class="line-dash"></div>
-                        <div class="latest-footer">
+  {%block content%}{%endblock%}
 
-                           <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fgeniusedu.my&tabs=timeline&width=350&height=250&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=376163789388709" width="100%" height="250" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+  <!-- ======= Footer ======= -->
 
-                        </div>
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
+  <!-- Vendor JS Files -->
+  <script src="static/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="static/assets/vendor/php-email-form/validate.js"></script>
+  <script src="static/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="static/assets/vendor/counterup/counterup.min.js"></script>
+  <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="static/assets/vendor/venobox/venobox.min.js"></script>
+  <script src="static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="static/assets/vendor/aos/aos.js"></script>
 
-                    </div>
-                </div>
+  <!-- Template Main JS File -->
+  <script src="static/assets/js/main.js"></script>
 
-                <div class="col-lg-3 col-md-3 col-sm-3 col-12">
-                    <div class="footer_dv">
-                        <h4>Selfie corner</h4>
-                        <div class="line-dash"></div>
-                        <div class="image-gallary">
-
-
-                            <!-- Page Content -->
-                            <div class="container page-top">
-
-
-
-                                <div class="row">
-
-
-                                    <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
-                                        <a href="/static/assets/selfieimg/selfie1.jpeg" class="fancybox" rel="ligthbox">
-                                            <img src="/static/assets/selfieimg/selfie1.jpeg" class="zoom img-fluid " alt="">
-
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
-                                        <a href="/static/assets/selfieimg/selfie2.jpeg" class="fancybox" rel="ligthbox">
-                                            <img src="/static/assets/selfieimg/selfie2.jpeg" class="zoom img-fluid" alt="">
-                                        </a>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
-                                        <a href="/static/assets/selfieimg/selfie3.jpeg" class="fancybox" rel="ligthbox">
-                                            <img src="/static/assets/selfieimg/selfie3.jpeg" class="zoom img-fluid " alt="">
-                                        </a>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
-                                        <a href="/static/assets/selfieimg/selfie4.jpeg" class="fancybox" rel="ligthbox">
-                                            <img src="/static/assets/selfieimg/selfie4.jpeg" class="zoom img-fluid " alt="">
-                                        </a>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
-                                        <a href="/static/assets/selfieimg/selfie5.jpeg" class="fancybox" rel="ligthbox">
-                                            <img src="/static/assets/selfieimg/selfie5.jpeg" class="zoom img-fluid " alt="">
-                                        </a>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
-                                        <a href="/static/assets/selfieimg/selfie6.jpeg" class="fancybox" rel="ligthbox">
-                                            <img src="/static/assets/selfieimg/selfie6.jpeg" class="zoom img-fluid " alt="">
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
-                                        <a href="/static/assets/selfieimg/selfie7.jpeg" class="fancybox" rel="ligthbox">
-                                            <img src="/static/assets/selfieimg/selfie7.jpeg" class="zoom img-fluid " alt="">
-                                        </a>
-                                    </div>
-									<div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
-                                        <a href="/static/assets/selfieimg/selfie8.jpeg" class="fancybox" rel="ligthbox">
-                                            <img src="/static/assets/selfieimg/selfie8.jpeg" class="zoom img-fluid " alt="">
-                                        </a>
-                                    </div>
-									<div class="col-lg-4 col-md-4 col-xs-6 col-4 thumb">
-                                        <a href="/static/assets/selfieimg/selfie9.jpeg" class="fancybox" rel="ligthbox">
-                                            <img src="/static/assets/selfieimg/selfie9.jpeg" class="zoom img-fluid " alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- end of footer  -->
-
-    <!-- footer copy section -->
-     <footer class=" bg-dark">
-    <div class="container-fluid">
-       
-            <div id="copyright">
-
-                <div class="row">
-                    <div class="col-md-4 col-12">
-                        <p class="pull-left text-white">© 2020 GeniusEducation | Developed by <a class="m-0 site-color" href="https://webu.my" target="_blank">Webu</a></p>
-                    </div>
-                    <div class="col-md-8 col-12">
-                        <span class="span float-right">
-                            <ul>
-                                <li><a href="https://www.facebook.com/geniusedu.my" target="_blank"><i
-                                            class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="https://api.whatsapp.com/send?phone=60127020040&text=Hello Geniusedu Team,%0AI am looking for help regarding online course and classes. %0ACan you please guide me on how to join the online classes? %0AThanks" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a></li>
-                                <li><a href="https://www.instagram.com/geniusedu.my" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
-                                <!-- <li><a href="#" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>-->
-                            </ul>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        
-    </div>
-    </footer>
-    <!-- end of footer copy section -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-    <script src="{{url_for('static',filename='assets/toast/jquery.toast.js')}}"></script>
-    
-    <script>
-        function show_toast_message(message)
-        {
-            var toast= $.toast({ 
-                        text : message, 
-                        showHideTransition : 'slide',  // It can be plain, fade or slide
-                        bgColor : '#000',           // Background color for toast
-                        textColor : '#fff',            // text color
-                        allowToastClose : false,       // Show the close button or not
-                        hideAfter : 3000,              // `false` to make it sticky or time in miliseconds to hide after
-                        stack : 5,                     // `fakse` to show one stack at a time count showing the number of toasts that can be shown at once
-                        textAlign : 'left',            // Alignment of text i.e. left, right, center
-                        position : 'bottom-right'       // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values to position the toast on page
-                    })
-            return toast;
-        }
-    </script>
-    {%block script%}
-    {%endblock%}
-
-
-       <script>
-       $(document).ready(function(){
-  	$(".fancybox").fancybox({
-        openEffect: "none",
-        closeEffect: "none"
-   	 });
-    
-   	 $(".zoom").hover(function(){
-		
-		$(this).addClass('transition');
-	}, function(){
-        
-		$(this).removeClass('transition');
-	});
-	});
-    
-       </script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-83730659-5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-83730659-5');
-</script>
 </body>
+
 </html>
