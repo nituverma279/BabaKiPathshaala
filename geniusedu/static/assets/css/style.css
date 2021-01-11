@@ -174,7 +174,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 36px;
     height: 36px;
     transition: 0.3s; */
-} */
 
 .nav-menu .get-started a:hover { 
   background: #00805d;
@@ -394,6 +393,14 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
+#userDashboard{
+  width: 100%;
+  height: 10vh;
+  background-color: #f6f6f7 center center;
+  background-size: cover;
+  position: relative;
+}
+
 #hero .container {
   padding-top: 80px;
 }
@@ -450,11 +457,17 @@ h1, h2, h3, h4, h5, h6 {
   #hero {
     background-attachment: fixed;
   }
+  #userDashboard{
+    background-attachment: fixed;
+  }
 }
 
 @media (max-width: 768px) {
   #hero {
     height: 100vh;
+  }
+  #userDashboard{
+    height: 20vh;
   }
   #hero .container {
     padding-top: 60px;
@@ -1503,7 +1516,7 @@ section {
    transform: translate(-50%, -50%);
    top:50%;
    left:50%;
-}+
+}
 
 .search-wrapper .input-holder {    
    height: 70px;
@@ -1687,3 +1700,12 @@ section {
 #header .form-group .form-control:focus {
   box-shadow: none;
 }
+
+.col-lg-3 .testimonial-item button {
+  background-color: blue;
+  border-radius: 10px;
+  color: white;
+  font-family: serif;
+  border-color: ghostwhite
+}
+

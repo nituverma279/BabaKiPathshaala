@@ -45,9 +45,9 @@ def homemaintance():
 @app.route('/')
 def home():
     try:
-        demo_live_classes = Online_demo_classes.query.filter_by(is_active=True,is_complete=False).all()
-        seminars = Seminars.query.filter_by(is_active=True).order_by(Seminars.id.desc()).all()
-        return render_template('home/home.html',demo_live_classes=demo_live_classes,seminars=seminars)
+        # demo_live_classes = Online_demo_classes.query.filter_by(is_active=True,is_complete=False).all()
+        # seminars = Seminars.query.filter_by(is_active=True).order_by(Seminars.id.desc()).all()
+         return render_template('home/home.html')
     except Exception as e:
         app.logger.error(str(e))
         return abort(500)
@@ -120,8 +120,8 @@ def contact():
 def packages():
     try:
         
-        course_package = Pac_course.query.filter_by(is_active=True).order_by(Pac_course.id.desc()).all()
-        resp = make_response(render_template('home/packages.html',course_package=course_package))
+        # course_package = Pac_course.query.filter_by(is_active=True).order_by(Pac_course.id.desc()).all()
+        resp = make_response(render_template('dashboard/usersBoard/dashboard.html'))
         return resp
     except Exception as e:
         app.logger.error(str(e))
