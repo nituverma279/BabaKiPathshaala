@@ -15,7 +15,7 @@ class RegistrationForm(FlaskForm):
     email = TextField('Email', [InputRequired('Email is required'),Email()])
     mobile = IntegerField('Mobile', [InputRequired('Please enter your hand mobile')]) #FormField(TelephoneForm)
     parent_mobile = StringField('Parent Mobile')
-    password = PasswordField('Password', [InputRequired('Password is required.'), EqualTo('confirm', message='Passwords must match')])
+    password = PasswordField('Password')
     confirm = PasswordField('Confirm Password', [InputRequired('Confirm password is required.')])
     school_name = TextField('School Name',[length(max=100)])
     submit = SubmitField('Register')

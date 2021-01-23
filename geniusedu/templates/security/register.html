@@ -23,15 +23,15 @@
                     <div class="card-body">
                         <h4 class="text-center">REGISTER</h4>
                         <hr>
-                        <!-- {% with messages = get_flashed_messages(with_categories=true) %} -->
-                        <!-- {% if messages %}
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                         {% if messages %}
                         {% for category, message in messages %}
                         <div class="alert alert-{{category}}" role="alert">
                             {{ message|safe }}
                         </div>
                         {% endfor %}
                         {% endif %}
-                        {% endwith %} -->
+                        {% endwith %} 
                         <form method="post" class="{% if form.errors%} was-validated {%endif%} user-log-form"
                             novalidate>
                             {{ form.hidden_tag() }}
@@ -53,7 +53,7 @@
                                     {% endfor %}
                                 </div> -->
 
-
+                                <div class="form-group col-md-2"></div>
                                 <div class="form-group col-md-8">
                                     {{ form.first_name.label(class="top-label") }}
                                     {{ form.first_name(maxlength=32,class="form-control") }}
@@ -61,14 +61,17 @@
                                     <span style="color: red;">{{ error }}</span>
                                     {% endfor %}
                                 </div>
-
-                                <!-- <div class="form-group col-md-6">
+                                <div class="form-group col-md-2"></div>
+                                <div class="form-group col-md-2"></div>
+                                <div class="form-group col-md-8">
                                     {{ form.last_name.label(class="top-label") }}
                                     {{ form.last_name(maxlength=32,class="form-control") }}
                                     {% for error in form.last_name.errors %}
                                     <span style="color: red;">{{ error }}</span>
                                     {% endfor %}
-                                </div> -->
+                                </div>
+                                <div class="form-group col-md-2"></div>
+                                <div class="form-group col-md-2"></div>
                                 <div class="form-group col-md-8">
                                     {{ form.email.label(class="top-label") }}
                                     {{ form.email(maxlength=32,class="form-control") }}
@@ -76,6 +79,8 @@
                                     <span style="color: red;">{{ error }}</span>
                                     {% endfor %}
                                 </div>
+                                <div class="form-group col-md-2"></div>
+                                <div class="form-group col-md-2"></div>
 
                                 <!-- <div class="form-group col-md-6 ">
                                     {{ form.gender.label(class="top-label") }}
@@ -99,6 +104,8 @@
                                     <span style="color: red;">{{ error }}</span>
                                     {% endfor %}
                                 </div>
+                                <div class="form-group col-md-2"></div>
+                                <div class="form-group col-md-2"></div>
 
                                 <!-- <div class="form-group col-md-6">
                                     {{ form.parent_mobile.label(class="top-label") }}
@@ -107,16 +114,38 @@
                                     <span style="color: red;">{{ error }}</span>
                                     {% endfor %}
                                 </div> -->
+                                <style>
 
-                                <!-- <div class="form-group col-md-6">
+                                    #password{
+                                        position: relative;
+                                    }
+                                   .show_pass{
+                                    position: absolute;
+                                    top: 42px;
+                                    right: 23px;
+                                   } 
+                                   .hide_pass{
+                                    position: absolute;
+                                    top: 42px;
+                                    right: 23px; 
+                                   }
+                                </style>
+
+                                <div class="form-group col-md-8">
                                     {{ form.password.label(class="top-label") }}
                                     {{ form.password(class="form-control") }}
                                     {% for error in form.password.errors %}
                                     <span style="color: red;">{{ error }}</span>
+                                    
                                     {% endfor %}
-                                </div> -->
-
-                                <!-- <div class="form-group col-md-6">
+                                   
+                                    <span class="replace_eye"><i class="icofont-eye show_pass"></i><i class="icofont-eye-blocked hide_pass"></i></span>
+                                    
+                                    
+                                    
+                                </div> 
+                                <div class="form-group col-md-2"></div>
+                                 <!-- <div class="form-group col-md-6">
                                     {{ form.confirm.label(class="top-label") }}
                                     {{ form.confirm(class="form-control") }}
                                     {% for error in form.confirm.errors %}
@@ -136,9 +165,11 @@
 
                                 
                             </div>
-                            <div class="form-group">
+                            
+                            <div class="form-group col-md-8 m-auto">
                                 {{ form.submit(class="btn btn-success our-btn btn-block btn-lg") }}
                             </div>
+                            
                         </form>
                     </div>
                 </div>
@@ -151,7 +182,7 @@
 
 {%block script%}
 <script>
-    $(document).ready(function(){
+   /* $(document).ready(function(){
         var _which=$('[name="user_type"]:checked').val();
         register_user(_which);
 
@@ -159,9 +190,9 @@
             var _which=$('[name="user_type"]:checked').val();
             register_user(_which);
         });
-    });
+    });*/
 
-    function register_user(user_type){
+ /*   function register_user(user_type){
 
             if(user_type=='prof'){
                 $("input[name='zipcode']").parent().hide();
@@ -177,7 +208,8 @@
                 $("[for='parent_mobile']").text('Parent Mobile');
             }
 
-    }
+    }*/
 
 </script>
+
 {%endblock%}

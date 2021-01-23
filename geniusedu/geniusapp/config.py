@@ -19,7 +19,7 @@ class Config(object):
 
 class ProductionConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:@localhost/geniuseduonline?charset=utf8mb4'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:@localhost/babaki_path?charset=utf8mb4'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_POOL_SIZE=20
     SQLALCHEMY_POOL_TIMEOUT=600
@@ -32,7 +32,7 @@ class StagingConfig(Config):
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:Onmobile@localhost/geniuseduonline?charset=utf8mb4'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:@localhost/babaki_path?charset=utf8mb4'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
