@@ -8,6 +8,11 @@
 {%endblock%}
 
 {%block content%}
+<!-- <style>
+  .col-lg-3 .testimonial-item button{
+    background-color: #009970;
+  }
+</style> -->
 <section id="hero" class="d-flex align-items-center">
     <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
       <h1>ENHANCING INTELLIGENCE OF HUMANKIND</h1>
@@ -42,7 +47,7 @@
                   <img src="static/assets/img/clients/extra_cir.webp" alt=""  style="height: 200px;
                   width: 200px;">
                   <p style="padding-top: 1em;">Are you a beginner, expert, or somewhere in between? Not to worry! We offer a variety of high-quality courses designed to prepare you for your next step.
-                     We offer placement tests to help match you to your skill level.</p>
+                    </p>
                      <div class="know_more">
                       <button>Know More</button>
                     </div>
@@ -72,21 +77,27 @@
                     </div>
                 </div>
               </div>
-              <div class="col-lg-3"></div>
-                <div class="testimonial-item">
-                  <img src="static/assets/img/clients/Academics.webp" alt=""  style="height: 200px;
-                  width: 200px;">
-                  <p style="padding-top: 1em;">Missing your home tuitions? Learn via Personal Live classes here. Available for all classes & all subjects.
-                    We provide quality Online Education</p>
-                </div>
-                </div>
-              </div>
-              </div>
             <!-- </div> -->
           </div>
-  
+          <div class= "row">
+            <div class=“button-container” style="display:inline-block;
+            position:relative;">
+             <img src="static/assets/img/clients/mental_health.JPEG"  alt=""  style="height: 70vh;
+             width: 100%;"></img>
+             <a href=“add link here” alt=“Buy Tickets” style="position: absolute;
+             bottom:4em;
+             right:4em;
+             background-color:#009970;
+             border-radius:1.5em;
+             color:white;
+             text-transform:uppercase;
+             padding:1em 1.5em;">Consult Psychologists</a>
+            </div>
+        </div>
         </div>
       </section>
+
+
       <section id="about" class="about">
         <div class="container">
           <h2 style="font-weight: bold; color: #009970;"><center>About Us</center></h2>
@@ -158,30 +169,31 @@
                 <div class="row">
                   <div class="col-xl-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                     <div class="icon-box mt-4 mt-xl-0">
-                      <i class="bx bx-receipt"></i>
-                      <h4>Corporis voluptates sit</h4>
-                      <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                      <i class="bx bx-laptop"></i>
+                      <h4>One Stop center for learning</h4>
+                      <p>Single platform for all your learning needs like academics, extra curricular,
+                         Professional needs, Competitive exam, mental health.</p>
                     </div>
                   </div>
                   <div class="col-xl-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                     <div class="icon-box mt-4 mt-xl-0">
                       <i class="bx bx-receipt"></i>
-                      <h4>Corporis voluptates sit</h4>
-                      <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                      <h4>Experience the personalization in education</h4>
+                      <p>Perfect teacher to student ratio of 1:7</p>
                     </div>
                   </div>
                   <div class="col-xl-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
                     <div class="icon-box mt-4 mt-xl-0">
-                      <i class="bx bx-cube-alt"></i>
-                      <h4>Ullamco laboris ladore pan</h4>
-                      <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                      <i class="bx bx-brain"></i>
+                      <h4>Consult Psychologists</h4>
+                      <p>Expert Panel of psychologists to help you.</p>
                     </div>
                   </div>
                   <div class="col-xl-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
                     <div class="icon-box mt-4 mt-xl-0">
                       <i class="bx bx-images"></i>
-                      <h4>Labore consequatur</h4>
-                      <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                      <h4>One to one interaction with your guide</h4>
+                      <p>Two way communication to your Educator</p>
                     </div>
                   </div>
                 </div>
@@ -239,7 +251,7 @@
                 </div>
               </div>
   
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+              <form action="https://script.google.com/macros/s/AKfycbwSlVjypymQWxx-yMXTgiLIioH4TGdv1jGa3vQGWCZHr3HKv3RTWvSKqw/exec" method="post" data-email="babakipathshaala.tech@gmail.com" class="php-email-form mt-4">
                 <div class="form-row">
                   <div class="col-md-6 form-group">
                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
@@ -259,8 +271,6 @@
                   <div class="validate"></div>
                 </div>
                 <div class="mb-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
                   <div class="sent-message">Your message has been sent. Thank you!</div>
                 </div>
                 <div class="text-center"><button type="submit">Send Message</button></div>

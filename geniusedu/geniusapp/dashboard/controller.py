@@ -49,73 +49,80 @@ def shutdown_session(exception=None):
 
 
 @app.route('/dashboard',methods=['POST','GET'])
-@login_required
+# @login_required
 def dashboard():
 
     # if student
-    if current_user.user_role_id==4: 
-        stud_pac_sub =  db.session.execute("SELECT student_package_subscription.*,pac_course.seo_title,pac_course.cano_url,\
-                pac_course.description,pac_course.price FROM student_package_subscription JOIN pac_course ON \
-                student_package_subscription.package_id=pac_course.id  \
-                WHERE student_package_subscription.subs_status=True and student_package_subscription.student_id=:param ORDER by student_package_subscription.id DESC",{"param":current_user.id}).fetchall()
+    # if current_user.user_role_id==4: 
+    #     stud_pac_sub =  db.session.execute("SELECT student_package_subscription.*,pac_course.seo_title,pac_course.cano_url,\
+    #             pac_course.description,pac_course.price FROM student_package_subscription JOIN pac_course ON \
+    #             student_package_subscription.package_id=pac_course.id  \
+    #             WHERE student_package_subscription.subs_status=True and student_package_subscription.student_id=:param ORDER by student_package_subscription.id DESC",{"param":current_user.id}).fetchall()
         
         
-        stu_subs_package = Student_package_subscription.query.filter_by(student_id=current_user.id).all()
-        if stu_subs_package:
-            current_month = datetime.datetime.now().month
+    #     stu_subs_package = Student_package_subscription.query.filter_by(student_id=current_user.id).all()
+    #     if stu_subs_package:
+    #         current_month = datetime.datetime.now().month
             
-            for stu_subs in stu_subs_package: 
-                subs_months_list = Student_subs_pac_months.query.filter_by(stu_pac_subs_id=stu_subs.id).all()
-                if subs_months_list:
-                    subscribed_months_lst=[]
-                    for sb_month in subs_months_list:
-                        subscribed_months_lst.append(sb_month.subs_month)
+    #         for stu_subs in stu_subs_package: 
+    #             subs_months_list = Student_subs_pac_months.query.filter_by(stu_pac_subs_id=stu_subs.id).all()
+    #             if subs_months_list:
+    #                 subscribed_months_lst=[]
+    #                 for sb_month in subs_months_list:
+    #                     subscribed_months_lst.append(sb_month.subs_month)
 
-                    # if current_month not in subscribed_months_lst:
-                    #     pac_subs = Student_package_subscription.query.filter_by(student_id=current_user.id, id=stu_subs.id).first()
-                    #     pac_subs.subs_status = False
-                    #     pac_subs.is_expired = True
-                    #     db.session.commit()
+    #                 # if current_month not in subscribed_months_lst:
+    #                 #     pac_subs = Student_package_subscription.query.filter_by(student_id=current_user.id, id=stu_subs.id).first()
+    #                 #     pac_subs.subs_status = False
+    #                 #     pac_subs.is_expired = True
+    #                 #     db.session.commit()
 
-                    if current_month in subscribed_months_lst:
-                        pac_subs = Student_package_subscription.query.filter_by(student_id=current_user.id, id=stu_subs.id).first()
-                        pac_subs.subs_status = True
-                        pac_subs.is_expired = False
-                        db.session.commit()
+    #                 if current_month in subscribed_months_lst:
+    #                     pac_subs = Student_package_subscription.query.filter_by(student_id=current_user.id, id=stu_subs.id).first()
+    #                     pac_subs.subs_status = True
+    #                     pac_subs.is_expired = False
+    #                     db.session.commit()
 
-            resp = make_response(render_template('dashboard/student/subs-package.html',course_package_info=stud_pac_sub))
-            return resp
-        else:
-            subscribe_live_classes = db.session.execute("SELECT online_classes.user_id as teacher_id,online_classes.course_id, \
-                online_classes.class_title,online_classes.canonical_url,online_classes.description,online_classes.create_date,\
-                student_subscribe_courses.user_id as student_id, courses.course_name, subjects.subject_name FROM online_classes JOIN \
-                student_subscribe_courses ON online_classes.course_id=student_subscribe_courses.course_id JOIN courses ON courses.id=online_classes.course_id \
-                JOIN subjects on subjects.id=online_classes.subject_id \
-                WHERE online_classes.subject_id=student_subscribe_courses.subject_id AND online_classes.is_active=1 \
-                AND online_classes.is_complete=0 AND online_classes.is_approved=1 AND student_subscribe_courses.user_id=:param1",{"param1":current_user.id})
-            resp = make_response(render_template('dashboard/student/home.html',subscribe_live_classes = subscribe_live_classes))
-            return resp
-    elif current_user.user_role_id==3:
-        try:
-            demo_live_classes= Online_demo_classes.query.filter_by(user_id=current_user.id,is_active=True,is_complete=False).all()
-            online_live_classes_list = Online_classes.query.filter_by(user_id=current_user.id,is_active=1,is_approved=1,is_complete=0).all()
-            resp = make_response(render_template('dashboard/teacher/home.html',online_live_classes_list=online_live_classes_list,demo_live_classes=demo_live_classes))
-            return resp
-        except Exception as e:
-            app.logger.error(str(e))
-            return abort(500)
-    elif current_user.user_role_id==5:
-        try:
-            demo_live_classes= Online_demo_classes.query.filter_by(is_active=True,is_complete=False).all()
-            online_live_classes_list = Online_classes.query.filter_by(is_active=True,is_complete=False).all()
-            resp = make_response(render_template('dashboard/members/home.html',online_live_classes_list=online_live_classes_list,demo_live_classes=demo_live_classes))
-            return resp
-        except Exception as e:
-            app.logger.error(str(e))
-            return abort(500)
-    else:
-        resp = make_response(redirect(url_for('home')))
+    #         resp = make_response(render_template('dashboard/student/subs-package.html',course_package_info=stud_pac_sub))
+    #         return resp
+    #     else:
+    #         subscribe_live_classes = db.session.execute("SELECT online_classes.user_id as teacher_id,online_classes.course_id, \
+    #             online_classes.class_title,online_classes.canonical_url,online_classes.description,online_classes.create_date,\
+    #             student_subscribe_courses.user_id as student_id, courses.course_name, subjects.subject_name FROM online_classes JOIN \
+    #             student_subscribe_courses ON online_classes.course_id=student_subscribe_courses.course_id JOIN courses ON courses.id=online_classes.course_id \
+    #             JOIN subjects on subjects.id=online_classes.subject_id \
+    #             WHERE online_classes.subject_id=student_subscribe_courses.subject_id AND online_classes.is_active=1 \
+    #             AND online_classes.is_complete=0 AND online_classes.is_approved=1 AND student_subscribe_courses.user_id=:param1",{"param1":current_user.id})
+    #         resp = make_response(render_template('dashboard/student/home.html',subscribe_live_classes = subscribe_live_classes))
+    #         return resp
+    # elif current_user.user_role_id==3:
+    #     try:
+    #         demo_live_classes= Online_demo_classes.query.filter_by(user_id=current_user.id,is_active=True,is_complete=False).all()
+    #         online_live_classes_list = Online_classes.query.filter_by(user_id=current_user.id,is_active=1,is_approved=1,is_complete=0).all()
+    #         resp = make_response(render_template('dashboard/teacher/home.html',online_live_classes_list=online_live_classes_list,demo_live_classes=demo_live_classes))
+    #         return resp
+    #     except Exception as e:
+    #         app.logger.error(str(e))
+    #         return abort(500)
+    # elif current_user.user_role_id==5:
+    #     try:
+    #         demo_live_classes= Online_demo_classes.query.filter_by(is_active=True,is_complete=False).all()
+    #         online_live_classes_list = Online_classes.query.filter_by(is_active=True,is_complete=False).all()
+    #         resp = make_response(render_template('dashboard/members/home.html',online_live_classes_list=online_live_classes_list,demo_live_classes=demo_live_classes))
+    #         return resp
+    #     except Exception as e:
+    #         app.logger.error(str(e))
+    #         return abort(500)
+    # else:
+        #resp = make_response(redirect(url_for('home')))
+        resp =  render_template('dashboard/usersBoard/dashboard.html')
         return resp
+
+
+@app.route('/contentDashboard',methods=['POST','GET'])
+def contentDashboard():
+    resp =  render_template('dashboard/serviceCategory/availableService.html')
+    return resp
 
 @app.route('/dashboard/add-new-class',methods=['GET','POST'])
 @login_required

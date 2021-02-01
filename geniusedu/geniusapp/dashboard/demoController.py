@@ -3,7 +3,7 @@ from flask import Flask,render_template,request,url_for,flash,session,\
     make_response,redirect,abort,json,jsonify,render_template_string,abort
 from geniusapp.model.tables import User_roles, Users,Subjects,Courses,Courses_mapper,\
 Broadcast_demo_classe_stream_records, Teacher_assing_course,Online_demo_classes,Student_subscribe_courses,Chat,\
-    Ban_chat_demo_users,Student_attendence,Users_demo,Demo_chat,Demo_student_attendence
+    Ban_chat_demo_users,Student_attendence,Users_demo,Demo_chat,Demo_student_attendence,Pac_course
 from geniusapp.dashboard.form import StudentSelectCourse
 from flask_login import current_user,login_required
 import datetime
@@ -365,3 +365,15 @@ def complete_demo_topic_mark():
             return jsonify({'error':1,'message':'Oops something went wrong.'})
     else:
         return jsonify({'error':1,'message':'Method is not allowed.'})
+
+
+@app.route('/dashboard/user')
+def usersDashboard():
+    try:
+        
+        course_package = Pac_course.query.filter_by(is_active=True).order_by(Pac_course.id.desc()).all()
+        resp = make_response(render_template('home/packages.html',course_package=course_package))
+        return resp
+    except Exception as e:
+        app.logger.error(str(e))
+        return abort(500)

@@ -48,3 +48,4 @@ import geniusapp.dashboard.demoController
 import geniusapp.dashboard.memberController
 import geniusapp.dashboard.seminarControllery
 import geniusapp.dashboard.chat
+import geniusapp.userDashborad.userDashboardController
