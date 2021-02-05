@@ -1,0 +1,48 @@
+{%extends 'layouts/master-layout.html'%}
+{%block content%}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>
+  .bd-toc-item > a > span{
+    color: #009970;
+  }
+</style>
+<div class="container-fluid bg-white" style="padding-top: 90px;">
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 bd-sidebar" style="background-color:#f1f1f1;">
+      <div class="bd-toc-item" id="academics">
+        <a class="nav-link" href="/contentDashboard">
+          <span>Academics Courses</span></a>
+        </li>
+      </div>
+      <div class="bd-toc-item" id="extra-curricular">
+        <a class="nav-link" href="/contentDashboard">
+          <span>Extra-Curricular Activities</span></a>
+        </li>
+      </div>
+      <div class="bd-toc-item" id="professional">
+        <a class="nav-link" href="/contentDashboard">
+          <span>Professional Courses</span></a>
+        </li>
+      </div>
+      <div class="bd-toc-item" id="competitive">
+        <a class="nav-link" href="/contentDashboard">
+          <span>Competitive Examination</span></a>
+        </li>
+      </div>
+      <div class="bd-toc-item" id="psychologists">
+        <a class="nav-link" href="/contentDashboard">
+          <span>Consult Psychologists</span></a>
+        </li>
+      </div>
+    </div>
+
+  </div>
+  </nav>
+</div>
+</div>
+{%endblock%}
