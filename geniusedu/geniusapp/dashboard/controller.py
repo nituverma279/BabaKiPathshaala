@@ -119,9 +119,27 @@ def dashboard():
         return resp
 
 
-@app.route('/contentDashboard',methods=['POST','GET'])
-def contentDashboard():
-    resp =  render_template('dashboard/serviceCategory/availableService.html')
+@app.route('/content/<int:course_id>')
+def contentDashboard(course_id):
+    try:
+        #course_topic_list = Courses.query.filter_by(id=course_id).first
+        #course_topic_list = db.session.execute("Select * from Courses where id between :param1 and :param2",{'param1':current_month,'param2':expire_month}).fetchall()    
+        course_topic_string = db.session.execute("SELECT courses.topics\
+                    FROM courses WHERE \
+                    courses.id=:param",{"param":course_id}).fetchall()
+        if course_topic_string is None:
+            return
+        elif course_id == 5:
+            return make_response(render_template('dashboard/serviceCategory/mental_health.html'))
+        else:
+            course_topic_list = [i[0] for i in course_topic_string][0].split(',')
+            return make_response(render_template('dashboard/serviceCategory/availableService.html',
+            course_name= course_topic_list))
+        
+    except Exception as e:
+            app.logger.error(str(e))
+            return abort(500)
+
     return resp
 
 @app.route('/dashboard/add-new-class',methods=['GET','POST'])

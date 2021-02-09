@@ -85,6 +85,7 @@ class Courses(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     course_name = db.Column(db.String(100),unique=True)
     is_active = db.Column(db.Boolean,default=True)
+    topics = db.Column(db.String)
 
     def __init__(self, course_name):
         self.course_name = course_name
