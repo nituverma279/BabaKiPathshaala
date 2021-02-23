@@ -8,6 +8,7 @@ from _ast import Param
 import datetime
 import stripe
 from flask_login import login_user,current_user,login_required
+from flask_mail import Mail, Message
 from functools import wraps
 import random
 import string
@@ -16,6 +17,16 @@ import os
 from os.path import splitext
 import hashlib
 import urllib.parse
+import re
+
+# configuration of mail 
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] =587
+app.config['MAIL_USERNAME'] = 'babakipathshaala.tech@gmail.com'
+app.config['MAIL_PASSWORD'] = 'tech09871234'
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+mail = Mail(app) 
 
 
 stripe_keys = {
@@ -83,37 +94,54 @@ def free_spm_seminar():
 
 @app.route('/contact',methods=['GET','POST'])
 def contact():
+    name = request.form.get('name')
+    return str("hello")
 
-    if request.method=='POST':
-        form = form = ContactForm(request.form)
-        if form.validate()== False:
-            resp= make_response(render_template('home/contact.html',form=form))
-            return resp
-        else:
-            name = request.form.get('name')
-            email = request.form.get('email')
-            mobile = request.form.get('mobile')
-            subject = request.form.get('subject')
-            message = request.form.get('message')
-            try:
-                contact_us = Contact_us(name=name,email=email,mobile=mobile,subject=subject,message=message)
-                db.session.add(contact_us)
-                db.session.commit()
-                db.session.close()
-                flash('Soon we will get in your touch.','success')
-                resp = make_response(redirect(url_for('contact')))
-                return resp
-            except Exception as e:
-                app.logger.error(str(e))
-                return abort(500)
-    else:
-        try:
-            form = ContactForm()
-            resp= make_response(render_template('home/contact.html',form=form))
-            return resp
-        except Exception as e:
-            app.logger.error(str(e))
-            return abort(500)
+    # if request.method == "POST":
+    #     # form = ContactForm(request.form)
+    #     name = request.form.get('name')
+    #     email = request.form.get('email')
+    #     subject = request.form.get('subject')
+    #     message = request.form.get('message')
+    #     msg = Message(subject=f"Message: {subject}", body=f"Name: {name}\nE-Mail: {email}\n\n{message}", sender='babakipathshaala.tecg@gmail.com', recipients=['nituverma279@gmail.com'])
+    #     mail.send(msg)
+    #     return render_template('/#contact',form=form, success=True)
+
+
+    # if request.method=='POST':
+    #     form = form = ContactForm(request.form)
+    #     if form.validate()== False:
+    #         flash('Shi')
+    #         resp= make_response(render_template('/',form=form))
+    #         return resp
+    #     else:
+    #         name = request.form.get('name')
+    #         email = request.form.get('email')
+    #         subject = request.form.get('subject')
+    #         message = request.form.get('message')
+    #         try:
+    #             contact_us = Contact_us(name=name,email=email,subject=subject,message=message)
+    #             db.session.add(contact_us)
+    #             db.session.commit()
+    #             db.session.close()
+    #             flash('Soon we will get in your touch.','success')
+    #             resp = make_response(redirect(url_for('contact')))
+    #             return resp
+    #         except Exception as e:
+    #             app.logger.error(str(e))
+    #             return abort(500)
+    # else:
+    #     try:
+    #         form = ContactForm()
+    #         resp= make_response(render_template('/',form=form))
+    #         return resp
+    #     except Exception as e:
+    #         app.logger.error(str(e))
+    #         return abort(500)
+
+
+    # else:
+    #      resp= make_response(render_template('/#contact',form=form))
 
 
 @app.route('/packages')

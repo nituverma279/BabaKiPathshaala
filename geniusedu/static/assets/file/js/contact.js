@@ -20,10 +20,6 @@ $(document).ready(function(){
                     required: true,
                     minlength: 4
                 },
-                number: {
-                    required: true,
-                    minlength: 5
-                },
                 email: {
                     required: true,
                     email: true
@@ -41,10 +37,6 @@ $(document).ready(function(){
                 subject: {
                     required: "come on, you have a subject, don't you?",
                     minlength: "your subject must consist of at least 4 characters"
-                },
-                number: {
-                    required: "come on, you have a number, don't you?",
-                    minlength: "your Number must consist of at least 5 characters"
                 },
                 email: {
                     required: "no email, no message"

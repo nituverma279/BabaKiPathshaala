@@ -6,8 +6,7 @@ from wtforms.validators import InputRequired,Email,length
 class ContactForm(FlaskForm):
     name = TextField('Name', [InputRequired(),length(max=30)])
     email = TextField('Email', [InputRequired(),Email(),length(max=80)])
-    mobile = IntegerField('Hand Phone', [InputRequired()])
     subject = TextField('Subject', [InputRequired(),length(max=50)])
-    message = TextAreaField('Message',[InputRequired(),length(max=250)])
+    message = TextAreaField('Message',[InputRequired(),length(max=1000)])
     submit = SubmitField('Send')
  

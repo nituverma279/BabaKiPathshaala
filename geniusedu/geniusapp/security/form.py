@@ -8,21 +8,16 @@ class TelephoneForm(FlaskForm):
     number       = StringField('Number')
 
 class RegistrationForm(FlaskForm):
-    user_type=RadioField('You are ',[InputRequired('Please select one user type')], choices=[('stu', 'Student'),('prof','Professional')])
-    first_name = TextField('First Name', [InputRequired('First name is required'),length(max=30)])
-    last_name = TextField('Last Name', [InputRequired('Last name is required'),length(max=30)])
-    gender = RadioField('Gender',[InputRequired('Please select your gender')], choices=[('Male', 'Male'),('Female','Female')])
+    name = TextField('Name', [InputRequired('Name is required'),length(max=30)])
     email = TextField('Email', [InputRequired('Email is required'),Email()])
-    mobile = IntegerField('Mobile', [InputRequired('Please enter your hand mobile')]) #FormField(TelephoneForm)
-    parent_mobile = StringField('Parent Mobile')
+    mobile = IntegerField('Mobile', [InputRequired('Please enter your mobile number')]) 
     password = PasswordField('Password', [InputRequired('Password is required.'), EqualTo('confirm', message='Passwords must match')])
     confirm = PasswordField('Confirm Password', [InputRequired('Confirm password is required.')])
-    school_name = TextField('School Name',[length(max=100)])
     submit = SubmitField('Register')
 
 class LoginForm(FlaskForm):
-    # email = StringField('Email', validators=[InputRequired()])
-    mobile = StringField('Hand Phone', validators=[InputRequired()])
+    email = StringField('Email', validators=[InputRequired()])
+    #mobile = StringField('Hand Phone', validators=[InputRequired()])
     password = PasswordField('Password', validators=[InputRequired()])
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
@@ -36,3 +31,20 @@ class ResetPasswordForm(FlaskForm):
     password = PasswordField('Password', [InputRequired(), EqualTo('confirm', message='Passwords must match')])
     confirm = PasswordField('Confirm Password', [InputRequired()])
     submit = SubmitField('Update Password')
+
+# class User_details(UserMixin, db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     first_name = db.Column(db.String(150), nullable=False)
+#     last_name = db.Column(db.String(150),nullable=True)
+#     email = db.Column(db.String(150),nullable=True)
+#     mobile = db.Column(db.String(100),nullable=False) 
+#     password = db.Column(db.String(250),nullable=False)
+#     is_active = db.Column(db.Boolean, default=True)
+    
+
+#     def _init_(self, first_name, last_name, email,mobile, password):
+#         self.first_name = first_name.title()
+#         self.last_name = last_name.title()
+#         self.email  = email.lower()
+#         self.mobile=mobile
+#         self.password = generate_password_hash(password)

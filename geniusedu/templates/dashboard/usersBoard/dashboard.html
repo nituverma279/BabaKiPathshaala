@@ -1,8 +1,52 @@
 {%extends 'layouts/dashboard-layout.html'%}
 {%block content%}
-<div class="col-12 col-md-9 col-xl-9" >
-  <center>
-      <h1>Hello</h1>
-  </center>
-</div>
-{%endblock%} 
+{%if resource_details%}
+<div class="col-12 col-md-9 col-xl-9">
+  <div class="row" style="flex-wrap: wrap;">
+    <div class="col-xl-3 d-md-flex align-items-stretch">
+        {%for resource in resource_details%}
+        <div class="testimonial-bar">
+          <iframe src={{resource.intro_url}} title="" style="height: 200px;
+        width: 200px;"></iframe>
+          <div class="course_name" style="font-weight: bold; color: #009970;">
+            {{resource.psy_name}}</div>
+          <i class="icofont-hat-alt">{{resource.psy_details}}</i>
+          <div class="know_more">
+            <button id={{resource.psy_id}}>Connection Request</button>
+          </div>
+        </div>
+        {%endfor%}
+      </div>
+  </div>
+  {%endif%}
+
+  {%if field_string%}
+  <div class="col-12 col-md-9 col-xl-9">
+    <div class="row">
+      <div class="col-lg-3">
+        {%for course in field_string%}
+        <div class="testimonial-bar">
+          <iframe style="height: 200px;
+        width: 200px;" src="https://www.youtube.com/embed/noaF9DzRiI4" title="Introduction to Baba ki Pathshaala">
+          </iframe>
+          <div class="course_name" style="font-weight: bold; color: #009970;">
+            {{course.course_name}}</div>
+          {%for educator in educator_info%}
+          {%if course.educator_id == educator.educator_id%}
+          <p>Taken by- {{educator.name}}</p>
+          <p>Educator details- {{educator.details}}</p>
+          {%endif%}
+          {%endfor%}
+          <p> Timing- {{course.timing}}</p>
+          <p> Duration- {{course.course_duration}}</p>
+          <p>Start Date- {{course.start_date}}</p>
+          <p>End Date- {{course.end_date}}</p>
+          <div id="know_more">
+            <button id={{course.id}}>Enroll Now</button>
+          </div>
+          </div>
+          {%endfor%}
+      </div>
+    </div>
+    {%endif%}
+    {%endblock%}

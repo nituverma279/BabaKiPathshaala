@@ -16,19 +16,12 @@ class User_roles(db.Model):
 
 class Users(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(150), nullable=False)
-    last_name = db.Column(db.String(150),nullable=True)
-    gender = db.Column(db.String(50),nullable=True)
+    name = db.Column(db.String(150), nullable=False)
     email = db.Column(db.String(150),nullable=True)
     mobile = db.Column(db.BigInteger,unique=True,nullable=False) 
-    parent_mobile = db.Column(db.BigInteger,nullable=True)
     password = db.Column(db.String(250),nullable=False)
     user_role_id = db.Column(db.Integer,db.ForeignKey(User_roles.id))
     user_roles = relationship("User_roles",lazy=True)
-    ic_number = db.Column(db.String(100),nullable=True)
-    zipcode = db.Column(db.Integer,nullable=True)
-    address = db.Column(db.String(1000), nullable=True)
-    user_type = db.Column(db.String(50),default='stu')
     register_date = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     online_register = db.Column(db.Boolean,default=False)
     is_active = db.Column(db.Boolean, default=True)
@@ -37,22 +30,17 @@ class Users(UserMixin, db.Model):
     forget_password_key = db.Column(db.String(150), nullable=True)
     referral_code = db.Column(db.String(250), nullable=True)
 
-    def __init__(self, first_name, last_name,gender, email, password, mobile, parent_mobile, user_role_id, zipcode, address,online_register):
-        self.first_name = first_name.title()
-        self.last_name = last_name.title()
-        self.gender=gender
+    def __init__(self, name, email, password, mobile, user_role_id,online_register):
+        self._name = name.title()
         self.email  = email.lower()
         self.password = generate_password_hash(password)
         self.mobile = mobile
-        self.parent_mobile = parent_mobile
         self.user_role_id = user_role_id
-        self.zipcode = zipcode
-        self.address = address
         self.online_register = online_register
         self.is_active = True 
 
     def __repr__(self):
-        return self.first_name+' '+self.last_name
+        return self.name
 
     def check_password(self, password):
         return  check_password_hash(self.password, password) 
@@ -92,6 +80,59 @@ class Courses(db.Model):
     
     def __repr__(self):
         return self.course_name
+
+class Bkp_psychologist(db.Model):
+    psy_id = db.Column(db.Integer,primary_key=True)
+    psy_name = db.Column(db.String(255))
+    psy_details = db.Column(db.String(2550))
+    mail_id = db.Column(db.String(255),primary_key=True)
+    psy_whatsapp = db.Column(db.String(255))
+    active = db.Column(db.Boolean,default=True)
+    intro_url = db.Column(db.String(1775))
+    DOJ = db.Column(db.DateTime,default=datetime.datetime.utcnow)
+
+    def __init__(self, course_name):
+        self.course_name = course_name
+    
+    def __repr__(self):
+        return self.course_name
+class Bkp_section(db.Model):
+    section_id = db.Column(db.String(128), primary_key=True)
+    section_name = db.Column(db.String(100))
+    is_active = db.Column(db.Boolean,default=True)
+    fields = db.Column(db.String(2550))
+
+class Bkp_course(db.Model):
+    course_id = db.Column(db.String(100),primary_key=True)
+    course_name = db.Column(db.String(100))
+    language = db.Column(db.String(20))
+
+class Bkp_field(db.Model):
+    field_id = db.Column(db.String(100),primary_key=True)
+    field_name = db.Column(db.String(100))
+    is_active = db.Column(db.Boolean,default=True)
+    section_id = db.Column(db.String(128), db.ForeignKey(Bkp_section.section_id), nullable=False)
+
+class Bkp_educator(db.Model):
+    educator_id = db.Column(db.String(100), primary_key=True)
+    name = db.Column(db.String(150))
+    details = db.Column(db.String(255))
+    is_active = db.Column(db.Boolean, default=True)
+
+class Active_courses(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    course_name = db.Column(db.String(128))
+    section_id = db.Column(db.String(128), db.ForeignKey(Bkp_section.section_id), nullable=False)
+    course_id = db.Column(db.String(100), db.ForeignKey(Bkp_course.course_id), nullable=False)
+    field_id = db.Column(db.String(100), db.ForeignKey(Bkp_field.field_id), nullable=False)
+    educator_id = db.Column(db.String(100), db.ForeignKey(Bkp_educator.educator_id), nullable=False)
+    start_date = db.Column(db.DateTime,default=datetime.datetime.utcnow)
+    end_date = db.Column(db.DateTime,default=datetime.datetime.utcnow)
+    language = db.Column(db.String(20))
+    is_active = db.Column(db.Boolean, default= True)
+    timing = db.Column(db.String(10))
+    is_bkp = db.Column(db.Boolean, default=True)
+    course_duration = db.Column(db.Integer)
 
 class Courses_mapper(db.Model):
     id = db.Column(db.Integer,primary_key=True)
@@ -275,15 +316,13 @@ class Contact_us(db.Model):
     id  = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.String(45), nullable=True)
     email = db.Column(db.String(60), nullable=True)
-    mobile = db.Column(db.String(12),nullable=True)
     subject = db.Column(db.String(50), nullable=True)
     message = db.Column(db.String(300), nullable=True)
     created_date = db.Column(db.Date, default=datetime.datetime.utcnow)
 
-    def __repr__(self,name,email,mobile,subject,message):
+    def __repr__(self,name,email,subject,message):
         self.name       = name
         self.email      = email
-        self.mobile     = mobile
         self.subject    = subject
         self.message    = messag
 

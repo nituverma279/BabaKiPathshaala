@@ -10,8 +10,8 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="static/assets/img/favicon.png" rel="icon">
-    <link href="static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="/static/assets/img/favicon.png" rel="icon">
+    <link href="/static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -19,24 +19,17 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-    <link href="static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
-    <link href="static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="/static/assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="/static/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/static/assets/vendor/aos/aos.css" rel="stylesheet">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
 
     <!-- Template Main CSS File -->
-    <link href="static/assets/css/style.css" rel="stylesheet">
-
-    <!-- =======================================================
-  * Template Name: Bethany - v2.2.0
-  * Template URL: https://bootstrapmade.com/bethany-free-onepage-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <link href="/static/assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -86,7 +79,13 @@
 
     <style>
         .bd-toc-item>a>span {
-            color: #009970;
+            color: #009970; 
+        }
+        li {
+            list-style-type: none;
+        }
+        .bd-toc-item{
+            margin-bottom: 15px;
         }
     </style>
 
@@ -95,32 +94,78 @@
         <div class="row flex-xl-nowrap" style="padding-top: 90px;">
 
             <div class="col-12 col-md-3 col-xl-3 bd-sidebar" style="background-color:#f1f1f1;">
-                <div class="bd-toc-item" id="academics">
-                    <a class="nav-link" href="/content/1">
+                <div class="bd-toc-item" id="section1">
+                    <a class="nav-link" href="#academics" data-toggle="collapse" 
+                    aria-expanded="false">
                         <span>Academics Courses</span></a>
-                    </li>
                 </div>
-                <div class="bd-toc-item" id="extra-curricular">
-                    <a class="nav-link" href="/content/2">
+                <div class="collapse multi-collapse" id="academics">
+                    <ul>
+                        <li><a class="nav-link" href="/field/007">Class 6</a></li>
+                        <li><a class="nav-link" href="/field/008">Class 7</a></li>
+                        <li><a class="nav-link" href="/field/009">Class 8</a></li>
+                        <li><a class="nav-link" href="/field/010">Class 9</a></li>
+                        <li><a class="nav-link" href="/field/011">Class 10</a></li>
+                        <li><a class="nav-link" href="/field/012">Class 11</a></li>
+                        <li><a class="nav-link" href="/field/013">Class 12</a></li>
+                    </ul>
+                </div>
+                <div class="bd-toc-item" id="section2">
+                    <a class="nav-link" href="#extra-curricular" data-toggle="collapse" 
+                    aria-expanded="false">
                         <span>Extra-Curricular Activities</span></a>
-                    </li>
                 </div>
-                <div class="bd-toc-item" id="professional">
-                    <a class="nav-link" href="/content/3">
+                <div class="collapse multi-collapse" id="extra-curricular">
+                    <ul>
+                        <li><a class="nav-link" href="/field/014">Music</a></li>
+                        <li><a class="nav-link" href="/field/015">Singing</a></li>
+                        <li><a class="nav-link" href="/field/016">Acting</a></li>
+                        <li><a class="nav-link" href="/field/017">Painting</a></li>
+                        <li><a class="nav-link" href="/field/018">Blogging</a></li>
+                    </ul>
+                </div>
+                <div class="bd-toc-item" id="section3">
+                    <a class="nav-link" href="#professional" data-toggle="collapse" 
+                    aria-expanded="false">
                         <span>Professional Courses</span></a>
-                    </li>
                 </div>
-                <div class="bd-toc-item" id="competitive">
-                    <a class="nav-link" href="/content/4">
-                        <span>Competitive Examination</span></a>
-                    </li>
+                <div class="collapse multi-collapse" id="professional">
+                    <ul>
+                        <li><a class="nav-link" href="/field/001">Engineering</a></li>
+                        <li><a class="nav-link" href="/field/002">Medicine</a></li>
+                        <li><a class="nav-link" href="/field/003">Web Designing</a></li>
+                        <li><a class="nav-link" href="/field/004">Computer Application</a></li>
+                        <!-- <li><a class="nav-link" href="/field/005">Beautician</a></li> -->
+                        <li><a class="nav-link" href="/field/005">Mass Communication</a></li>
+                        <li><a class="nav-link" href="/field/006">Digital Marketing</a></li>
+                    </ul>
+                </div>
+                <div class="bd-toc-item" id="section4">
+                    <a class="nav-link" href="#compititive" data-toggle="collapse" 
+                    aria-expanded="false">
+                        <span>Compititive Examination Courses</span></a>
+                </div>
+                <div class="collapse multi-collapse" id="compititive">
+                    <ul>
+                        <li><a class="nav-link" href="/field/019">UPSC</a></li>
+                        <li><a class="nav-link" href="/field/020">SSC</a></li>
+                        <li><a class="nav-link" href="/field/021">CDS</a></li>
+                        <li><a class="nav-link" href="/field/022">CAT</a></li>
+                        <li><a class="nav-link" href="/field/023">AIEEE</a></li>
+                        <li><a class="nav-link" href="/field/024">IIT</a></li>
+                        <li><a class="nav-link" href="/field/025">NIFT</a></li>
+                        <li><a class="nav-link" href="/field/029">IBPS</a></li>
+                        <li><a class="nav-link" href="/field/026">JPSC</a></li>
+                        <li><a class="nav-link" href="/field/028">RPSC</a></li>
+                        <li><a class="nav-link" href="/field/027">BPSC</a></li>
+                    </ul>
                 </div>
                 <div class="bd-toc-item" id="psychologists">
-                    <a class="nav-link" href="/content/5">
+                    <a class="nav-link" href="/content/M">
                         <span>Consult Psychologists</span></a>
                     </li>
                 </div>
-
+                
             </div>
             {%block content%}{%endblock%}
         </div>
@@ -145,6 +190,15 @@
                             <strong>Phone:</strong> +91 9999 9999 99<br>
                             <strong>Email:</strong> info@babakipathshaala.com<br>
                         </p>
+                        <div style="margin-top: 2em;"> 
+                            <h5>Want to become an Educator?</h5>
+                            <div class="text-center"><button type="submit" style="background: #009970;
+                                border: 0;
+                                padding: 10px 30px;
+                                color: #fff;
+                                transition: 0.4s;
+                                border-radius: 50px;">Click Here</button></div>
+                        </div>
                     </div>
 
                     <div class="col-lg-2 col-md-6 footer-links">
@@ -162,14 +216,14 @@
                         <h4>Our Services</h4>
                         <ul>
                             <li id="academics"><i class="bx bx-chevron-right"></i> <a
-                                    href="/content/1"><span>Academics</span></a></li>
+                                    href="/content/A"><span>Academics</span></a></li>
                             <li id="extra-curricular"><i class="bx bx-chevron-right"></i> <a
-                                    href="/content/2"><span>Professional Courses</span></a></li>
+                                    href="/content/P"><span>Professional Courses</span></a></li>
                             <li id="professional"><i class="bx bx-chevron-right"></i> <a
-                                    href="/content/3"><span>Competitive Examination</span></a></li>
+                                    href="/content/C"><span>Competitive Examination</span></a></li>
                             <li id="competitive"><i class="bx bx-chevron-right"></i> <a
-                                    href="/content/4"><span>Extra-Curricular Activities</span></a></li>
-                            <li id="psychologists"><i class="bx bx-chevron-right"></i> <a href="/content/5"><span>Mental
+                                    href="/content/E"><span>Extra-Curricular Activities</span></a></li>
+                            <li id="psychologists"><i class="bx bx-chevron-right"></i> <a href="/content/M"><span>Mental
                                         Health Support</span></a></li>
                         </ul>
                     </div>
@@ -184,7 +238,6 @@
                                     src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fbabaonfb&tabs=timeline&width=350&height=250&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=376163789388709"
                                     width="100%" height="250" style="border:none;overflow:hidden" scrolling="no"
                                     frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-
                             </div>
                         </div>
                     </div>
@@ -220,21 +273,21 @@
     <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="static/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="static/assets/vendor/php-email-form/validate.js"></script>
-    <script src="static/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-    <script src="static/assets/vendor/counterup/counterup.min.js"></script>
-    <script src="static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="static/assets/vendor/venobox/venobox.min.js"></script>
-    <script src="static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script src="static/assets/vendor/aos/aos.js"></script>
+    <script src="/static/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="/static/assets/vendor/php-email-form/validate.js"></script>
+    <script src="/static/assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="/static/assets/vendor/counterup/counterup.min.js"></script>
+    <script src="/static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/static/assets/vendor/venobox/venobox.min.js"></script>
+    <script src="/static/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="/static/assets/vendor/aos/aos.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Template Main JS File -->
-    <script src="static/assets/js/main.js">
+    <script src="/static/assets/js/main.js">
 
     </script>
 
