@@ -49,6 +49,18 @@ def student_required(f):
     return wrap
 
 
+@app.route('/contact_me',methods=['POST','GET'])
+def contact_me():
+    name=request.form.get("name")
+    email=request.form.get("email")
+    subject=request.form.get("subject")
+    message=request.form.get("message")
+    msg = Message(sender =email, recipients = ['nituverma279@gmail.com'] ) 
+    msg.body = '<HTML><h1>'+subject+'</h1><h2>'+message+'</h2></html>'
+
+    mail.send(msg) 
+    return 'Sent'
+
 @app.route('/maintance')
 def homemaintance():
      return render_template('home/server-maintance.html')

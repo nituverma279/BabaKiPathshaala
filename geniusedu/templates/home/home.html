@@ -266,23 +266,23 @@
           Your message has been sent successfully!
         </div>
         {% endif %}
-          <form
-          name="sentMessage" id="contactForm" onsubmit="submitQueries()" method="POST" class="php-email-form mt-4">
+          <form id="contactForm" method="POST" action="/contact_me" class="mt-4">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
             <div class="form-row">
               <div class="col-md-6 form-group">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
-                  data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  data-rule="minlen:4" data-msg="Please enter at least 4 chars" required/>
                 <div class="validate"></div>
               </div>
               <div class="col-md-6 form-group">
                 <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
-                  data-rule="email" data-msg="Please enter a valid email" />
+                  data-rule="email" data-msg="Please enter a valid email" required/>
                 <div class="validate"></div>
               </div>
             </div>
             <div class="form-group">
               <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
-                data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" required/>
               <div class="validate"></div>
             </div>
             <div class="form-group">
